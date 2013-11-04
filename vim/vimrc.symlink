@@ -31,7 +31,7 @@ Bundle 'bling/vim-airline'
 Bundle 'scrooloose/nerdtree'
 Bundle 'jistr/vim-nerdtree-tabs'
 Bundle 'majutsushi/tagbar'
-Bundle 'Raimondi/delimitMate' " Auto-balancing of brackets etc.
+Bundle 'Raimondi/delimitMate'
 Bundle 'SirVer/ultisnips'
 Bundle 'terryma/vim-multiple-cursors'
 Bundle 'kien/ctrlp.vim'
@@ -70,7 +70,7 @@ Bundle 'chriskempson/tomorrow-theme', {'rtp': 'vim/'}
 Bundle 'Pychimp/vim-luna'
 
 " Syntax"
-Bundle 'scrooloose/syntastic' " Syntax checking hacks for vim
+Bundle 'scrooloose/syntastic'
 Bundle 'plasticboy/vim-markdown'
 Bundle 'jelera/vim-javascript-syntax'
 Bundle 'statianzo/vim-jade'
