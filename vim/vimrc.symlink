@@ -273,3 +273,556 @@ endif
 " }}}
 
 " }}}
+
+
+" MacVim specifics ----------------------------------------------------------- {{{
+"
+if has("gui_macvim")
+  set guifont=Inconsolata\ for\ Powerline:h14
+  set fu
+  set clipboard+=unnamed
+  set vb t_vb=
+  set guioptions-=m  "no menu
+  set guioptions-=T  "no toolbar
+  set guioptions-=l
+  set guioptions-=L
+  set guioptions-=r  "no scrollbar
+  set guioptions-=R
+  set showtabline=1
+
+  " This mapping makes Ctrl-Tab switch between tabs.
+  " Ctrl-Shift-Tab goes the other way.
+  noremap <C-Tab> :tabnext<CR>
+  noremap <C-S-Tab> :tabprev<CR>
+
+  " switch between tabs with cmd+1, cmd+2,..."
+  map <D-1> 1gt
+  map <D-2> 2gt
+  map <D-3> 3gt
+  map <D-4> 4gt
+  map <D-5> 5gt
+  map <D-6> 6gt
+  map <D-7> 7gt
+  map <D-8> 8gt
+  map <D-9> 9gt
+
+  " until we have default MacVim shortcuts this is the only way to use it in
+  " insert mode
+  imap <D-1> <esc>1gt
+  imap <D-2> <esc>2gt
+  imap <D-3> <esc>3gt
+  imap <D-4> <esc>4gt
+  imap <D-5> <esc>5gt
+  imap <D-6> <esc>6gt
+  imap <D-7> <esc>7gt
+  imap <D-8> <esc>8gt
+  imap <D-9> <esc>9gt
+
+  " Select text with shift
+  let macvim_hig_shift_movement = 1
+
+endif
+
+" }}}
+
+
+" Folding ----------------------------------------------------------------- {{{
+
+set foldlevelstart=0
+nnoremap ö za
+vnoremap ö za
+nnoremap Ö zA
+vnoremap Ö zA
+nnoremap <leader>ö zMzv
+vnoremap <leader>ö zMzv
+nnoremap <leader>Ö zMzA
+vnoremap <leader>Ö zMzA
+
+" }}}
+
+
+" Plugin options/shortcuts ----------------------------------------------------------- {{{
+
+" CtrlP {{{
+
+" Open ctrlp with cmd+p
+let g:ctrlp_map = '<D-p>'
+
+" Open goto symbol on current buffer
+nmap <D-r> :MyCtrlPTag<cr>
+imap <D-r> <esc>:MyCtrlPTag<cr>
+
+" Open goto symbol on all buffers
+nmap <D-R> :CtrlPBufTagAll<cr>
+imap <D-R> <esc>:CtrlPBufTagAll<cr>
+
+" Open goto file
+nmap <leader>p :CtrlPBuffer<cr>
+
+let g:ctrlp_cmd = 'CtrlPMixed'        " search anything (in files, buffers and MRU files at the same time.)
+let g:ctrlp_working_path_mode = 'ra'  " search for nearest ancestor like .git, .hg, and the directory of the current file
+let g:ctrlp_match_window_bottom = 0   " show the match window at the top of the screen
+let g:ctrlp_max_height = 10           " maxiumum height of match window
+let g:ctrlp_switch_buffer = 'et'      " jump to a file if it's open already
+let g:ctrlp_use_caching = 1           " enable caching
+let g:ctrlp_clear_cache_on_exit=0     " speed up by not removing clearing cache evertime
+let g:ctrlp_mruf_max = 250            " number of recently opened files
+let g:ctrlp_custom_ignore = {
+  \ 'dir':  '\v[\/]\.(git|hg|svn|build)$',
+  \ 'file': '\v\.(exe|so|dll)$',
+  \ 'link': 'SOME_BAD_SYMBOLIC_LINKS',
+  \ }
+
+func! MyPrtMappings()
+    let g:ctrlp_prompt_mappings = {
+        \ 'AcceptSelection("t")': ['<c-t>'],
+        \ 'AcceptSelection("e")': ['<cr>', '<2-LeftMouse>', 'ö'],
+        \ 'AcceptSelection("v")': ['<c-v>', '<RightMouse>', 'ä'],
+        \ 'AcceptSelection("h")': ['<c-x>', '<c-cr>', '<c-s>', 'å'],
+        \ }
+endfunc
+
+func! MyCtrlPTag()
+    let g:ctrlp_prompt_mappings = {
+        \ 'AcceptSelection("e")': ['<cr>', '<2-LeftMouse>'],
+        \ 'AcceptSelection("t")': ['<c-t>'],
+        \ }
+    CtrlPBufTag
+endfunc
+
+let g:ctrlp_buffer_func = { 'exit': 'MyPrtMappings' }
+com! MyCtrlPTag call MyCtrlPTag()
+
+" }}}
+
+" NERDTree {{{
+
+nnoremap <Leader>o :let NERDTreeQuitOnOpen = 1<bar>NERDTreeTabsToggle<CR>
+nnoremap <Leader>O :let NERDTreeQuitOnOpen = 0<bar>NERDTreeTabsToggle<CR>
+nnoremap <Leader>r :let NERDTreeQuitOnOpen = 1<bar>NERDTree<CR><C-w>p:NERDTreeFind<CR>
+nnoremap <Leader>R :let NERDTreeQuitOnOpen = 0<bar>NERDTree<CR><C-w>p:NERDTreeFind<CR>
+
+" }}}
+
+" GitGutter {{{
+
+nnoremap <leader>gg :GitGutterToggle<CR>
+nnoremap <leader>gh :GitGutterLineHighlightsToggle<CR>
+nnoremap <leader>gj :GitGutterNextHunk<CR>
+nnoremap <leader>gk :GitGutterPrevHunk<CR>
+
+" }}}
+
+" EasyMotion {{{
+
+nmap f <leader><leader>s
+" let g:EasyMotion_leader_key = 'ö'
+" nnoremap f H:call EasyMotion#Search(0,0)<CR>
+" nnoremap F H:call EasyMotion#E(0,0)<CR>
+let g:EasyMotion_keys = 'fjdkslionmhxcvgwera'
+
+hi link EasyMotionTarget ErrorMsg
+hi link EasyMotionShade  Comment
+
+" }}}
+
+" Color picker {{{
+
+noremap <leader>cr <esc>:PickRGB<cr>
+noremap <leader>cc <esc>:PickRGB<cr>
+noremap <leader>ch <esc>:PickHEX<cr>
+noremap <leader>cs <esc>:PickHSL<cr>
+
+" }}}
+
+" YankRing {{{
+
+nnoremap <silent> <leader>y :YRShow<cr>
+let g:yankring_window_use_horiz = 0  " Use vertical split
+let g:yankring_window_use_right = 0  " Open the window to the left
+
+" }}}
+
+" CamelCaseMotion {{{
+
+" Camel case motion with W, B and E
+map <S-W> <Plug>CamelCaseMotion_w
+map <S-B> <Plug>CamelCaseMotion_b
+map <S-E> <Plug>CamelCaseMotion_e
+
+" }}}
+
+" Git Fugitive {{{
+
+nmap <leader>gs :Gstatus<CR>
+nmap <leader>gc :Gcommit<CR>
+nmap <leader>gw :Gwrite<CR>
+nmap <leader>gr :Gread<CR>
+nmap <leader>ge :Gedit<CR>
+nmap <leader>gv :Gvsplit<CR>
+"nmap <leader>gs :Gsplit<CR>
+nmap <leader>gd :Gdiff<CR>
+
+" }}}
+
+" LatexBox {{{
+
+let g:LatexBox_latexmk_options = "-pvc -pdfps"
+
+" }}}
+
+" Powerline and Airline {{{
+
+" Powerline plugin
+let g:Powerline_theme='skwp'
+let g:Powerline_colorscheme='skwp'
+let g:Powerline_symbols = 'fancy'
+
+" Airline plugin
+let g:airline_powerline_fonts = 1
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#left_sep = ' '
+let g:airline#extensions#tabline#left_alt_sep = '|'
+let g:airline_theme='bubblegum'
+
+" }}}
+
+" Startify {{{
+
+let g:startify_custom_header =
+\ map(split(system('fortune | cowsay'), '\n'), '"   ". v:val') + ['','']
+autocmd FileType startify setlocal nocursorline
+let g:startify_custom_header = [
+            \ '     Asthena - www.asthena.com ',
+            \ '',
+            \ '',
+            \ ]
+
+" }}}
+
+" Plugin {{{
+" }}}
+
+" }}}
+
+
+" General keyboard shortcuts ----------------------------------------------------------- {{{
+
+" Movement {{{
+
+" Better j/k movement in wrapped lines
+nmap j gj
+nmap k gk
+
+" }}}
+
+" Formatting {{{
+
+" Indent lines with cmd+[ and cmd+]
+nmap <D-]> >>
+nmap <D-[> <<
+vmap <D-[> <gv
+vmap <D-]> >gv
+
+" Change indent continuously
+vmap < <gv
+vmap > >gv
+
+" Keep the cursor in place while joining lines
+nnoremap J mzJ`z
+
+" Split line (sister to [J]oin lines)
+" The normal use of S is covered by cc, so don't worry about shadowing it.
+nnoremap S i<cr><esc>^mwgk:silent! s/\v +$//<cr>:noh<cr>`w
+
+" Shift-tabs
+nmap <S-Tab> <<
+imap <S-Tab> <Esc><<i
+
+" Bubble single lines
+nmap <D-k> [e
+nmap <D-j> ]e
+" Bubble multiple lines
+vmap <D-k> [egv
+vmap <D-j> ]egv
+
+" Visually select the text that was last edited/pasted
+nmap gV `[v`]
+
+" Retab document
+nmap <leader>t :retab!<CR>
+
+" }}}
+
+" Display options {{{
+
+" Unfuck my screen
+nnoremap U :syntax sync fromstart<cr>:redraw!<cr>
+
+" Toggle [i]nvisible characters
+nnoremap <leader>i :set list!<cr>
+
+" }}}
+
+" Splits and buffers {{{
+
+" Next prev buffer
+nnoremap <silent> <leader>k :call MyNext()<CR>
+nnoremap <silent> <leader>j :call MyPrev()<CR>
+nnoremap <silent> L :call MyNext()<CR>
+nnoremap <silent> H :call MyPrev()<CR>
+
+" Use ctrl-[hjkl] to select the active split!
+nmap <silent> <c-k> :wincmd k<CR>
+nmap <silent> <c-j> :wincmd j<CR>
+nmap <silent> <c-h> :wincmd h<CR>
+nmap <silent> <c-l> :wincmd l<CR>
+
+" Maximize current buffer window
+nnoremap <silent> <leader>mm :ZoomWin<CR>
+
+" Delete buffer
+nmap <leader>w :BD<CR>
+
+" Switch between last two buffers
+nnoremap <leader><tab> <c-^>
+
+" }}}
+
+" Movement and Search {{{
+
+" Don't move on *
+nnoremap * *<c-o>
+
+" Keep search matches in the middle of the window.
+nnoremap n nzzzv
+nnoremap N Nzzzv
+
+" Same when jumping around
+nnoremap g; g;zz
+nnoremap g, g,zz
+nnoremap <c-o> <c-o>zz
+
+" Easier to type, and I never use the default behavior.
+noremap H ^
+noremap L $
+vnoremap L g_
+
+" Heresy
+inoremap <c-a> <esc>I
+inoremap <c-e> <esc>A
+cnoremap <c-a> <home>
+cnoremap <c-e> <end>
+
+" gi already moves to "last place you exited insert mode", so we'll map gI to
+" something similar: move to last change
+nnoremap gI `.
+
+" }}}
+
+" Type {{{
+" }}}
+
+" Fix linewise visual selection of various text objects
+nnoremap VV V
+nnoremap Vit vitVkoj
+nnoremap Vat vatV
+nnoremap Vab vabV
+nnoremap VaB vaBV
+
+" open file under cursor, create if necessary
+nnoremap gF :view <cfile><cr>
+
+" Source
+vnoremap <leader>S y:execute @@<cr>:echo 'Sourced selection.'<cr>
+nnoremap <leader>S ^vg_y:execute @@<cr>:echo 'Sourced line.'<cr>
+
+" Redo last Ex command with bang
+nnoremap <leader>! q:k0ea!<ESC>
+
+" Write all changed buffers
+nmap <leader>s :wa<CR>
+
+" Add a semi-colon at the end of the line
+inoremap <leader>, <C-o>A;<esc>
+
+" Remove search highlighting
+nnoremap <esc><esc> :set hlsearch!<CR>
+
+" Reload vimrc
+map <F5> :source $MYVIMRC<CR>:echoe "Vimrc Reloaded"<CR>
+
+" Escape remapping
+vno v <esc>
+
+" Toggle tagbar
+nmap <leader>d :TagbarToggle<CR>
+
+" Edit current folder
+nnoremap <Leader>n :e <C-R>=expand('%:p:h') . '/'<CR>
+
+" More edit commands
+cnoremap %% <C-R>=fnameescape(expand('%:h')).'/'<cr>
+map <leader>ew :e %%
+map <leader>es :sp %%
+map <leader>ev :vsp %%
+map <leader>et :tabe %%
+
+" Jump list
+nnoremap <leader>, :jump<CR>
+
+" Make D behave
+nnoremap D d$
+
+
+" Keyboard shortcuts with dependencies {{{
+
+" Word processing
+nnoremap <leader>W :call WordProcessingToggle()<CR>
+
+" JSformat
+map <c-f> :call JsBeautify()<cr>
+
+" Stop completion with enter, in addition to default ctrl+y
+imap <expr> <CR> pumvisible() ? "\<c-y>" : "<Plug>delimitMateCR"
+
+" A few common cmus commands
+nnoremap <leader>mn :call cmus:next()<cr>
+nnoremap <leader>mp :call cmus:previous()<cr>
+nnoremap <leader>m<space> :call cmus:pause()<cr>
+nnoremap <leader>m<return> :call cmus:play()<cr>
+nnoremap <leader>ms :call cmus:stop()<cr>
+
+" }}}
+
+
+" }}}
+
+
+if $TERM == "xterm-256color" || $TERM == "screen-256color" || $COLORTERM == "gnome-terminal"
+  set t_Co=256
+endif
+
+autocmd BufNewFile,BufRead *.jade set filetype=jade
+
+let g:ycm_autoclose_preview_window_after_completion = 1
+
+let g:session_autosave = 'yes'
+let g:session_autoload = 'yes'
+let g:session_default_to_last = 1
+
+map <F11> :mksession! ~/vim_session <cr>
+map <F12> :source ~/vim_session <cr>
+
+"create line break when pressing enter
+let g:delimitMate_expand_cr = 1
+let g:delimitMate_expand_space = 1
+
+let g:multi_cursor_use_default_mapping = 0
+let g:multi_cursor_next_key = '<D-d>'
+let g:multi_cursor_prev_key = '<D-u>'
+let g:multi_cursor_skip_key = '<D-k>' "until we got multiple keys support
+let g:multi_cursor_quit_key = '<Esc>'
+
+" MyNext() and MyPrev(): Movement between tabs OR buffers
+function! MyNext()
+    if exists( '*tabpagenr' ) && tabpagenr('$') != 1
+        " Tab support && tabs open
+        normal gt
+    else
+        " No tab support, or no tabs open
+        execute ":bnext"
+    endif
+endfunction
+function! MyPrev()
+    if exists( '*tabpagenr' ) && tabpagenr('$') != '1'
+        " Tab support && tabs open
+        normal gT
+    else
+        " No tab support, or no tabs open
+        execute ":bprev"
+    endif
+endfunction
+
+" WordProcessingToggle() {{{
+function! WordProcessingToggle()
+    if !exists('b:wordprocessing') || b:wordprocessing
+        let b:wordprocessing = 'true'
+        setlocal lbr ai
+        setlocal tw=80
+        setlocal fo-=cq fo+=tan1
+        setlocal linespace=5
+        echo "Word processing mode enabled."
+    else
+        let b:wordprocessing = 'false'
+        setlocal nolbr noai
+        setlocal fo+=cq fo-=tan1
+        setlocal linespace=0
+        echo "Word processing mode disabled."
+    endif
+endfunction
+
+function! g:UltiSnips_Complete()
+    call UltiSnips_ExpandSnippet()
+    if g:ulti_expand_res == 0
+        if pumvisible()
+            return "\<C-n>"
+        else
+            call UltiSnips_JumpForwards()
+            if g:ulti_jump_forwards_res == 0
+               return "\<TAB>"
+            endif
+        endif
+    endif
+    return ""
+endfunction
+
+au BufEnter * exec "inoremap <silent> " . g:UltiSnipsExpandTrigger . " <C-R>=g:UltiSnips_Complete()<cr>"
+let g:UltiSnipsJumpForwardTrigger="<tab>"
+let g:UltiSnipsListSnippets="<c-e>"
+
+let g:nerdtree_tabs_open_on_gui_startup = 0
+let g:NERDTreeWinSize = 40
+let NERDTreeShowBookmarks=1
+let NERDTreeMinimalUI = 1
+let NERDTreeDirArrows = 1
+let NERDTreeQuitOnOpen = 1
+
+call togglebg#map("<F6>")
+
+function! s:MkNonExDir(file, buf)
+    if empty(getbufvar(a:buf, '&buftype')) && a:file!~#'\v^\w+\:\/'
+        let dir=fnamemodify(a:file, ':h')
+        if !isdirectory(dir)
+            call mkdir(dir, 'p')
+        endif
+    endif
+endfunction
+augroup BWCCreateDir
+    autocmd!
+    autocmd BufWritePre * :call s:MkNonExDir(expand('<afile>'), +expand('<abuf>'))
+augroup END
+set numberwidth=4
+autocmd FileType nerdtree setlocal norelativenumber
+autocmd FileType taglist setlocal norelativenumber
+autocmd FileType tagbar setlocal norelativenumber
+autocmd FileType tagbar setlocal nonumber
+
+function! HipsterMode()
+  exec ':AirlineToggle'
+  exec ':NumbersOnOff'
+  exec ':DistractFreeToggle'
+  call WordProcessingToggle()
+endfunc
+
+nnoremap <leader>H :silent call HipsterMode()<CR>
+
+" Tagbar settings
+let g:tagbar_compact = 1
+
+" Conque settings
+let g:ConqueTerm_Color = 1
+
+let g:distractfree_width = '60%'
+let g:distractfree_colorscheme = 'iawriter'
+let g:distractfree_font = 'Cousine:h14'
