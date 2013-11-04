@@ -36,6 +36,7 @@ Bundle 'SirVer/ultisnips'
 Bundle 'terryma/vim-multiple-cursors'
 Bundle 'kien/ctrlp.vim'
 Bundle 'myusuf3/numbers.vim.git'
+" Bundle 'airblade/vim-gitgutter'
 " Bundle 'Valloric/YouCompleteMe'
 
 " Tools
@@ -44,8 +45,8 @@ Bundle 'mattn/webapi-vim'
 Bundle 'mattn/gist-vim'
 Bundle 'editorconfig/editorconfig-vim'
 Bundle 'bufkill.vim'
-" Bundle 'LaTeX-Box-Team/LaTeX-Box'
-" Bundle 'Rename2'
+Bundle 'LaTeX-Box-Team/LaTeX-Box'
+Bundle 'Rename2'
 Bundle 'tpope/vim-unimpaired'
 Bundle 'tpope/vim-surround'
 Bundle 'tpope/vim-repeat'
@@ -53,20 +54,20 @@ Bundle 'tomtom/tcomment_vim'
 Bundle 'chrisbra/NrrwRgn'
 Bundle 'regedarek/ZoomWin'
 Bundle 'YankRing.vim'
-" Bundle 'kien/rainbow_parentheses.vim'
 Bundle 'bkad/CamelCaseMotion'
 Bundle 'nathanaelkane/vim-indent-guides'
 Bundle 'mattn/emmet-vim'
 Bundle 'nelstrom/vim-visual-star-search'
+" Bundle 'kien/rainbow_parentheses.vim'
 " Bundle 'professorsloth/cmus-remote-vim'
 
 " Color schemes
 Bundle 'altercation/vim-colors-solarized'
-" Bundle 'molokai'
-" Bundle 'railscasts'
-" Bundle 'chriskempson/tomorrow-theme', {'rtp': 'vim/'}
-" Bundle 'Pychimp/vim-luna'
 Bundle 'baskerville/bubblegum'
+Bundle 'molokai'
+Bundle 'railscasts'
+Bundle 'chriskempson/tomorrow-theme', {'rtp': 'vim/'}
+Bundle 'Pychimp/vim-luna'
 
 " Syntax"
 Bundle 'scrooloose/syntastic' " Syntax checking hacks for vim
@@ -76,20 +77,19 @@ Bundle 'statianzo/vim-jade'
 Bundle 'vim-scripts/applescript.vim'
 
 " JavaScript
-" Bundle 'maksimr/vim-jsbeautify'
-" Bundle 'einars/js-beautify'
+Bundle 'maksimr/vim-jsbeautify'
+Bundle 'einars/js-beautify'
 " Bundle 'marijnh/tern_for_vim'
 
 " CSS
+Bundle 'PickAColor.vim'
 " Bundle 'skammer/vim-css-color'
 " Bundle 'vim-scripts/hexHighlight.vim'
 " Bundle 'ap/vim-css-color'
-" Bundle 'PickAColor.vim'
 
 " Word processing modes
-" Bundle 'jacekd/vim-iawriter'
-" Bundle 'chrisbra/DistractFree'
-" Bundle 'airblade/vim-gitgutter'
+Bundle 'jacekd/vim-iawriter'
+Bundle 'chrisbra/DistractFree'
 
 " }}}
 
