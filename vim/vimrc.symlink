@@ -1,0 +1,18 @@
+" Preamble ---------------------------------------------------------------- {{{
+
+let $BASH_ENV = "~/.bash_profile"
+set shell=/bin/bash
+
+filetype off
+
+set rtp+=~/.vim/bundle/vundle/
+" set runtimepath+=~/.vim/bundle/ultisnips
+call vundle#rc()
+
+filetype plugin indent on
+
+set nocompatible
+
+" }}}
+
+let mapleader=" "
