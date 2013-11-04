@@ -278,7 +278,7 @@ endif
 " MacVim specifics ----------------------------------------------------------- {{{
 "
 if has("gui_macvim")
-  set guifont=Inconsolata\ for\ Powerline:h14
+  set guifont=Source\ Code\ Pro\ for\ Powerline:h12
   set fu
   set clipboard+=unnamed
   set vb t_vb=
