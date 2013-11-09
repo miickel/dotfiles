@@ -4,9 +4,9 @@ bind-key space send-prefix
 
 # splitting
 unbind %
-bind h split-window -h
+bind v split-window -h
 unbind '"'
-bind v split-window -v
+bind h split-window -v
 
 bind-key C-a last-window
 bind-key Space next-window
