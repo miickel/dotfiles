@@ -31,6 +31,7 @@ Bundle 'bling/vim-airline'
 Bundle 'scrooloose/nerdtree'
 Bundle 'jistr/vim-nerdtree-tabs'
 Bundle 'majutsushi/tagbar'
+" Bundle 'bling/vim-bufferline'
 Bundle 'Raimondi/delimitMate'
 Bundle 'SirVer/ultisnips'
 Bundle 'terryma/vim-multiple-cursors'
@@ -70,6 +71,7 @@ Bundle 'railscasts'
 Bundle 'chriskempson/tomorrow-theme', {'rtp': 'vim/'}
 Bundle 'Pychimp/vim-luna'
 Bundle 'flazz/vim-colorschemes'
+Bundle 'sjl/badwolf'
 
 " Syntax"
 Bundle 'scrooloose/syntastic'
@@ -123,7 +125,7 @@ autocmd BufEnter * set completeopt-=preview
 " autocmd BufEnter * sign define dummy
 " autocmd BufEnter * execute 'sign place 9999 line=1 name=dummy buffer=' . bufnr('')
 
-colorscheme bubblegum
+colorscheme badwolf
 highlight Cursor guifg=#333333 guibg=white
 
 " Highlight VCS conflict markers
@@ -158,7 +160,7 @@ set nowrap
 set foldmethod=indent   "fold based on indent
 set foldnestmax=3       "deepest fold is 3 levels
 set nofoldenable        "dont fold by default
-set list
+" set list
 set listchars=tab:▸\ ,eol:¬,extends:❯,precedes:❮
 set splitright splitbelow
 set ttyfast
@@ -277,6 +279,7 @@ endif
 "
 if has("gui_macvim")
   set guifont=Sauce\ Code\ Powerline:h12
+  set guifont=Sauce\ Code\ Powerline\ Light:h11
   set fu
   set clipboard+=unnamed
   set vb t_vb=
@@ -354,8 +357,11 @@ imap <D-r> <esc>:MyCtrlPTag<cr>
 nmap <D-R> :CtrlPBufTagAll<cr>
 imap <D-R> <esc>:CtrlPBufTagAll<cr>
 
-" Open goto file
-nmap <leader>p :CtrlPBuffer<cr>
+" Open goto anything
+nmap <leader>p :CtrlP<cr>
+
+" Open goto buffer
+nmap <leader>P :CtrlPBuffer<cr>
 
 let g:ctrlp_cmd = 'CtrlPMixed'        " search anything (in files, buffers and MRU files at the same time.)
 let g:ctrlp_working_path_mode = 'ra'  " search for nearest ancestor like .git, .hg, and the directory of the current file
@@ -480,8 +486,9 @@ let g:Powerline_symbols = 'fancy'
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#left_sep = ' '
-let g:airline#extensions#tabline#left_alt_sep = '|'
-let g:airline_theme='bubblegum'
+let g:airline#extensions#tabline#left_alt_sep = ''
+let g:airline#extensions#bufferline#enabled = 1
+let g:airline_theme='badwolf'
 
 " }}}
 
@@ -495,6 +502,18 @@ let g:startify_custom_header = [
             \ '',
             \ '',
             \ ]
+
+" }}}
+
+" Bufferline {{{
+
+let g:bufferline_echo = 0
+let g:bufferline_active_buffer_left = ''
+let g:bufferline_active_buffer_right = '|'
+let g:bufferline_modified = '+'
+let g:bufferline_show_bufnr = 0
+let g:bufferline_fname_mod = ':t'
+let g:bufferline_rotate = 0
 
 " }}}
 
@@ -824,3 +843,6 @@ let g:ConqueTerm_Color = 1
 let g:distractfree_width = '60%'
 let g:distractfree_colorscheme = 'iawriter'
 let g:distractfree_font = 'Cousine:h14'
+
+hi vertsplit guifg=bg guibg=bg
+hi NonText guifg=bg guibg=bg
