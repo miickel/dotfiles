@@ -6,7 +6,7 @@ set shell=/bin/bash
 filetype off
 
 set rtp+=~/.vim/bundle/vundle/
-" set runtimepath+=~/.vim/bundle/ultisnips
+set runtimepath+=~/.vim/bundle/ultisnips
 call vundle#rc()
 
 filetype plugin indent on
@@ -33,12 +33,16 @@ Bundle 'jistr/vim-nerdtree-tabs'
 Bundle 'majutsushi/tagbar'
 " Bundle 'bling/vim-bufferline'
 Bundle 'Raimondi/delimitMate'
-Bundle 'SirVer/ultisnips'
 Bundle 'terryma/vim-multiple-cursors'
+Bundle 'Shougo/unite.vim'
 Bundle 'kien/ctrlp.vim'
 Bundle 'myusuf3/numbers.vim.git'
 " Bundle 'airblade/vim-gitgutter'
+Bundle 'SirVer/ultisnips'
 Bundle 'Valloric/YouCompleteMe'
+" Bundle 'joeytwiddle/sexy_scroller.vim'
+Bundle 'rizzatti/funcoo.vim'
+Bundle 'rizzatti/dash.vim'
 
 " Tools
 Bundle 'xolox/vim-misc'
@@ -60,6 +64,9 @@ Bundle 'nathanaelkane/vim-indent-guides'
 Bundle 'mattn/emmet-vim'
 Bundle 'nelstrom/vim-visual-star-search'
 Bundle 'twe4ked/vim-colorscheme-switcher'
+Bundle 'lfilho/cosco.vim'
+Bundle 'justinmk/vim-sneak'
+Bundle 'matze/vim-move'
 " Bundle 'kien/rainbow_parentheses.vim'
 " Bundle 'professorsloth/cmus-remote-vim'
 
@@ -79,6 +86,8 @@ Bundle 'plasticboy/vim-markdown'
 Bundle 'jelera/vim-javascript-syntax'
 Bundle 'statianzo/vim-jade'
 Bundle 'vim-scripts/applescript.vim'
+Bundle 'moll/vim-node'
+Bundle 'travitch/hasksyn'
 
 " JavaScript
 Bundle 'maksimr/vim-jsbeautify'
@@ -126,7 +135,8 @@ autocmd BufEnter * set completeopt-=preview
 " autocmd BufEnter * execute 'sign place 9999 line=1 name=dummy buffer=' . bufnr('')
 
 colorscheme badwolf
-highlight Cursor guifg=#333333 guibg=white
+" highlight Cursor guifg=#333333 guibg=white
+let g:badwolf_darkgutter = 1
 
 " Highlight VCS conflict markers
 match ErrorMsg '^\(<\|=\|>\)\{7\}\([^=].\+\)\?$'
@@ -279,7 +289,7 @@ endif
 "
 if has("gui_macvim")
   set guifont=Sauce\ Code\ Powerline:h12
-  set guifont=Sauce\ Code\ Powerline\ Light:h11
+  set guifont=Sauce\ Code\ Powerline\ Light:h12
   set fu
   set clipboard+=unnamed
   set vb t_vb=
@@ -420,6 +430,11 @@ nnoremap <leader>gk :GitGutterPrevHunk<CR>
 " EasyMotion {{{
 
 nmap f <leader><leader>s
+
+nmap s <Plug>SneakForward
+nmap S <Plug>SneakBackward
+let g:sneak#streak = 0
+
 " let g:EasyMotion_leader_key = 'ö'
 " nnoremap f H:call EasyMotion#Search(0,0)<CR>
 " nnoremap F H:call EasyMotion#E(0,0)<CR>
@@ -517,6 +532,13 @@ let g:bufferline_rotate = 0
 
 " }}}
 
+" Cosco comma/semicolon {{{
+
+autocmd FileType javascript,css,YOUR_LANG nmap <silent> ,. :call cosco#commaOrSemiColon()<CR>
+autocmd FileType javascript,css,YOUR_LANG inoremap <silent> ,. <ESC>:call cosco#commaOrSemiColon()"<CR>a
+
+" }}}
+
 " Plugin {{{
 " }}}
 
@@ -550,18 +572,19 @@ nnoremap J mzJ`z
 
 " Split line (sister to [J]oin lines)
 " The normal use of S is covered by cc, so don't worry about shadowing it.
-nnoremap S i<cr><esc>^mwgk:silent! s/\v +$//<cr>:noh<cr>`w
+nnoremap <S-K> i<cr><esc>^mwgk:silent! s/\v +$//<cr>:noh<cr>`w
 
 " Shift-tabs
 nmap <S-Tab> <<
 imap <S-Tab> <Esc><<i
 
 " Bubble single lines
-nmap <D-k> [e
-nmap <D-j> ]e
+" nmap <D-k> [e
+" nmap <D-j> ]e
 " Bubble multiple lines
-vmap <D-k> [egv
-vmap <D-j> ]egv
+" vmap <D-k> [egv
+" vmap <D-j> ]egv
+let g:move_key_modifier = 'D'
 
 " Visually select the text that was last edited/pasted
 nmap gV `[v`]
@@ -846,3 +869,15 @@ let g:distractfree_font = 'Cousine:h14'
 
 hi vertsplit guifg=bg guibg=bg
 hi NonText guifg=bg guibg=bg
+
+au FileType javascript call JavaScriptFold()
+
+" Trim trailing whitespace on save
+fun! <SID>StripTrailingWhitespaces()
+    let l = line(".")
+    let c = col(".")
+    %s/\s\+$//e
+    call cursor(l, c)
+endfun
+
+autocmd FileType c,cpp,java,ruby,python,haskell autocmd BufWritePre <buffer> :call <SID>StripTrailingWhitespaces()
