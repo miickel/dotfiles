@@ -447,18 +447,18 @@
     else
       set tabIndex to 4
     end if
-    
+
     switchTo("Google Chrome")
-    
+
     tell application "System Events"
       tell application "Google Chrome"
         set active tab index of front window to tabIndex
       end tell
     end tell
+
   else
-	switchTo(q)
+    	switchTo(q)
   end if
-  
 end alfred_script
 
 on switchTo(appName)
@@ -477,9 +477,10 @@ on switchTo(appName)
   tell application "System Events"
     set frontmost of process appName to true
 
-	if startApp and (appName = "Google Chrome") then
-		keystroke "f" using {command down, control down}
-	end if  end tell
+    if startApp and (appName = "Google Chrome") then
+      keystroke "f" using {command down, control down}
+    end if
+  end tell
 end switchTo
 </string>
 				<key>cachescript</key>

@@ -34,7 +34,6 @@ Bundle 'majutsushi/tagbar'
 " Bundle 'bling/vim-bufferline'
 Bundle 'Raimondi/delimitMate'
 Bundle 'terryma/vim-multiple-cursors'
-Bundle 'Shougo/unite.vim'
 Bundle 'kien/ctrlp.vim'
 Bundle 'myusuf3/numbers.vim.git'
 " Bundle 'airblade/vim-gitgutter'
@@ -43,6 +42,7 @@ Bundle 'Valloric/YouCompleteMe'
 " Bundle 'joeytwiddle/sexy_scroller.vim'
 Bundle 'rizzatti/funcoo.vim'
 Bundle 'rizzatti/dash.vim'
+Bundle 'szw/vim-ctrlspace'
 
 " Tools
 Bundle 'xolox/vim-misc'
@@ -73,7 +73,7 @@ Bundle 'matze/vim-move'
 " Color schemes
 Bundle 'altercation/vim-colors-solarized'
 Bundle 'baskerville/bubblegum'
-Bundle 'molokai'
+Bundle 'tomasr/molokai'
 Bundle 'railscasts'
 Bundle 'chriskempson/tomorrow-theme', {'rtp': 'vim/'}
 Bundle 'Pychimp/vim-luna'
@@ -88,6 +88,7 @@ Bundle 'statianzo/vim-jade'
 Bundle 'vim-scripts/applescript.vim'
 Bundle 'moll/vim-node'
 Bundle 'travitch/hasksyn'
+Bundle 'ChrisYip/Better-CSS-Syntax-for-Vim'
 
 " JavaScript
 Bundle 'maksimr/vim-jsbeautify'
@@ -134,9 +135,12 @@ autocmd BufEnter * set completeopt-=preview
 " autocmd BufEnter * sign define dummy
 " autocmd BufEnter * execute 'sign place 9999 line=1 name=dummy buffer=' . bufnr('')
 
-colorscheme badwolf
-" highlight Cursor guifg=#333333 guibg=white
 let g:badwolf_darkgutter = 1
+let g:molokai_original = 0
+
+colorscheme molokai
+" highlight Cursor guifg=#333333 guibg=white
+highlight CursorLine guibg=#000000
 
 " Highlight VCS conflict markers
 match ErrorMsg '^\(<\|=\|>\)\{7\}\([^=].\+\)\?$'
@@ -207,11 +211,12 @@ set completeopt=longest,menuone,preview
 " Cursorline {{{
 " Only show cursorline in the current window and in normal mode.
 
-" augroup cline
-"     au!
-"     au WinLeave,InsertEnter * set nocursorline
-"     au WinEnter,InsertLeave * set cursorline
-" augroup END
+set cursorline
+augroup cline
+    au!
+    au WinLeave,InsertEnter * set nocursorline
+    au WinEnter,InsertLeave * set cursorline
+augroup END
 
 " }}}
 
@@ -288,8 +293,9 @@ endif
 " MacVim specifics ----------------------------------------------------------- {{{
 "
 if has("gui_macvim")
-  set guifont=Sauce\ Code\ Powerline:h12
   set guifont=Sauce\ Code\ Powerline\ Light:h12
+  set guifont=Courier\ New\ for\ Powerline:h13
+  set guifont=Sauce\ Code\ Powerline:h14
   set fu
   set clipboard+=unnamed
   set vb t_vb=
@@ -381,11 +387,7 @@ let g:ctrlp_switch_buffer = 'et'      " jump to a file if it's open already
 let g:ctrlp_use_caching = 1           " enable caching
 let g:ctrlp_clear_cache_on_exit=0     " speed up by not removing clearing cache evertime
 let g:ctrlp_mruf_max = 250            " number of recently opened files
-let g:ctrlp_custom_ignore = {
-  \ 'dir':  '\v[\/]\.(git|hg|svn|build)$',
-  \ 'file': '\v\.(exe|so|dll)$',
-  \ 'link': 'SOME_BAD_SYMBOLIC_LINKS',
-  \ }
+let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git'
 
 func! MyPrtMappings()
     let g:ctrlp_prompt_mappings = {
@@ -503,7 +505,7 @@ let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#left_sep = ' '
 let g:airline#extensions#tabline#left_alt_sep = ''
 let g:airline#extensions#bufferline#enabled = 1
-let g:airline_theme='badwolf'
+let g:airline_theme='molokai'
 
 " }}}
 
@@ -537,6 +539,14 @@ let g:bufferline_rotate = 0
 autocmd FileType javascript,css,YOUR_LANG nmap <silent> ,. :call cosco#commaOrSemiColon()<CR>
 autocmd FileType javascript,css,YOUR_LANG inoremap <silent> ,. <ESC>:call cosco#commaOrSemiColon()"<CR>a
 
+" }}}
+
+" Ctrl Space {{{
+let g:airline_exclude_preview = 1
+let g:ctrlspace_use_tabline = 1
+hi CtrlSpaceSelected term=reverse ctermfg=187  ctermbg=23  cterm=bold
+hi CtrlSpaceNormal   term=NONE    ctermfg=244  ctermbg=232 cterm=NONE
+hi CtrlSpaceFound    ctermfg=220  ctermbg=NONE cterm=bold
 " }}}
 
 " Plugin {{{
@@ -720,8 +730,10 @@ nnoremap D d$
 " Word processing
 nnoremap <leader>W :call WordProcessingToggle()<CR>
 
-" JSformat
-map <c-f> :call JsBeautify()<cr>
+" Formatting for lazy people
+autocmd FileType javascript noremap <buffer>  <c-f> :call JsBeautify()<cr>
+autocmd FileType html noremap <buffer> <c-f> :call HtmlBeautify()<cr>
+autocmd FileType css noremap <buffer> <c-f> :call CSSBeautify()<cr>
 
 " Stop completion with enter, in addition to default ctrl+y
 imap <expr> <CR> pumvisible() ? "\<c-y>" : "<Plug>delimitMateCR"
@@ -867,6 +879,7 @@ let g:distractfree_width = '60%'
 let g:distractfree_colorscheme = 'iawriter'
 let g:distractfree_font = 'Cousine:h14'
 
+" Clean up GUI
 hi vertsplit guifg=bg guibg=bg
 hi NonText guifg=bg guibg=bg
 
