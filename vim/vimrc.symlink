@@ -67,6 +67,7 @@ Bundle 'twe4ked/vim-colorscheme-switcher'
 Bundle 'lfilho/cosco.vim'
 Bundle 'justinmk/vim-sneak'
 Bundle 'matze/vim-move'
+Bundle 'justinmk/vim-gtfo'
 " Bundle 'kien/rainbow_parentheses.vim'
 " Bundle 'professorsloth/cmus-remote-vim'
 
