@@ -34,6 +34,7 @@ Bundle 'majutsushi/tagbar'
 " Bundle 'bling/vim-bufferline'
 Bundle 'Raimondi/delimitMate'
 Bundle 'terryma/vim-multiple-cursors'
+Bundle 'terryma/vim-expand-region'
 Bundle 'kien/ctrlp.vim'
 Bundle 'myusuf3/numbers.vim.git'
 " Bundle 'airblade/vim-gitgutter'
@@ -552,6 +553,11 @@ let g:ctrlspace_use_tabline = 1
 hi CtrlSpaceSelected term=reverse ctermfg=187  ctermbg=23  cterm=bold
 hi CtrlSpaceNormal   term=NONE    ctermfg=244  ctermbg=232 cterm=NONE
 hi CtrlSpaceFound    ctermfg=220  ctermbg=NONE cterm=bold
+" }}}
+
+" Expand Region {{{
+vmap v <Plug>(expand_region_expand)
+vmap <C-v> <Plug>(expand_region_shrink)
 " }}}
 
 " Plugin {{{
