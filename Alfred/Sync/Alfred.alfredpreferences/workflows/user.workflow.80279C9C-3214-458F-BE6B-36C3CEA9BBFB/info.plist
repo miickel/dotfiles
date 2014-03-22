@@ -50,6 +50,39 @@
 				<string></string>
 			</dict>
 		</array>
+		<key>1C0750A3-6594-429E-8E09-C46C74D8BF90</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>50BDF220-2895-4582-AEBD-370C793B7D8F</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+			</dict>
+		</array>
+		<key>225E15D9-DA10-499A-9679-22FFBFCEAD04</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>50BDF220-2895-4582-AEBD-370C793B7D8F</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+			</dict>
+		</array>
+		<key>3AEEF467-3804-420C-98AC-65D19BDECF63</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>50BDF220-2895-4582-AEBD-370C793B7D8F</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+			</dict>
+		</array>
 		<key>4A9D91ED-7979-4599-9070-EC78AD142C4E</key>
 		<array>
 			<dict>
@@ -75,6 +108,17 @@
 			</dict>
 		</array>
 		<key>79E76AB8-6636-4E98-953E-4BF558A00ED1</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>50BDF220-2895-4582-AEBD-370C793B7D8F</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+			</dict>
+		</array>
+		<key>81C41A52-49EF-4FE1-AB1C-561D1A89C1CF</key>
 		<array>
 			<dict>
 				<key>destinationuid</key>
@@ -118,6 +162,17 @@
 				<string></string>
 			</dict>
 		</array>
+		<key>ABE15AC3-F177-46CC-85A6-5176D1F8D795</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>50BDF220-2895-4582-AEBD-370C793B7D8F</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+			</dict>
+		</array>
 		<key>D3474D07-B4A3-46BA-83DC-B7983ED0C622</key>
 		<array>
 			<dict>
@@ -130,17 +185,6 @@
 			</dict>
 		</array>
 		<key>D3F9AF24-8330-4A99-9BD2-0C3D753DE0EC</key>
-		<array>
-			<dict>
-				<key>destinationuid</key>
-				<string>50BDF220-2895-4582-AEBD-370C793B7D8F</string>
-				<key>modifiers</key>
-				<integer>0</integer>
-				<key>modifiersubtext</key>
-				<string></string>
-			</dict>
-		</array>
-		<key>F86B7586-B869-4A25-8758-6031E4555964</key>
 		<array>
 			<dict>
 				<key>destinationuid</key>
@@ -386,33 +430,6 @@
 				<key>argument</key>
 				<integer>3</integer>
 				<key>argumenttext</key>
-				<string>bibdesk</string>
-				<key>hotkey</key>
-				<integer>11</integer>
-				<key>hotmod</key>
-				<integer>1966080</integer>
-				<key>hotstring</key>
-				<string>B</string>
-				<key>leftcursor</key>
-				<false/>
-				<key>modsmode</key>
-				<integer>2</integer>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.trigger.hotkey</string>
-			<key>uid</key>
-			<string>F86B7586-B869-4A25-8758-6031E4555964</string>
-			<key>version</key>
-			<integer>0</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>action</key>
-				<integer>0</integer>
-				<key>argument</key>
-				<integer>3</integer>
-				<key>argumenttext</key>
 				<string>Google Chrome</string>
 				<key>hotkey</key>
 				<integer>34</integer>
@@ -429,67 +446,6 @@
 			<string>alfred.workflow.trigger.hotkey</string>
 			<key>uid</key>
 			<string>62C25639-FEBB-48C8-AB1A-3A665D611CFE</string>
-			<key>version</key>
-			<integer>0</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>applescript</key>
-				<string>on alfred_script(q)
-  if (q = "tab1") or (q = "tab2") or (q = "tab3") or (q = "tab4") then
-    if (q = "tab1") then
-      set tabIndex to 1
-    else if (q = "tab2") then
-      set tabIndex to 2
-    else if (q = "tab3") then
-      set tabIndex to 3
-    else
-      set tabIndex to 4
-    end if
-
-    switchTo("Google Chrome")
-
-    tell application "System Events"
-      tell application "Google Chrome"
-        set active tab index of front window to tabIndex
-      end tell
-    end tell
-
-  else
-    	switchTo(q)
-  end if
-end alfred_script
-
-on switchTo(appName)
-  set startApp to false
-
-  tell application "System Events"
-    if not {exists process appName} then
-      set startApp to true
-    end if
-  end tell
-
-  if startApp then
-    tell application appName to activate
-  end if
-
-  tell application "System Events"
-    set frontmost of process appName to true
-
-    if startApp and (appName = "Google Chrome") then
-      keystroke "f" using {command down, control down}
-    end if
-  end tell
-end switchTo
-</string>
-				<key>cachescript</key>
-				<true/>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.action.applescript</string>
-			<key>uid</key>
-			<string>50BDF220-2895-4582-AEBD-370C793B7D8F</string>
 			<key>version</key>
 			<integer>0</integer>
 		</dict>
@@ -574,6 +530,202 @@ end switchTo
 			<key>version</key>
 			<integer>0</integer>
 		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>action</key>
+				<integer>0</integer>
+				<key>argument</key>
+				<integer>3</integer>
+				<key>argumenttext</key>
+				<string>Sublime Text</string>
+				<key>hotkey</key>
+				<integer>2</integer>
+				<key>hotmod</key>
+				<integer>1966080</integer>
+				<key>hotstring</key>
+				<string>D</string>
+				<key>leftcursor</key>
+				<false/>
+				<key>modsmode</key>
+				<integer>2</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.trigger.hotkey</string>
+			<key>uid</key>
+			<string>1C0750A3-6594-429E-8E09-C46C74D8BF90</string>
+			<key>version</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>applescript</key>
+				<string>on alfred_script(q)
+  if (q = "tab1") or (q = "tab2") or (q = "tab3") or (q = "tab4") then
+    if (q = "tab1") then
+      set tabIndex to 1
+    else if (q = "tab2") then
+      set tabIndex to 2
+    else if (q = "tab3") then
+      set tabIndex to 3
+    else
+      set tabIndex to 4
+    end if
+
+    switchTo("Google Chrome")
+
+    tell application "System Events"
+      tell application "Google Chrome"
+        set active tab index of front window to tabIndex
+      end tell
+    end tell
+
+  else
+    	switchTo(q)
+  end if
+end alfred_script
+
+on switchTo(appName)
+  set startApp to false
+
+  tell application "System Events"
+    if not {exists process appName} then
+      set startApp to true
+    end if
+  end tell
+
+  if startApp then
+    tell application appName to activate
+  end if
+
+  tell application "System Events"
+    set frontmost of process appName to true
+
+    if startApp and (appName = "Google Chrome") then
+      keystroke "f" using {command down, control down}
+    end if
+  end tell
+end switchTo
+</string>
+				<key>cachescript</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.applescript</string>
+			<key>uid</key>
+			<string>50BDF220-2895-4582-AEBD-370C793B7D8F</string>
+			<key>version</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>action</key>
+				<integer>0</integer>
+				<key>argument</key>
+				<integer>3</integer>
+				<key>argumenttext</key>
+				<string>Mendeley Desktop</string>
+				<key>hotkey</key>
+				<integer>15</integer>
+				<key>hotmod</key>
+				<integer>1966080</integer>
+				<key>hotstring</key>
+				<string>R</string>
+				<key>leftcursor</key>
+				<false/>
+				<key>modsmode</key>
+				<integer>2</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.trigger.hotkey</string>
+			<key>uid</key>
+			<string>225E15D9-DA10-499A-9679-22FFBFCEAD04</string>
+			<key>version</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>action</key>
+				<integer>0</integer>
+				<key>argument</key>
+				<integer>3</integer>
+				<key>argumenttext</key>
+				<string>Ulysses</string>
+				<key>hotkey</key>
+				<integer>32</integer>
+				<key>hotmod</key>
+				<integer>1966080</integer>
+				<key>hotstring</key>
+				<string>U</string>
+				<key>leftcursor</key>
+				<false/>
+				<key>modsmode</key>
+				<integer>2</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.trigger.hotkey</string>
+			<key>uid</key>
+			<string>ABE15AC3-F177-46CC-85A6-5176D1F8D795</string>
+			<key>version</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>action</key>
+				<integer>0</integer>
+				<key>argument</key>
+				<integer>3</integer>
+				<key>argumenttext</key>
+				<string>Skim</string>
+				<key>hotkey</key>
+				<integer>7</integer>
+				<key>hotmod</key>
+				<integer>1966080</integer>
+				<key>hotstring</key>
+				<string>X</string>
+				<key>leftcursor</key>
+				<false/>
+				<key>modsmode</key>
+				<integer>2</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.trigger.hotkey</string>
+			<key>uid</key>
+			<string>81C41A52-49EF-4FE1-AB1C-561D1A89C1CF</string>
+			<key>version</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>action</key>
+				<integer>0</integer>
+				<key>argument</key>
+				<integer>3</integer>
+				<key>argumenttext</key>
+				<string>Transmission</string>
+				<key>hotkey</key>
+				<integer>17</integer>
+				<key>hotmod</key>
+				<integer>1966080</integer>
+				<key>hotstring</key>
+				<string>T</string>
+				<key>leftcursor</key>
+				<false/>
+				<key>modsmode</key>
+				<integer>2</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.trigger.hotkey</string>
+			<key>uid</key>
+			<string>3AEEF467-3804-420C-98AC-65D19BDECF63</string>
+			<key>version</key>
+			<integer>0</integer>
+		</dict>
 	</array>
 	<key>readme</key>
 	<string></string>
@@ -599,6 +751,21 @@ end switchTo
 			<key>ypos</key>
 			<real>850</real>
 		</dict>
+		<key>1C0750A3-6594-429E-8E09-C46C74D8BF90</key>
+		<dict>
+			<key>ypos</key>
+			<real>1580</real>
+		</dict>
+		<key>225E15D9-DA10-499A-9679-22FFBFCEAD04</key>
+		<dict>
+			<key>ypos</key>
+			<real>1700</real>
+		</dict>
+		<key>3AEEF467-3804-420C-98AC-65D19BDECF63</key>
+		<dict>
+			<key>ypos</key>
+			<real>2060</real>
+		</dict>
 		<key>4A9D91ED-7979-4599-9070-EC78AD142C4E</key>
 		<dict>
 			<key>ypos</key>
@@ -607,7 +774,7 @@ end switchTo
 		<key>50BDF220-2895-4582-AEBD-370C793B7D8F</key>
 		<dict>
 			<key>ypos</key>
-			<real>1210</real>
+			<real>1670</real>
 		</dict>
 		<key>62C25639-FEBB-48C8-AB1A-3A665D611CFE</key>
 		<dict>
@@ -618,6 +785,11 @@ end switchTo
 		<dict>
 			<key>ypos</key>
 			<real>370</real>
+		</dict>
+		<key>81C41A52-49EF-4FE1-AB1C-561D1A89C1CF</key>
+		<dict>
+			<key>ypos</key>
+			<real>1940</real>
 		</dict>
 		<key>830C26EF-6DF2-447F-84F5-D4D81F0B6875</key>
 		<dict>
@@ -634,6 +806,11 @@ end switchTo
 			<key>ypos</key>
 			<real>1460</real>
 		</dict>
+		<key>ABE15AC3-F177-46CC-85A6-5176D1F8D795</key>
+		<dict>
+			<key>ypos</key>
+			<real>1820</real>
+		</dict>
 		<key>D3474D07-B4A3-46BA-83DC-B7983ED0C622</key>
 		<dict>
 			<key>ypos</key>
@@ -643,11 +820,6 @@ end switchTo
 		<dict>
 			<key>ypos</key>
 			<real>730</real>
-		</dict>
-		<key>F86B7586-B869-4A25-8758-6031E4555964</key>
-		<dict>
-			<key>ypos</key>
-			<real>980</real>
 		</dict>
 	</dict>
 	<key>webaddress</key>
