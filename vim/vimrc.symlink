@@ -70,6 +70,7 @@ Bundle 'justinmk/vim-sneak'
 Bundle 'matze/vim-move'
 Bundle 'justinmk/vim-gtfo'
 Bundle 'wellle/targets.vim'
+Bundle 'tommcdo/vim-exchange'
 " Bundle 'kien/rainbow_parentheses.vim'
 " Bundle 'professorsloth/cmus-remote-vim'
 
