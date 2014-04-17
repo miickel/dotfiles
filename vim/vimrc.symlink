@@ -147,7 +147,6 @@ let g:molokai_original = 0
 
 colorscheme base16-ocean
 " highlight Cursor guifg=#333333 guibg=white
-highlight CursorLine guibg=#000000
 
 " Highlight VCS conflict markers
 match ErrorMsg '^\(<\|=\|>\)\{7\}\([^=].\+\)\?$'
@@ -444,6 +443,7 @@ nmap f <leader><leader>s
 nmap s <Plug>SneakForward
 nmap S <Plug>SneakBackward
 let g:sneak#streak = 0
+let g:sneak#s_next = 1
 
 " let g:EasyMotion_leader_key = 'ö'
 " nnoremap f H:call EasyMotion#Search(0,0)<CR>
@@ -925,4 +925,4 @@ fun! <SID>StripTrailingWhitespaces()
     call cursor(l, c)
 endfun
 
-autocmd FileType c,cpp,java,ruby,python,haskell autocmd BufWritePre <buffer> :call <SID>StripTrailingWhitespaces()
+autocmd FileType latex,tex,c,cpp,java,ruby,python,haskell autocmd BufWritePre <buffer> :call <SID>StripTrailingWhitespaces()
