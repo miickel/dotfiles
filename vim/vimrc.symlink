@@ -15,8 +15,9 @@ set nocompatible
 
 " }}}
 
-let mapleader=" "
-"
+" mapleader - fugly edition
+map <space> <leader>
+
 "
 " Bundles ---------------------------------------------------------------- {{{
 
@@ -26,7 +27,8 @@ Bundle 'gmarik/vundle'
 " App extensions
 Bundle 'mhinz/vim-startify'
 Bundle 'tpope/vim-fugitive'
-Bundle 'supasorn/vim-easymotion'
+" Bundle 'supasorn/vim-easymotion'
+Bundle 'Lokaltog/vim-easymotion'
 Bundle 'bling/vim-airline'
 Bundle 'scrooloose/nerdtree'
 Bundle 'jistr/vim-nerdtree-tabs'
@@ -40,7 +42,6 @@ Bundle 'myusuf3/numbers.vim.git'
 " Bundle 'airblade/vim-gitgutter'
 Bundle 'SirVer/ultisnips'
 Bundle 'Valloric/YouCompleteMe'
-" Bundle 'joeytwiddle/sexy_scroller.vim'
 Bundle 'rizzatti/funcoo.vim'
 Bundle 'rizzatti/dash.vim'
 Bundle 'szw/vim-ctrlspace'
@@ -71,6 +72,8 @@ Bundle 'matze/vim-move'
 Bundle 'justinmk/vim-gtfo'
 Bundle 'wellle/targets.vim'
 Bundle 'tommcdo/vim-exchange'
+Bundle 'junegunn/goyo.vim'
+Bundle 'reedes/vim-wordy'
 " Bundle 'kien/rainbow_parentheses.vim'
 " Bundle 'professorsloth/cmus-remote-vim'
 
@@ -89,7 +92,6 @@ Bundle "daylerees/colour-schemes", { "rtp": "vim-themes/" }
 " Syntax"
 Bundle 'scrooloose/syntastic'
 Bundle 'gabrielelana/vim-markdown'
-" Bundle 'jelera/vim-javascript-syntax'
 Bundle "pangloss/vim-javascript"
 Bundle 'statianzo/vim-jade'
 Bundle 'vim-scripts/applescript.vim'
@@ -110,13 +112,13 @@ Bundle 'PickAColor.vim'
 
 " Word processing modes
 Bundle 'jacekd/vim-iawriter'
-Bundle 'chrisbra/DistractFree'
 
 " }}}
 
 " Basic options ----------------------------------------------------------- {{{
 
 " Color scheme {{{
+
 
 syntax on
 set background=dark
@@ -146,10 +148,6 @@ let g:badwolf_darkgutter = 1
 let g:molokai_original = 0
 
 colorscheme base16-ocean
-" highlight Cursor guifg=#333333 guibg=white
-
-" Highlight VCS conflict markers
-match ErrorMsg '^\(<\|=\|>\)\{7\}\([^=].\+\)\?$'
 
 " }}}
 
@@ -436,7 +434,7 @@ nnoremap <leader>gk :GitGutterPrevHunk<CR>
 
 " }}}
 
-" EasyMotion {{{
+" EasyMotion and Sneak {{{
 
 nmap f <leader><leader>s
 
@@ -445,10 +443,16 @@ nmap S <Plug>SneakBackward
 let g:sneak#streak = 0
 let g:sneak#s_next = 1
 
+map  / <Plug>(easymotion-sn)
+omap / <Plug>(easymotion-tn)
+map <Leader>l <Plug>(easymotion-lineforward)
+map <Leader>h <Plug>(easymotion-linebackward)
+
 " let g:EasyMotion_leader_key = 'ö'
 " nnoremap f H:call EasyMotion#Search(0,0)<CR>
 " nnoremap F H:call EasyMotion#E(0,0)<CR>
 let g:EasyMotion_keys = 'fjdkslionmhxcvgwera'
+let g:EasyMotion_smartcase = 1
 
 hi link EasyMotionTarget ErrorMsg
 hi link EasyMotionShade  Comment
@@ -563,6 +567,53 @@ vmap <C-v> <Plug>(expand_region_shrink)
 " }}}
 
 " Plugin {{{
+nnoremap <Leader>' :Goyo<CR>
+
+let g:goyo_linenr=1
+let g:goyo_margin_top=2
+let g:goyo_margin_bottom=2
+
+function! s:goyo_before()
+  exec ':NumbersToggle'
+  exec ':NumbersOnOff'
+  set background=light
+  set linespace=0
+  set wrap
+  set linebreak
+  set nolist
+  set textwidth=0
+  set wrapmargin=0
+  let &showbreak=repeat(' ', 6)
+  set guifont=Sauce\ Code\ Powerline:h14
+  set nocursorline
+  augroup cline
+    au!
+    au WinLeave,InsertEnter *
+    au WinEnter,InsertLeave *
+  augroup END
+  exec ':redraw!'
+endfunction
+
+function! s:goyo_after()
+  exec ':NumbersToggle'
+  exec ':NumbersOnOff'
+  set background=dark
+  set linespace=0
+  hi vertsplit guifg=bg guibg=bg
+  hi NonText guifg=bg guibg=bg
+  set guifont=Sauce\ Code\ Powerline:h12
+  set cursorline
+  augroup cline
+    au!
+    au WinLeave,InsertEnter * set nocursorline
+    au WinEnter,InsertLeave * set cursorline
+  augroup END
+endfunction
+
+let g:goyo_callbacks = [function('s:goyo_before'), function('s:goyo_after')]
+" }}}
+
+" Plugin {{{
 " }}}
 
 " }}}
@@ -632,8 +683,6 @@ nnoremap <leader>i :set list!<cr>
 " Next prev buffer
 nnoremap <silent> <leader>k :call MyNext()<CR>
 nnoremap <silent> <leader>j :call MyPrev()<CR>
-nnoremap <silent> L :call MyNext()<CR>
-nnoremap <silent> H :call MyPrev()<CR>
 
 " Use ctrl-[hjkl] to select the active split!
 nmap <silent> <c-k> :wincmd k<CR>
@@ -707,7 +756,7 @@ nnoremap <leader>! q:k0ea!<ESC>
 nmap <leader>s :wa<CR>
 
 " Add a semi-colon at the end of the line
-inoremap <leader>, <C-o>A;<esc>
+inoremap <space>, <C-o>A;<esc>
 
 " Remove search highlighting
 nnoremap <esc><esc> :set hlsearch!<CR>
@@ -873,17 +922,8 @@ autocmd FileType taglist setlocal norelativenumber
 autocmd FileType tagbar setlocal norelativenumber
 autocmd FileType tagbar setlocal nonumber
 
-function! HipsterMode()
-  exec ':AirlineToggle'
-  exec ':NumbersOnOff'
-  exec ':DistractFreeToggle'
-  call WordProcessingToggle()
-endfunc
-
-nnoremap <leader>H :silent call HipsterMode()<CR>
-
 " Highlight all instances of word under cursor, when idle.
-nnoremap <leader>h :if AutoHighlightToggle()<Bar>set hls<Bar>endif<CR>
+" nnoremap <leader>h :if AutoHighlightToggle()<Bar>set hls<Bar>endif<CR>
 function! AutoHighlightToggle()
   let @/ = ''
   if exists('#auto_highlight')
@@ -908,10 +948,6 @@ let g:tagbar_compact = 1
 
 " Conque settings
 let g:ConqueTerm_Color = 1
-
-let g:distractfree_width = '60%'
-let g:distractfree_colorscheme = 'iawriter'
-let g:distractfree_font = 'Cousine:h14'
 
 " Clean up GUI
 hi vertsplit guifg=bg guibg=bg
