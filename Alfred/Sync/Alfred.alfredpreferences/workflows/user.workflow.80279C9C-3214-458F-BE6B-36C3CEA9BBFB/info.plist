@@ -140,6 +140,17 @@
 				<string></string>
 			</dict>
 		</array>
+		<key>D1759E6F-039C-4519-9CBC-9881C1CB33C9</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>50BDF220-2895-4582-AEBD-370C793B7D8F</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+			</dict>
+		</array>
 		<key>D3474D07-B4A3-46BA-83DC-B7983ED0C622</key>
 		<array>
 			<dict>
@@ -181,13 +192,15 @@
 				<false/>
 				<key>modsmode</key>
 				<integer>2</integer>
+				<key>relatedAppsMode</key>
+				<integer>0</integer>
 			</dict>
 			<key>type</key>
 			<string>alfred.workflow.trigger.hotkey</string>
 			<key>uid</key>
 			<string>4A9D91ED-7979-4599-9070-EC78AD142C4E</string>
 			<key>version</key>
-			<integer>0</integer>
+			<integer>1</integer>
 		</dict>
 		<dict>
 			<key>config</key>
@@ -208,13 +221,15 @@
 				<false/>
 				<key>modsmode</key>
 				<integer>2</integer>
+				<key>relatedAppsMode</key>
+				<integer>0</integer>
 			</dict>
 			<key>type</key>
 			<string>alfred.workflow.trigger.hotkey</string>
 			<key>uid</key>
 			<string>79E76AB8-6636-4E98-953E-4BF558A00ED1</string>
 			<key>version</key>
-			<integer>0</integer>
+			<integer>1</integer>
 		</dict>
 		<dict>
 			<key>config</key>
@@ -235,13 +250,15 @@
 				<false/>
 				<key>modsmode</key>
 				<integer>2</integer>
+				<key>relatedAppsMode</key>
+				<integer>0</integer>
 			</dict>
 			<key>type</key>
 			<string>alfred.workflow.trigger.hotkey</string>
 			<key>uid</key>
 			<string>912E1ED2-4189-42DE-8E10-9F6656E441C5</string>
 			<key>version</key>
-			<integer>0</integer>
+			<integer>1</integer>
 		</dict>
 		<dict>
 			<key>config</key>
@@ -262,13 +279,15 @@
 				<false/>
 				<key>modsmode</key>
 				<integer>2</integer>
+				<key>relatedAppsMode</key>
+				<integer>0</integer>
 			</dict>
 			<key>type</key>
 			<string>alfred.workflow.trigger.hotkey</string>
 			<key>uid</key>
 			<string>D3474D07-B4A3-46BA-83DC-B7983ED0C622</string>
 			<key>version</key>
-			<integer>0</integer>
+			<integer>1</integer>
 		</dict>
 		<dict>
 			<key>config</key>
@@ -289,13 +308,15 @@
 				<false/>
 				<key>modsmode</key>
 				<integer>2</integer>
+				<key>relatedAppsMode</key>
+				<integer>0</integer>
 			</dict>
 			<key>type</key>
 			<string>alfred.workflow.trigger.hotkey</string>
 			<key>uid</key>
 			<string>62C25639-FEBB-48C8-AB1A-3A665D611CFE</string>
 			<key>version</key>
-			<integer>0</integer>
+			<integer>1</integer>
 		</dict>
 		<dict>
 			<key>config</key>
@@ -316,13 +337,15 @@
 				<false/>
 				<key>modsmode</key>
 				<integer>2</integer>
+				<key>relatedAppsMode</key>
+				<integer>0</integer>
 			</dict>
 			<key>type</key>
 			<string>alfred.workflow.trigger.hotkey</string>
 			<key>uid</key>
 			<string>830C26EF-6DF2-447F-84F5-D4D81F0B6875</string>
 			<key>version</key>
-			<integer>0</integer>
+			<integer>1</integer>
 		</dict>
 		<dict>
 			<key>config</key>
@@ -343,13 +366,15 @@
 				<false/>
 				<key>modsmode</key>
 				<integer>2</integer>
+				<key>relatedAppsMode</key>
+				<integer>0</integer>
 			</dict>
 			<key>type</key>
 			<string>alfred.workflow.trigger.hotkey</string>
 			<key>uid</key>
 			<string>06EE1D7A-AB8D-4E05-B953-36E718ECDD25</string>
 			<key>version</key>
-			<integer>0</integer>
+			<integer>1</integer>
 		</dict>
 		<dict>
 			<key>config</key>
@@ -370,13 +395,15 @@
 				<false/>
 				<key>modsmode</key>
 				<integer>2</integer>
+				<key>relatedAppsMode</key>
+				<integer>0</integer>
 			</dict>
 			<key>type</key>
 			<string>alfred.workflow.trigger.hotkey</string>
 			<key>uid</key>
 			<string>A7A5A3E3-A6F6-45F1-8D59-4E649416845F</string>
 			<key>version</key>
-			<integer>0</integer>
+			<integer>1</integer>
 		</dict>
 		<dict>
 			<key>config</key>
@@ -397,13 +424,15 @@
 				<false/>
 				<key>modsmode</key>
 				<integer>2</integer>
+				<key>relatedAppsMode</key>
+				<integer>0</integer>
 			</dict>
 			<key>type</key>
 			<string>alfred.workflow.trigger.hotkey</string>
 			<key>uid</key>
 			<string>1C0750A3-6594-429E-8E09-C46C74D8BF90</string>
 			<key>version</key>
-			<integer>0</integer>
+			<integer>1</integer>
 		</dict>
 		<dict>
 			<key>config</key>
@@ -485,13 +514,15 @@ end switchTo
 				<false/>
 				<key>modsmode</key>
 				<integer>2</integer>
+				<key>relatedAppsMode</key>
+				<integer>0</integer>
 			</dict>
 			<key>type</key>
 			<string>alfred.workflow.trigger.hotkey</string>
 			<key>uid</key>
 			<string>225E15D9-DA10-499A-9679-22FFBFCEAD04</string>
 			<key>version</key>
-			<integer>0</integer>
+			<integer>1</integer>
 		</dict>
 		<dict>
 			<key>config</key>
@@ -512,13 +543,15 @@ end switchTo
 				<false/>
 				<key>modsmode</key>
 				<integer>2</integer>
+				<key>relatedAppsMode</key>
+				<integer>0</integer>
 			</dict>
 			<key>type</key>
 			<string>alfred.workflow.trigger.hotkey</string>
 			<key>uid</key>
 			<string>ABE15AC3-F177-46CC-85A6-5176D1F8D795</string>
 			<key>version</key>
-			<integer>0</integer>
+			<integer>1</integer>
 		</dict>
 		<dict>
 			<key>config</key>
@@ -539,13 +572,15 @@ end switchTo
 				<false/>
 				<key>modsmode</key>
 				<integer>2</integer>
+				<key>relatedAppsMode</key>
+				<integer>0</integer>
 			</dict>
 			<key>type</key>
 			<string>alfred.workflow.trigger.hotkey</string>
 			<key>uid</key>
 			<string>81C41A52-49EF-4FE1-AB1C-561D1A89C1CF</string>
 			<key>version</key>
-			<integer>0</integer>
+			<integer>1</integer>
 		</dict>
 		<dict>
 			<key>config</key>
@@ -566,13 +601,44 @@ end switchTo
 				<false/>
 				<key>modsmode</key>
 				<integer>2</integer>
+				<key>relatedAppsMode</key>
+				<integer>0</integer>
 			</dict>
 			<key>type</key>
 			<string>alfred.workflow.trigger.hotkey</string>
 			<key>uid</key>
 			<string>3AEEF467-3804-420C-98AC-65D19BDECF63</string>
 			<key>version</key>
-			<integer>0</integer>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>action</key>
+				<integer>0</integer>
+				<key>argument</key>
+				<integer>3</integer>
+				<key>argumenttext</key>
+				<string>OmniGraffle</string>
+				<key>hotkey</key>
+				<integer>31</integer>
+				<key>hotmod</key>
+				<integer>1966080</integer>
+				<key>hotstring</key>
+				<string>O</string>
+				<key>leftcursor</key>
+				<false/>
+				<key>modsmode</key>
+				<integer>2</integer>
+				<key>relatedAppsMode</key>
+				<integer>0</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.trigger.hotkey</string>
+			<key>uid</key>
+			<string>D1759E6F-039C-4519-9CBC-9881C1CB33C9</string>
+			<key>version</key>
+			<integer>1</integer>
 		</dict>
 	</array>
 	<key>readme</key>
@@ -643,6 +709,11 @@ end switchTo
 		<dict>
 			<key>ypos</key>
 			<real>1820</real>
+		</dict>
+		<key>D1759E6F-039C-4519-9CBC-9881C1CB33C9</key>
+		<dict>
+			<key>ypos</key>
+			<real>2180</real>
 		</dict>
 		<key>D3474D07-B4A3-46BA-83DC-B7983ED0C622</key>
 		<dict>

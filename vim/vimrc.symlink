@@ -576,7 +576,6 @@ let g:goyo_margin_bottom=2
 function! s:goyo_before()
   exec ':NumbersToggle'
   exec ':NumbersOnOff'
-  set background=light
   set linespace=0
   set wrap
   set linebreak
@@ -584,7 +583,6 @@ function! s:goyo_before()
   set textwidth=0
   set wrapmargin=0
   let &showbreak=repeat(' ', 6)
-  set guifont=Sauce\ Code\ Powerline:h14
   set nocursorline
   augroup cline
     au!
@@ -597,11 +595,9 @@ endfunction
 function! s:goyo_after()
   exec ':NumbersToggle'
   exec ':NumbersOnOff'
-  set background=dark
   set linespace=0
   hi vertsplit guifg=bg guibg=bg
   hi NonText guifg=bg guibg=bg
-  set guifont=Sauce\ Code\ Powerline:h12
   set cursorline
   augroup cline
     au!
@@ -856,6 +852,14 @@ function! MyPrev()
         " No tab support, or no tabs open
         execute ":bprev"
     endif
+endfunction
+
+nnoremap <leader>¨ :call ReverseBackground()<CR>
+function! ReverseBackground()
+  exec ':let &bg = ( &bg == "dark" ? "light" : "dark" )'
+  hi vertsplit guifg=bg guibg=bg
+  hi NonText guifg=bg guibg=bg
+  exec ':redraw!'
 endfunction
 
 " WordProcessingToggle() {{{
