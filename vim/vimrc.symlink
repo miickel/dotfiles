@@ -74,6 +74,7 @@ Bundle 'wellle/targets.vim'
 Bundle 'tommcdo/vim-exchange'
 Bundle 'junegunn/goyo.vim'
 Bundle 'reedes/vim-wordy'
+Bundle 'heavenshell/vim-jsdoc'
 " Bundle 'kien/rainbow_parentheses.vim'
 " Bundle 'professorsloth/cmus-remote-vim'
 
@@ -97,7 +98,8 @@ Bundle 'statianzo/vim-jade'
 Bundle 'vim-scripts/applescript.vim'
 Bundle 'moll/vim-node'
 Bundle 'travitch/hasksyn'
-Bundle 'ChrisYip/Better-CSS-Syntax-for-Vim'
+" Bundle 'ChrisYip/Better-CSS-Syntax-for-Vim'
+Bundle 'hail2u/vim-css3-syntax'
 
 " JavaScript
 Bundle 'maksimr/vim-jsbeautify'
@@ -300,7 +302,7 @@ if has("gui_macvim")
   set guifont=Sauce\ Code\ Powerline\ Light:h12
   set guifont=Courier\ New\ for\ Powerline:h13
   set guifont=Sauce\ Code\ Powerline\ Light:h12
-  set guifont=Sauce\ Code\ Powerline:h12
+  set guifont=Source\ Code\ Pro\ Medium:h12
   set fu
   set clipboard+=unnamed
   set vb t_vb=
@@ -566,7 +568,7 @@ vmap v <Plug>(expand_region_expand)
 vmap <C-v> <Plug>(expand_region_shrink)
 " }}}
 
-" Plugin {{{
+" Goyo distraction-free editing {{{
 nnoremap <Leader>' :Goyo<CR>
 
 let g:goyo_linenr=1
@@ -607,6 +609,11 @@ function! s:goyo_after()
 endfunction
 
 let g:goyo_callbacks = [function('s:goyo_before'), function('s:goyo_after')]
+" }}}
+
+" JSDoc {{{
+let g:jsdoc_default_mapping = 0
+nnoremap <silent> <leader>/ :JsDoc<CR>
 " }}}
 
 " Plugin {{{
