@@ -4,9 +4,10 @@ bind-key space send-prefix
 
 # splitting
 unbind %
-bind v split-window -h
 unbind '"'
-bind h split-window -v
+bind h split-window -c "#{pane_current_path}"
+bind v split-window -h -c "#{pane_current_path}"
+bind c new-window -c "#{pane_current_path}"
 
 bind-key C-a last-window
 bind-key Space next-window

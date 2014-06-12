@@ -25,7 +25,7 @@ map <space> <leader>
 Bundle 'gmarik/vundle'
 
 " App extensions
-Bundle 'mhinz/vim-startify'
+Bundle 'amiorin/vim-project'
 Bundle 'tpope/vim-fugitive'
 " Bundle 'supasorn/vim-easymotion'
 Bundle 'Lokaltog/vim-easymotion'
@@ -45,6 +45,7 @@ Bundle 'Valloric/YouCompleteMe'
 Bundle 'rizzatti/funcoo.vim'
 Bundle 'rizzatti/dash.vim'
 Bundle 'szw/vim-ctrlspace'
+Bundle 'Shougo/unite.vim'
 
 " Tools
 Bundle 'xolox/vim-misc'
@@ -191,7 +192,6 @@ set showbreak=↪
 set shiftround
 set title
 set linebreak
-set linespace=0
 set iskeyword+=\$
 
 set ignorecase
@@ -304,6 +304,8 @@ if has("gui_macvim")
   set guifont=Courier\ New\ for\ Powerline:h13
   set guifont=Sauce\ Code\ Powerline\ Light:h12
   set guifont=Source\ Code\ Pro\ Medium:h12
+  set guifont=Sauce\ Code\ Powerline:h12
+  set linespace=0
   set fu
   set clipboard+=unnamed
   set vb t_vb=
@@ -526,14 +528,36 @@ let g:airline_theme='base16'
 
 " Startify {{{
 
-let g:startify_custom_header =
-\ map(split(system('fortune | cowsay'), '\n'), '"   ". v:val') + ['','']
-autocmd FileType startify setlocal nocursorline
-let g:startify_custom_header = [
-            \ '     Asthena - www.asthena.com ',
-            \ '',
-            \ '',
-            \ ]
+let g:project_enable_welcome = 1
+let g:project_use_nerdtree = 1
+
+call project#rc("~/dev")
+
+Project   'scratch'
+
+Project   '~/Dropbox/Master Thesis/',           'Master Thesis'
+
+Project   'tools/dotfiles'
+File      'tools/dotfiles/vim/vimrc.symlink',   'vimrc'
+File      'tools/dotfiles/vim/gvimrc.symlink',  'gvimrc'
+
+Project   'projects/asthena.jazz'
+Project   'projects/touchtype-ninja'
+Project   'projects/remente-2.0'
+Project   'projects/ddie'
+Project   'projects/mickel.me'
+
+Project   'projects/gulp-angular-templatecache'
+
+
+" let g:startify_custom_header =
+" \ map(split(system('fortune | cowsay'), '\n'), '"   ". v:val') + ['','']
+" autocmd FileType startify setlocal nocursorline
+" let g:startify_custom_header = [
+"             \ '     Asthena - www.asthena.com ',
+"             \ '',
+"             \ '',
+"             \ ]
 
 " }}}
 
@@ -579,7 +603,6 @@ let g:goyo_margin_bottom=2
 function! s:goyo_before()
   exec ':NumbersToggle'
   exec ':NumbersOnOff'
-  set linespace=0
   set wrap
   set linebreak
   set nolist
@@ -598,7 +621,6 @@ endfunction
 function! s:goyo_after()
   exec ':NumbersToggle'
   exec ':NumbersOnOff'
-  set linespace=0
   hi vertsplit guifg=bg guibg=bg
   hi NonText guifg=bg guibg=bg
   set cursorline
@@ -615,6 +637,19 @@ let g:goyo_callbacks = [function('s:goyo_before'), function('s:goyo_after')]
 " JSDoc {{{
 let g:jsdoc_default_mapping = 0
 nnoremap <silent> <leader>/ :JsDoc<CR>
+" }}}
+
+" UltiSnips {{{
+let g:UltiSnipsExpandTrigger="<c-space>"
+let g:UltiSnipsJumpForwardTrigger="<c-j>"
+let g:UltiSnipsJumpBackwardTrigger="<c-k>"
+" }}}
+
+" Plugin {{{
+call unite#filters#matcher_default#use(['matcher_fuzzy'])
+call unite#filters#sorter_default#use(['sorter_rank'])
+call unite#custom#source('file,file/new,buffer,file_rec,line', 'matchers', 'matcher_fuzzy')
+nnoremap <D-e> :<C-u>Unite -buffer-name=search -start-insert line<cr>
 " }}}
 
 " Plugin {{{
@@ -877,35 +912,14 @@ function! WordProcessingToggle()
         setlocal lbr ai
         setlocal tw=80
         setlocal fo-=cq fo+=tan1
-        setlocal linespace=5
         echo "Word processing mode enabled."
     else
         let b:wordprocessing = 'false'
         setlocal nolbr noai
         setlocal fo+=cq fo-=tan1
-        setlocal linespace=0
         echo "Word processing mode disabled."
     endif
 endfunction
-
-function! g:UltiSnips_Complete()
-    call UltiSnips_ExpandSnippet()
-    if g:ulti_expand_res == 0
-        if pumvisible()
-            return "\<C-n>"
-        else
-            call UltiSnips_JumpForwards()
-            if g:ulti_jump_forwards_res == 0
-               return "\<TAB>"
-            endif
-        endif
-    endif
-    return ""
-endfunction
-
-au BufEnter * exec "inoremap <silent> " . g:UltiSnipsExpandTrigger . " <C-R>=g:UltiSnips_Complete()<cr>"
-let g:UltiSnipsJumpForwardTrigger="<tab>"
-let g:UltiSnipsListSnippets="<c-e>"
 
 let g:nerdtree_tabs_open_on_gui_startup = 0
 let g:NERDTreeWinSize = 40
