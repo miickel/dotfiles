@@ -46,6 +46,7 @@ Bundle 'rizzatti/funcoo.vim'
 Bundle 'rizzatti/dash.vim'
 Bundle 'szw/vim-ctrlspace'
 Bundle 'Shougo/unite.vim'
+Bundle 'junegunn/vim-easy-align'
 
 " Tools
 Bundle 'xolox/vim-misc'
@@ -91,7 +92,7 @@ Bundle 'sjl/badwolf'
 Bundle 'chriskempson/base16-vim'
 Bundle "daylerees/colour-schemes", { "rtp": "vim-themes/" }
 
-" Syntax"
+" Syntax
 Bundle 'scrooloose/syntastic'
 Bundle 'gabrielelana/vim-markdown'
 Bundle "pangloss/vim-javascript"
@@ -102,6 +103,9 @@ Bundle 'travitch/hasksyn'
 " Bundle 'hail2u/vim-css3-syntax'
 Bundle 'kchmck/vim-coffee-script'
 Bundle 'wavded/vim-stylus'
+
+" CTAGS
+Bundle 'lukaszkorecki/CoffeeTags'
 
 " JavaScript
 Bundle 'maksimr/vim-jsbeautify'
@@ -201,6 +205,7 @@ set showmatch
 set hlsearch
 set gdefault
 set matchtime=3
+set shellcmdflag=-ic
 
 " Don't try to highlight lines longer than 800 characters.
 set synmaxcol=800
@@ -645,11 +650,21 @@ let g:UltiSnipsJumpForwardTrigger="<c-j>"
 let g:UltiSnipsJumpBackwardTrigger="<c-k>"
 " }}}
 
-" Plugin {{{
+" Unite {{{
 call unite#filters#matcher_default#use(['matcher_fuzzy'])
 call unite#filters#sorter_default#use(['sorter_rank'])
 call unite#custom#source('file,file/new,buffer,file_rec,line', 'matchers', 'matcher_fuzzy')
 nnoremap <D-e> :<C-u>Unite -buffer-name=search -start-insert line<cr>
+" }}}
+
+" Easy Align {{{
+
+" Start interactive EasyAlign in visual mode (e.g. vip<Enter>)
+vmap <Enter> <Plug>(EasyAlign)
+
+" Start interactive EasyAlign for a motion/text object (e.g. <Leader>aip)
+nmap <Leader>a <Plug>(EasyAlign)
+
 " }}}
 
 " Plugin {{{
@@ -987,6 +1002,6 @@ fun! <SID>StripTrailingWhitespaces()
     call cursor(l, c)
 endfun
 
-autocmd FileType latex,tex,c,cpp,java,ruby,python,haskell autocmd BufWritePre <buffer> :call <SID>StripTrailingWhitespaces()
+autocmd FileType coffee,latex,tex,c,cpp,java,ruby,python,haskell autocmd BufWritePre <buffer> :call <SID>StripTrailingWhitespaces()
 filetype off
 filetype on
