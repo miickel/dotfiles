@@ -103,6 +103,7 @@ Bundle 'travitch/hasksyn'
 " Bundle 'hail2u/vim-css3-syntax'
 Bundle 'kchmck/vim-coffee-script'
 Bundle 'wavded/vim-stylus'
+Bundle 'tpope/vim-git'
 
 " CTAGS
 Bundle 'lukaszkorecki/CoffeeTags'
