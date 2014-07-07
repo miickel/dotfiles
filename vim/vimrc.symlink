@@ -77,6 +77,8 @@ Bundle 'tommcdo/vim-exchange'
 Bundle 'junegunn/goyo.vim'
 Bundle 'reedes/vim-wordy'
 Bundle 'heavenshell/vim-jsdoc'
+Bundle 'vim-scripts/argtextobj.vim'
+Bundle 'michaeljsmith/vim-indent-object'
 " Bundle 'kien/rainbow_parentheses.vim'
 " Bundle 'professorsloth/cmus-remote-vim'
 
@@ -539,21 +541,22 @@ let g:project_use_nerdtree = 1
 
 call project#rc("~/dev")
 
-Project   'scratch'
+Project 'scratch'
 
-Project   '~/Dropbox/Master Thesis/',           'Master Thesis'
+Project '~/Dropbox/Master Thesis/',          'Master_Thesis'
 
-Project   'tools/dotfiles'
-File      'tools/dotfiles/vim/vimrc.symlink',   'vimrc'
-File      'tools/dotfiles/vim/gvimrc.symlink',  'gvimrc'
+Project 'tools/dotfiles'
+File    'tools/dotfiles/vim/vimrc.symlink',  'vimrc'
+File    'tools/dotfiles/vim/gvimrc.symlink', 'gvimrc'
 
-Project   'projects/asthena.jazz'
-Project   'projects/touchtype-ninja'
-Project   'projects/remente-2.0'
-Project   'projects/ddie'
-Project   'projects/mickel.me'
+Project 'projects/diskret',                  'Diskret_Matematik'
+Project 'projects/asthena.jazz'
+Project 'projects/touchtype-ninja'
+Project 'remente/remente-2.0',               'Remente_App'
+Project 'projects/ddie'
+Project 'projects/mickel.me'
 
-Project   'projects/gulp-angular-templatecache'
+Project 'projects/gulp-angular-templatecache'
 
 
 " let g:startify_custom_header =
