@@ -37,7 +37,6 @@ Plugin 'majutsushi/tagbar'
 Plugin 'Raimondi/delimitMate'
 Plugin 'terryma/vim-multiple-cursors'
 Plugin 'terryma/vim-expand-region'
-Plugin 'kien/ctrlp.vim'
 Plugin 'myusuf3/numbers.vim.git'
 " Plugin 'airblade/vim-gitgutter'
 Plugin 'SirVer/ultisnips'
@@ -48,6 +47,15 @@ Plugin 'szw/vim-ctrlspace'
 Plugin 'Shougo/unite.vim'
 Plugin 'junegunn/vim-easy-align'
 Plugin 'fatih/vim-go'
+Plugin 'Shutnik/jshint2.vim'
+Plugin 'AndrewRadev/switch.vim'
+Plugin 'ctrlpvim/ctrlp.vim'
+Plugin 'FelikZ/ctrlp-py-matcher'
+Plugin 'zhaocai/GoldenView.Vim'
+Plugin 'junegunn/limelight.vim'
+Plugin 'rking/ag.vim'
+Plugin 'kshenoy/vim-signature' " visual bookmarks
+Plugin 'vim-scripts/Mark--Karkat'
 
 " Tools
 Plugin 'xolox/vim-misc'
@@ -68,7 +76,6 @@ Plugin 'bkad/CamelCaseMotion'
 Plugin 'nathanaelkane/vim-indent-guides'
 Plugin 'mattn/emmet-vim'
 Plugin 'nelstrom/vim-visual-star-search'
-Plugin 'twe4ked/vim-colorscheme-switcher'
 Plugin 'lfilho/cosco.vim'
 Plugin 'justinmk/vim-sneak'
 Plugin 'matze/vim-move'
@@ -93,17 +100,16 @@ Plugin 'Pychimp/vim-luna'
 Plugin 'flazz/vim-colorschemes'
 Plugin 'sjl/badwolf'
 Plugin 'chriskempson/base16-vim'
-Plugin "daylerees/colour-schemes", { "rtp": "vim-themes/" }
+Plugin 'daylerees/colour-schemes', { 'rtp': 'vim-themes/' }
 
 " Syntax
 Plugin 'scrooloose/syntastic'
 Plugin 'gabrielelana/vim-markdown'
-Plugin "pangloss/vim-javascript"
+Plugin 'pangloss/vim-javascript'
 Plugin 'statianzo/vim-jade'
 Plugin 'vim-scripts/applescript.vim'
 Plugin 'moll/vim-node'
 Plugin 'travitch/hasksyn'
-" Plugin 'hail2u/vim-css3-syntax'
 Plugin 'kchmck/vim-coffee-script'
 Plugin 'wavded/vim-stylus'
 Plugin 'tpope/vim-git'
@@ -147,10 +153,6 @@ let g:fullscreen_colorscheme = "iawriter"
 let g:fullscreen_font = "Cousine:h14"
 let g:normal_colorscheme = "solarized"
 let g:normal_font="Menlo:h12"
-
-" tern options TODO: Move
-let g:tern_show_argument_hints = 'no'
-autocmd BufEnter * set completeopt-=preview
 
 " Always show sign column
 " autocmd BufEnter * sign define dummy
@@ -229,9 +231,9 @@ set completeopt=longest,menuone,preview
 
 set cursorline
 augroup cline
-    au!
-    au WinLeave,InsertEnter * set nocursorline
-    au WinEnter,InsertLeave * set cursorline
+  au!
+  au WinLeave,InsertEnter * set nocursorline
+  au WinEnter,InsertLeave * set cursorline
 augroup END
 
 " }}}
@@ -259,8 +261,8 @@ set wildignore+=*.orig                           " Merge resolution files
 " Make sure Vim returns to the same line when you reopen a file.
 " Thanks, Amit
 augroup line_return
-    au!
-    au BufReadPost *
+  au!
+  au BufReadPost *
         \ if line("'\"") > 0 && line("'\"") <= line("$") |
         \     execute 'normal! g`"zvzz' |
         \ endif
@@ -292,13 +294,13 @@ set backupdir=~/.vim/tmp/backup// " backups
 set directory=~/.vim/tmp/swap//   " swap files
 
 if !isdirectory(expand(&undodir))
-    call mkdir(expand(&undodir), "p")
+  call mkdir(expand(&undodir), "p")
 endif
 if !isdirectory(expand(&backupdir))
-    call mkdir(expand(&backupdir), "p")
+  call mkdir(expand(&backupdir), "p")
 endif
 if !isdirectory(expand(&directory))
-    call mkdir(expand(&directory), "p")
+  call mkdir(expand(&directory), "p")
 endif
 
 " }}}
@@ -399,7 +401,7 @@ nmap <leader>p :CtrlP<cr>
 nmap <leader>P :CtrlPBuffer<cr>
 
 let g:ctrlp_cmd = 'CtrlPMixed'        " search anything (in files, buffers and MRU files at the same time.)
-let g:ctrlp_working_path_mode = 'ra'  " search for nearest ancestor like .git, .hg, and the directory of the current file
+let g:ctrlp_working_path_mode = 'r'  " search for nearest ancestor like .git, .hg, and the directory of the current file
 let g:ctrlp_match_window_bottom = 0   " show the match window at the top of the screen
 let g:ctrlp_max_height = 10           " maxiumum height of match window
 let g:ctrlp_switch_buffer = 'et'      " jump to a file if it's open already
@@ -407,9 +409,11 @@ let g:ctrlp_use_caching = 1           " enable caching
 let g:ctrlp_clear_cache_on_exit=0     " speed up by not removing clearing cache evertime
 let g:ctrlp_mruf_max = 250            " number of recently opened files
 let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git'
+let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }
+let g:ctrlp_user_command = 'ag %s -l --nocolor --nogroup -g ""'
 
 func! MyPrtMappings()
-    let g:ctrlp_prompt_mappings = {
+  let g:ctrlp_prompt_mappings = {
         \ 'AcceptSelection("t")': ['<c-t>'],
         \ 'AcceptSelection("e")': ['<cr>', '<2-LeftMouse>', 'ö'],
         \ 'AcceptSelection("v")': ['<c-v>', '<RightMouse>', 'ä'],
@@ -418,11 +422,11 @@ func! MyPrtMappings()
 endfunc
 
 func! MyCtrlPTag()
-    let g:ctrlp_prompt_mappings = {
+  let g:ctrlp_prompt_mappings = {
         \ 'AcceptSelection("e")': ['<cr>', '<2-LeftMouse>'],
         \ 'AcceptSelection("t")': ['<c-t>'],
         \ }
-    CtrlPBufTag
+  CtrlPBufTag
 endfunc
 
 let g:ctrlp_buffer_func = { 'exit': 'MyPrtMappings' }
@@ -553,7 +557,8 @@ File    'tools/dotfiles/vim/gvimrc.symlink', 'gvimrc'
 Project 'projects/diskret',                  'Diskret_Matematik'
 Project 'projects/asthena.jazz'
 Project 'projects/touchtype-ninja'
-Project 'remente/remente-2.0',               'Remente_App'
+Project 'remente/remente-api',               'Remente-API'
+Project 'remente/remente-2.0',               'Remente-app'
 Project 'projects/ddie'
 Project 'projects/mickel.me'
 
@@ -672,7 +677,47 @@ nmap <Leader>a <Plug>(EasyAlign)
 
 " }}}
 
-" Plugin {{{
+" jshint2 {{{
+
+" }}}
+
+" TernJS {{{
+let g:tern_show_argument_hints = 'no'
+autocmd BufEnter * set completeopt-=preview
+nnoremap <silent> <leader>cc :TernRename<CR>
+nnoremap <silent> <leader>. :TernDef<CR>
+" }}}
+
+" switch.vim {{{
+nnoremap <silent> å :Switch<cr>
+" }}}
+
+" PLUGIN {{{
+" 1. split to tiled windows
+let g:goldenview__enable_default_mapping = 0
+nmap <silent> <C-w><C-w>  <Plug>GoldenViewSplit
+
+" 2. quickly switch current window with the main pane
+" and toggle back
+" nmap <silent> <C-w><C-m>   <Plug>GoldenViewSwitchMain
+nmap <silent> å   <Plug>GoldenViewSwitchToggle
+
+" 3. jump to next and previous window
+" nmap <silent> <C-N>  <Plug>GoldenViewNext
+" nmap <silent> <C-P>  <Plug>GoldenViewPrevious
+" }}}
+
+" Limelight {{{
+autocmd User GoyoEnter LimeLight
+autocmd User GoyoLeave LimeLight!
+" }}}
+
+" Ag {{{
+nnoremap <leader>ag :Ag
+" }}}
+
+" PLUGIN {{{
+
 " }}}
 
 " }}}
@@ -754,6 +799,7 @@ nnoremap <silent> <leader>mm :ZoomWin<CR>
 
 " Delete buffer
 nmap <leader>w :BD<CR>
+nmap <leader>W :BD!<CR>
 
 " Switch between last two buffers
 nnoremap <leader><tab> <c-^>
@@ -852,7 +898,8 @@ nnoremap D d$
 nnoremap <leader>W :call WordProcessingToggle()<CR>
 
 " Formatting for lazy people
-autocmd FileType javascript noremap <buffer>  <c-f> :call JsBeautify()<cr>
+" autocmd FileType javascript noremap <buffer>  <c-f> :call JsBeautify()<cr>
+autocmd FileType javascript noremap <buffer> <c-f> mq:%!js-beautify -s 2 -j -q -f -<CR>'qzz
 autocmd FileType html noremap <buffer> <c-f> :call HtmlBeautify()<cr>
 autocmd FileType css noremap <buffer> <c-f> :call CSSBeautify()<cr>
 
@@ -877,6 +924,7 @@ if $TERM == "xterm-256color" || $TERM == "screen-256color" || $COLORTERM == "gno
 endif
 
 autocmd BufNewFile,BufRead *.jade set filetype=jade
+autocmd BufNewFile,BufRead *._js setfiletype javascript
 
 let g:ycm_autoclose_preview_window_after_completion = 1
 
@@ -943,7 +991,7 @@ endfunction
 
 let g:nerdtree_tabs_open_on_gui_startup = 0
 let g:NERDTreeWinSize = 40
-let NERDTreeShowBookmarks=1
+let NERDTreeShowBookmarks=0
 let NERDTreeMinimalUI = 1
 let NERDTreeDirArrows = 1
 let NERDTreeQuitOnOpen = 1
@@ -1010,3 +1058,5 @@ endfun
 autocmd FileType coffee,latex,tex,c,cpp,java,ruby,python,haskell autocmd BufWritePre <buffer> :call <SID>StripTrailingWhitespaces()
 filetype off
 filetype on
+
+" let g:indentLine_char = '︙'
