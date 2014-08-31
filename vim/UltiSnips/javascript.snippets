@@ -190,12 +190,40 @@ snippet req "require an AMD module"
 require([${1:'dependencies'}], ${2:callback});
 endsnippet
 
+snippet foreach "forEach"
+${1:things}.forEach(function (${2:item}) {
+  $3
+});
+endsnippet
+
+snippet mo "module.exports"
+module.exports = {
+
+  ${VISUAL}$0
+
+};
+endsnippet
+
+snippet mf "module.exports"
+module.exports = function (${1:req, res, next}) {
+
+  ${2:return {
+    $3
+  };}
+
+};
+endsnippet
+
 snippet try "try catch"
 try {
   ${VISUAL}$0
 } catch (e) {
   $1
 }
+endsnippet
+
+snippet v "var"
+var $1 = ${VISUAL}$0;
 endsnippet
 
 # Mocha test
@@ -206,9 +234,24 @@ describe('$1', function () {
 });
 endsnippet
 
+snippet before "before"
+before(function (done) {
+  ${VISUAL}$0
+});
+endsnippet
+
+snippet after "after"
+after(function (done) {
+  ${VISUAL}$0
+});
+endsnippet
+
 snippet it "test case"
 it('should $1', function (${2:done}) {
   $3
 });
 endsnippet
 
+snippet mm "mongoose model"
+var $1 = mongoose.model('${2:$1}');
+endsnippet

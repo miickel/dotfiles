@@ -54,7 +54,6 @@ Plugin 'FelikZ/ctrlp-py-matcher'
 Plugin 'zhaocai/GoldenView.Vim'
 Plugin 'junegunn/limelight.vim'
 Plugin 'rking/ag.vim'
-Plugin 'kshenoy/vim-signature' " visual bookmarks
 Plugin 'vim-scripts/Mark--Karkat'
 
 " Tools
@@ -603,11 +602,6 @@ hi CtrlSpaceNormal   term=NONE    ctermfg=244  ctermbg=232 cterm=NONE
 hi CtrlSpaceFound    ctermfg=220  ctermbg=NONE cterm=bold
 " }}}
 
-" Expand Region {{{
-vmap v <Plug>(expand_region_expand)
-vmap <C-v> <Plug>(expand_region_shrink)
-" }}}
-
 " Goyo distraction-free editing {{{
 nnoremap <Leader>' :Goyo<CR>
 
@@ -638,6 +632,7 @@ function! s:goyo_after()
   exec ':NumbersOnOff'
   hi vertsplit guifg=bg guibg=bg
   hi NonText guifg=bg guibg=bg
+  hi SignColumn guifg=bg guibg=bg
   set cursorline
   augroup cline
     au!
@@ -795,11 +790,12 @@ nmap <silent> <c-h> :wincmd h<CR>
 nmap <silent> <c-l> :wincmd l<CR>
 
 " Maximize current buffer window
-nnoremap <silent> <leader>mm :ZoomWin<CR>
+nnoremap <silent> <leader>M :ZoomWin<CR>
 
 " Delete buffer
-nmap <leader>w :BD<CR>
-nmap <leader>W :BD!<CR>
+nmap <silent> <leader>w :BD<CR>
+nmap <silent> <leader>W :BD!<CR>
+nmap <silent> <leader>q :bufdo bdelete<CR>
 
 " Switch between last two buffers
 nnoremap <leader><tab> <c-^>
@@ -899,7 +895,7 @@ nnoremap <leader>W :call WordProcessingToggle()<CR>
 
 " Formatting for lazy people
 " autocmd FileType javascript noremap <buffer>  <c-f> :call JsBeautify()<cr>
-autocmd FileType javascript noremap <buffer> <c-f> mq:%!js-beautify -s 2 -j -q -f -<CR>'qzz
+autocmd FileType javascript noremap <buffer> <c-f> mq:%!js-beautify -s 2 -j -q -f -<CR>'q<esc>:delmarks q<CR>zz<esc>
 autocmd FileType html noremap <buffer> <c-f> :call HtmlBeautify()<cr>
 autocmd FileType css noremap <buffer> <c-f> :call CSSBeautify()<cr>
 
@@ -907,11 +903,11 @@ autocmd FileType css noremap <buffer> <c-f> :call CSSBeautify()<cr>
 imap <expr> <CR> pumvisible() ? "\<c-y>" : "<Plug>delimitMateCR"
 
 " A few common cmus commands
-nnoremap <leader>mn :call cmus:next()<cr>
-nnoremap <leader>mp :call cmus:previous()<cr>
-nnoremap <leader>m<space> :call cmus:pause()<cr>
-nnoremap <leader>m<return> :call cmus:play()<cr>
-nnoremap <leader>ms :call cmus:stop()<cr>
+" nnoremap <leader>mn :call cmus:next()<cr>
+" nnoremap <leader>mp :call cmus:previous()<cr>
+" nnoremap <leader>m<space> :call cmus:pause()<cr>
+" nnoremap <leader>m<return> :call cmus:play()<cr>
+" nnoremap <leader>ms :call cmus:stop()<cr>
 
 " }}}
 
@@ -970,6 +966,7 @@ function! ReverseBackground()
   exec ':let &bg = ( &bg == "dark" ? "light" : "dark" )'
   hi vertsplit guifg=bg guibg=bg
   hi NonText guifg=bg guibg=bg
+  hi SignColumn guifg=bg guibg=bg
   exec ':redraw!'
 endfunction
 
@@ -1046,6 +1043,7 @@ let g:ConqueTerm_Color = 1
 " Clean up GUI
 hi vertsplit guifg=bg guibg=bg
 hi NonText guifg=bg guibg=bg
+hi SignColumn guifg=bg guibg=bg
 
 " Trim trailing whitespace on save
 fun! <SID>StripTrailingWhitespaces()
@@ -1055,8 +1053,12 @@ fun! <SID>StripTrailingWhitespaces()
     call cursor(l, c)
 endfun
 
-autocmd FileType coffee,latex,tex,c,cpp,java,ruby,python,haskell autocmd BufWritePre <buffer> :call <SID>StripTrailingWhitespaces()
+autocmd FileType coffee,latex,tex,c,cpp,java,javascript,ruby,python,haskell autocmd BufWritePre <buffer> :call <SID>StripTrailingWhitespaces()
 filetype off
 filetype on
 
-" let g:indentLine_char = '︙'
+" Expand Region {{{
+vmap v <Plug>(expand_region_expand)
+vmap <C-v> <Plug>(expand_region_shrink)
+" }}}
+
