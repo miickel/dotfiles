@@ -4,11 +4,6 @@ let $BASH_ENV = "~/.bash_profile"
 set shell=/bin/bash
 
 filetype off
-
-set rtp+=~/.vim/bundle/vundle/
-set runtimepath+=~/.vim/bundle/ultisnips
-call vundle#rc()
-
 filetype plugin indent on
 
 set nocompatible
@@ -21,114 +16,105 @@ map <space> <leader>
 "
 " Plugins ---------------------------------------------------------------- {{{
 
-" Required for Vundle
-Plugin 'gmarik/vundle'
+call plug#begin('~/.vim/plugged')
 
 " App extensions
-Plugin 'amiorin/vim-project'
-Plugin 'tpope/vim-fugitive'
-" Plugin 'supasorn/vim-easymotion'
-Plugin 'Lokaltog/vim-easymotion'
-Plugin 'bling/vim-airline'
-Plugin 'scrooloose/nerdtree'
-Plugin 'jistr/vim-nerdtree-tabs'
-Plugin 'majutsushi/tagbar'
-" Plugin 'bling/vim-bufferline'
-Plugin 'Raimondi/delimitMate'
-Plugin 'terryma/vim-multiple-cursors'
-Plugin 'terryma/vim-expand-region'
-Plugin 'myusuf3/numbers.vim.git'
-" Plugin 'airblade/vim-gitgutter'
-Plugin 'SirVer/ultisnips'
-Plugin 'Valloric/YouCompleteMe'
-Plugin 'rizzatti/funcoo.vim'
-Plugin 'rizzatti/dash.vim'
-Plugin 'szw/vim-ctrlspace'
-Plugin 'Shougo/unite.vim'
-Plugin 'junegunn/vim-easy-align'
-Plugin 'fatih/vim-go'
-Plugin 'Shutnik/jshint2.vim'
-Plugin 'AndrewRadev/switch.vim'
-Plugin 'ctrlpvim/ctrlp.vim'
-Plugin 'FelikZ/ctrlp-py-matcher'
-Plugin 'zhaocai/GoldenView.Vim'
-Plugin 'junegunn/limelight.vim'
-Plugin 'rking/ag.vim'
-Plugin 'vim-scripts/Mark--Karkat'
+Plug 'amiorin/vim-project'
+Plug 'tpope/vim-fugitive'
+Plug 'Lokaltog/vim-easymotion'
+Plug 'bling/vim-airline'
+Plug 'scrooloose/nerdtree'
+Plug 'jistr/vim-nerdtree-tabs'
+Plug 'majutsushi/tagbar'
+Plug 'Raimondi/delimitMate'
+Plug 'terryma/vim-multiple-cursors'
+Plug 'terryma/vim-expand-region'
+Plug 'myusuf3/numbers.vim'
+Plug 'SirVer/ultisnips'
+Plug 'Valloric/YouCompleteMe', { 'do': './install.sh' }
+Plug 'rizzatti/funcoo.vim'
+Plug 'rizzatti/dash.vim'
+Plug 'szw/vim-ctrlspace'
+Plug 'Shougo/unite.vim'
+Plug 'junegunn/vim-easy-align'
+Plug 'fatih/vim-go'
+Plug 'Shutnik/jshint2.vim'
+Plug 'AndrewRadev/switch.vim'
+Plug 'ctrlpvim/ctrlp.vim'
+Plug 'FelikZ/ctrlp-py-matcher'
+Plug 'zhaocai/GoldenView.Vim'
+Plug 'junegunn/limelight.vim'
+Plug 'rking/ag.vim'
+Plug 'vim-scripts/Mark--Karkat'
+Plug 'junegunn/vim-github-dashboard', { 'on': ['GHDashboard', 'GHActivity'] }
 
 " Tools
-Plugin 'xolox/vim-misc'
-Plugin 'mattn/webapi-vim'
-Plugin 'mattn/gist-vim'
-Plugin 'editorconfig/editorconfig-vim'
-Plugin 'bufkill.vim'
-Plugin 'LaTeX-Box-Team/LaTeX-Box'
-Plugin 'Rename2'
-Plugin 'tpope/vim-unimpaired'
-Plugin 'tpope/vim-surround'
-Plugin 'tpope/vim-repeat'
-Plugin 'tomtom/tcomment_vim'
-Plugin 'chrisbra/NrrwRgn'
-Plugin 'regedarek/ZoomWin'
-Plugin 'YankRing.vim'
-Plugin 'bkad/CamelCaseMotion'
-Plugin 'nathanaelkane/vim-indent-guides'
-Plugin 'mattn/emmet-vim'
-Plugin 'nelstrom/vim-visual-star-search'
-Plugin 'lfilho/cosco.vim'
-Plugin 'justinmk/vim-sneak'
-Plugin 'matze/vim-move'
-Plugin 'justinmk/vim-gtfo'
-Plugin 'wellle/targets.vim'
-Plugin 'tommcdo/vim-exchange'
-Plugin 'junegunn/goyo.vim'
-Plugin 'reedes/vim-wordy'
-Plugin 'heavenshell/vim-jsdoc'
-Plugin 'vim-scripts/argtextobj.vim'
-Plugin 'michaeljsmith/vim-indent-object'
-" Plugin 'kien/rainbow_parentheses.vim'
-" Plugin 'professorsloth/cmus-remote-vim'
+Plug 'xolox/vim-misc'
+Plug 'mattn/webapi-vim'
+Plug 'mattn/gist-vim'
+Plug 'editorconfig/editorconfig-vim'
+Plug 'bufkill.vim'
+Plug 'LaTeX-Box-Team/LaTeX-Box', { 'for': 'latex' }
+Plug 'Rename2'
+Plug 'tpope/vim-unimpaired'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-repeat'
+Plug 'tomtom/tcomment_vim'
+Plug 'chrisbra/NrrwRgn'
+Plug 'regedarek/ZoomWin'
+Plug 'YankRing.vim'
+Plug 'bkad/CamelCaseMotion'
+Plug 'nathanaelkane/vim-indent-guides'
+Plug 'mattn/emmet-vim'
+Plug 'nelstrom/vim-visual-star-search'
+Plug 'lfilho/cosco.vim'
+Plug 'justinmk/vim-sneak'
+Plug 'matze/vim-move'
+Plug 'justinmk/vim-gtfo'
+Plug 'wellle/targets.vim'
+Plug 'tommcdo/vim-exchange'
+Plug 'junegunn/goyo.vim'
+Plug 'reedes/vim-wordy'
+Plug 'heavenshell/vim-jsdoc', { 'for': 'javascript' }
+Plug 'vim-scripts/argtextobj.vim'
+Plug 'michaeljsmith/vim-indent-object'
 
 " Color schemes
-Plugin 'altercation/vim-colors-solarized'
-Plugin 'baskerville/bubblegum'
-Plugin 'tomasr/molokai'
-Plugin 'railscasts'
-Plugin 'chriskempson/tomorrow-theme', {'rtp': 'vim/'}
-Plugin 'Pychimp/vim-luna'
-Plugin 'flazz/vim-colorschemes'
-Plugin 'sjl/badwolf'
-Plugin 'chriskempson/base16-vim'
-Plugin 'daylerees/colour-schemes', { 'rtp': 'vim-themes/' }
+Plug 'altercation/vim-colors-solarized'
+Plug 'baskerville/bubblegum'
+Plug 'tomasr/molokai'
+Plug 'railscasts'
+Plug 'chriskempson/tomorrow-theme', {'rtp': 'vim/'}
+Plug 'Pychimp/vim-luna'
+Plug 'flazz/vim-colorschemes'
+Plug 'sjl/badwolf'
+Plug 'chriskempson/base16-vim'
+Plug 'daylerees/colour-schemes', { 'rtp': 'vim-themes/' }
 
 " Syntax
-Plugin 'scrooloose/syntastic'
-Plugin 'gabrielelana/vim-markdown'
-Plugin 'pangloss/vim-javascript'
-Plugin 'statianzo/vim-jade'
-Plugin 'vim-scripts/applescript.vim'
-Plugin 'moll/vim-node'
-Plugin 'travitch/hasksyn'
-Plugin 'kchmck/vim-coffee-script'
-Plugin 'wavded/vim-stylus'
-Plugin 'tpope/vim-git'
+Plug 'scrooloose/syntastic'
+Plug 'gabrielelana/vim-markdown', { 'for': 'markdown' }
+Plug 'pangloss/vim-javascript', { 'for': 'javascript' }
+Plug 'statianzo/vim-jade', { 'for': 'jade' }
+Plug 'vim-scripts/applescript.vim', { 'for': 'applescript' }
+Plug 'moll/vim-node', { 'for': 'javascript' }
+Plug 'travitch/hasksyn', { 'for': 'haskell' }
+Plug 'kchmck/vim-coffee-script', { 'for': 'coffee' }
+Plug 'wavded/vim-stylus', { 'for': 'stylus' }
+Plug 'tpope/vim-git'
 
 " CTAGS
-Plugin 'lukaszkorecki/CoffeeTags'
+Plug 'lukaszkorecki/CoffeeTags', { 'for': 'coffee' }
 
 " JavaScript
-Plugin 'maksimr/vim-jsbeautify'
-Plugin 'einars/js-beautify'
-Plugin 'marijnh/tern_for_vim'
+Plug 'maksimr/vim-jsbeautify', { 'for': ['html', 'css', 'javascript'] }
+Plug 'einars/js-beautify', { 'for': ['html', 'css', 'javascript'] }
+Plug 'marijnh/tern_for_vim', { 'for': 'javascript' }
 
 " CSS
-Plugin 'PickAColor.vim'
-" Plugin 'skammer/vim-css-color'
-" Plugin 'vim-scripts/hexHighlight.vim'
-" Plugin 'ap/vim-css-color'
+Plug 'PickAColor.vim'
 
-" Word processing modes
-Plugin 'jacekd/vim-iawriter'
+call plug#end()
 
 " }}}
 
@@ -136,29 +122,21 @@ Plugin 'jacekd/vim-iawriter'
 
 " Color scheme {{{
 
-
 syntax enable
 set background=dark
 
-" Solarized options
+" Theme options
 let g:solarized_visibility = "low"
 let g:solarized_contrast = "high"
 let g:solarized_termtrans = 1
 let g:solarized_bold = 0
 let g:solarized_hitrail = 0
-
-" iawriter options
-let g:fullscreen_colorscheme = "iawriter"
-let g:fullscreen_font = "Cousine:h14"
-let g:normal_colorscheme = "solarized"
-let g:normal_font="Menlo:h12"
+let g:badwolf_darkgutter = 1
+let g:molokai_original = 0
 
 " Always show sign column
 " autocmd BufEnter * sign define dummy
 " autocmd BufEnter * execute 'sign place 9999 line=1 name=dummy buffer=' . bufnr('')
-
-let g:badwolf_darkgutter = 1
-let g:molokai_original = 0
 
 colorscheme base16-ocean
 
@@ -310,10 +288,10 @@ endif
 " MacVim specifics ----------------------------------------------------------- {{{
 "
 if has("gui_macvim")
-  set guifont=Sauce\ Code\ Powerline\ Light:h12
-  set guifont=Courier\ New\ for\ Powerline:h13
-  set guifont=Sauce\ Code\ Powerline\ Light:h12
-  set guifont=Source\ Code\ Pro\ Medium:h12
+  " set guifont=Sauce\ Code\ Powerline\ Light:h12
+  " set guifont=Courier\ New\ for\ Powerline:h13
+  " set guifont=Sauce\ Code\ Powerline\ Light:h12
+  " set guifont=Source\ Code\ Pro\ Medium:h12
   set guifont=Sauce\ Code\ Powerline:h12
   set linespace=0
   set fu
@@ -326,11 +304,6 @@ if has("gui_macvim")
   set guioptions-=r  "no scrollbar
   set guioptions-=R
   set showtabline=1
-
-  " This mapping makes Ctrl-Tab switch between tabs.
-  " Ctrl-Shift-Tab goes the other way.
-  noremap <C-Tab> :tabnext<CR>
-  noremap <C-S-Tab> :tabprev<CR>
 
   " switch between tabs with cmd+1, cmd+2,..."
   map <D-1> 1gt
@@ -444,10 +417,10 @@ nnoremap <Leader>R :let NERDTreeQuitOnOpen = 0<bar>NERDTree<CR><C-w>p:NERDTreeFi
 
 " GitGutter {{{
 
-nnoremap <leader>gg :GitGutterToggle<CR>
-nnoremap <leader>gh :GitGutterLineHighlightsToggle<CR>
-nnoremap <leader>gj :GitGutterNextHunk<CR>
-nnoremap <leader>gk :GitGutterPrevHunk<CR>
+" nnoremap <leader>gg :GitGutterToggle<CR>
+" nnoremap <leader>gh :GitGutterLineHighlightsToggle<CR>
+" nnoremap <leader>gj :GitGutterNextHunk<CR>
+" nnoremap <leader>gk :GitGutterPrevHunk<CR>
 
 " }}}
 
@@ -489,7 +462,7 @@ noremap <leader>cs <esc>:PickHSL<cr>
 
 nnoremap <silent> <leader>y :YRShow<cr>
 let g:yankring_window_use_horiz = 0  " Use vertical split
-let g:yankring_window_use_right = 0  " Open the window to the left
+let g:yankring_window_use_right = 1  " Open the window to the left
 
 " }}}
 
@@ -522,11 +495,6 @@ let g:LatexBox_latexmk_options = "-pvc -pdfps"
 " }}}
 
 " Powerline and Airline {{{
-
-" Powerline plugin
-let g:Powerline_theme='skwp'
-let g:Powerline_colorscheme='skwp'
-let g:Powerline_symbols = 'fancy'
 
 " Airline plugin
 let g:airline_powerline_fonts = 1
@@ -562,28 +530,6 @@ Project 'projects/ddie'
 Project 'projects/mickel.me'
 
 Project 'projects/gulp-angular-templatecache'
-
-
-" let g:startify_custom_header =
-" \ map(split(system('fortune | cowsay'), '\n'), '"   ". v:val') + ['','']
-" autocmd FileType startify setlocal nocursorline
-" let g:startify_custom_header = [
-"             \ '     Asthena - www.asthena.com ',
-"             \ '',
-"             \ '',
-"             \ ]
-
-" }}}
-
-" Bufferline {{{
-
-let g:bufferline_echo = 0
-let g:bufferline_active_buffer_left = ''
-let g:bufferline_active_buffer_right = '|'
-let g:bufferline_modified = '+'
-let g:bufferline_show_bufnr = 0
-let g:bufferline_fname_mod = ':t'
-let g:bufferline_rotate = 0
 
 " }}}
 
@@ -672,10 +618,6 @@ nmap <Leader>a <Plug>(EasyAlign)
 
 " }}}
 
-" jshint2 {{{
-
-" }}}
-
 " TernJS {{{
 let g:tern_show_argument_hints = 'no'
 autocmd BufEnter * set completeopt-=preview
@@ -684,11 +626,10 @@ nnoremap <silent> <leader>. :TernDef<CR>
 " }}}
 
 " switch.vim {{{
-nnoremap <silent> å :Switch<cr>
+nnoremap <silent> § :Switch<cr>
 " }}}
 
-" PLUGIN {{{
-" 1. split to tiled windows
+" GoldenView {{{
 let g:goldenview__enable_default_mapping = 0
 nmap <silent> <C-w><C-w>  <Plug>GoldenViewSplit
 
@@ -730,12 +671,6 @@ nmap k gk
 
 " Formatting {{{
 
-" Indent lines with cmd+[ and cmd+]
-nmap <D-]> >>
-nmap <D-[> <<
-vmap <D-[> <gv
-vmap <D-]> >gv
-
 " Change indent continuously
 vmap < <gv
 vmap > >gv
@@ -751,12 +686,6 @@ nnoremap <S-K> i<cr><esc>^mwgk:silent! s/\v +$//<cr>:noh<cr>`w
 nmap <S-Tab> <<
 imap <S-Tab> <Esc><<i
 
-" Bubble single lines
-" nmap <D-k> [e
-" nmap <D-j> ]e
-" Bubble multiple lines
-" vmap <D-k> [egv
-" vmap <D-j> ]egv
 let g:move_key_modifier = 'D'
 
 " Visually select the text that was last edited/pasted
@@ -902,13 +831,6 @@ autocmd FileType css noremap <buffer> <c-f> :call CSSBeautify()<cr>
 " Stop completion with enter, in addition to default ctrl+y
 imap <expr> <CR> pumvisible() ? "\<c-y>" : "<Plug>delimitMateCR"
 
-" A few common cmus commands
-" nnoremap <leader>mn :call cmus:next()<cr>
-" nnoremap <leader>mp :call cmus:previous()<cr>
-" nnoremap <leader>m<space> :call cmus:pause()<cr>
-" nnoremap <leader>m<return> :call cmus:play()<cr>
-" nnoremap <leader>ms :call cmus:stop()<cr>
-
 " }}}
 
 
@@ -993,8 +915,6 @@ let NERDTreeMinimalUI = 1
 let NERDTreeDirArrows = 1
 let NERDTreeQuitOnOpen = 1
 
-call togglebg#map("<F6>")
-
 function! s:MkNonExDir(file, buf)
     if empty(getbufvar(a:buf, '&buftype')) && a:file!~#'\v^\w+\:\/'
         let dir=fnamemodify(a:file, ':h')
@@ -1007,32 +927,12 @@ augroup BWCCreateDir
     autocmd!
     autocmd BufWritePre * :call s:MkNonExDir(expand('<afile>'), +expand('<abuf>'))
 augroup END
+
 set numberwidth=4
 autocmd FileType nerdtree setlocal norelativenumber
 autocmd FileType taglist setlocal norelativenumber
 autocmd FileType tagbar setlocal norelativenumber
 autocmd FileType tagbar setlocal nonumber
-
-" Highlight all instances of word under cursor, when idle.
-" nnoremap <leader>h :if AutoHighlightToggle()<Bar>set hls<Bar>endif<CR>
-function! AutoHighlightToggle()
-  let @/ = ''
-  if exists('#auto_highlight')
-    au! auto_highlight
-    augroup! auto_highlight
-    setl updatetime=4000
-    echo 'Highlight current word: off'
-    return 0
-  else
-    augroup auto_highlight
-      au!
-      au CursorHold * let @/ = '\V\<'.escape(expand('<cword>'), '\').'\>'
-    augroup end
-    setl updatetime=300
-    echo 'Highlight current word: ON'
-    return 1
-  endif
-endfunction
 
 " Tagbar settings
 let g:tagbar_compact = 1
