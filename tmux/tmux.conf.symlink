@@ -5,7 +5,7 @@ bind-key space send-prefix
 # splitting
 unbind %
 unbind '"'
-bind h split-window -c "#{pane_current_path}"
+bind - split-window -c "#{pane_current_path}"
 bind v split-window -h -c "#{pane_current_path}"
 bind c new-window -c "#{pane_current_path}"
 
@@ -70,10 +70,15 @@ setw -g window-status-content-attr bold,blink,reverse
 
 # Info on right (requires stlarch-terminusmod font)
 set -g status-right-length 60
-set -g status-right '#[fg=colour8]%a %H:%M'
+set -g status-right '#[fg=colour8]#{online_status}| #{battery_percentage} | %a %H:%M'
 
 # tmux clock
 set -g clock-mode-colour colour2
+
+# online status icon
+set -g @online_icon "online"
+set -g @offline_icon "OFFLINE"
+
 
 # some key-binding changes
 bind x kill-pane
@@ -88,3 +93,24 @@ bind-key -t vi-copy y copy-pipe "reattach-to-user-namespace pbcopy"
 # Update default binding of `Enter` to also use copy-pipe
 unbind -t vi-copy Enter
 bind-key -t vi-copy Enter copy-pipe "reattach-to-user-namespace pbcopy"
+
+# List of plugins
+# Supports `github_username/repo` or full git URLs
+set -g @tpm_plugins "                \
+  tmux-plugins/tpm                   \
+  tmux-plugins/tmux-sensible         \
+  tmux-plugins/tmux-yank             \
+  tmux-plugins/tmux-open             \
+  tmux-plugins/tmux-copycat          \
+  tmux-plugins/tmux-battery          \
+  tmux-plugins/tmux-resurrect        \
+  tmux-plugins/tmux-pain-control     \
+  tmux-plugins/tmux-online-status    \
+"
+# Other examples:
+# github_username/plugin_name    \
+# git@github.com/user/plugin     \
+# git@bitbucket.com/user/plugin  \
+
+# initializes TMUX plugin manager
+run-shell ~/.tmux/plugins/tpm/tpm
