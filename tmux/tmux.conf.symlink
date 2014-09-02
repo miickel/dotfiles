@@ -70,7 +70,7 @@ setw -g window-status-content-attr bold,blink,reverse
 
 # Info on right (requires stlarch-terminusmod font)
 set -g status-right-length 60
-set -g status-right '#[fg=colour8]#{online_status}| #{battery_percentage} | %a %H:%M'
+set -g status-right '#[fg=colour8]#{battery_percentage} | %a %H:%M'
 
 # tmux clock
 set -g clock-mode-colour colour2
