@@ -1,1 +1,1 @@
-<items><item arg="touch &quot;hejsan.txt&quot;" uid="hejsan.txt" valid="yes"><icon>icon.png</icon><subtitle>Create hejsan.txt in frontmost finder window.</subtitle><title>hejsan.txt</title></item></items>
+<items><item autocomplete="|add| " valid="no"><icon>icon.png</icon><subtitle>Store a filename for faster access</subtitle><title>Add Filename</title></item><item autocomplete="|path| " valid="no"><icon>icon.png</icon><subtitle>Store a path for use with 'touch filename at'</subtitle><title>Add Path</title></item></items>

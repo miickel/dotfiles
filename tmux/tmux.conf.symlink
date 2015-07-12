@@ -1,3 +1,5 @@
+set-option -g default-command "reattach-to-user-namespace -l zsh"
+set-option -g default-shell /bin/zsh
 set-option -g prefix C-space
 unbind-key C-b
 bind-key space send-prefix

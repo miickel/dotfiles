@@ -32,9 +32,9 @@ Plug 'terryma/vim-expand-region'
 Plug 'myusuf3/numbers.vim'
 Plug 'SirVer/ultisnips'
 Plug 'Valloric/YouCompleteMe', { 'do': './install.sh' }
+Plug 'Shougo/vimproc.vim', { 'do': 'make -f make_mac.mak' }
+Plug 't9md/vim-choosewin'
 Plug 'rizzatti/funcoo.vim'
-Plug 'rizzatti/dash.vim'
-Plug 'szw/vim-ctrlspace'
 Plug 'Shougo/unite.vim'
 Plug 'junegunn/vim-easy-align'
 Plug 'fatih/vim-go'
@@ -42,11 +42,14 @@ Plug 'Shutnik/jshint2.vim'
 Plug 'AndrewRadev/switch.vim'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'FelikZ/ctrlp-py-matcher'
-Plug 'zhaocai/GoldenView.Vim'
 Plug 'junegunn/limelight.vim'
 Plug 'rking/ag.vim'
 Plug 'vim-scripts/Mark--Karkat'
-Plug 'junegunn/vim-github-dashboard', { 'on': ['GHDashboard', 'GHActivity'] }
+Plug 'Shougo/vimfiler.vim'
+Plug 'gorkunov/smartpairs.vim'
+Plug 'zefei/vim-colortuner'
+Plug 'othree/javascript-libraries-syntax.vim'
+Plug 'SyntaxComplete'
 
 " Tools
 Plug 'xolox/vim-misc'
@@ -65,7 +68,6 @@ Plug 'regedarek/ZoomWin'
 Plug 'YankRing.vim'
 Plug 'bkad/CamelCaseMotion'
 Plug 'nathanaelkane/vim-indent-guides'
-Plug 'mattn/emmet-vim'
 Plug 'nelstrom/vim-visual-star-search'
 Plug 'lfilho/cosco.vim'
 Plug 'justinmk/vim-sneak'
@@ -88,13 +90,17 @@ Plug 'chriskempson/tomorrow-theme', {'rtp': 'vim/'}
 Plug 'Pychimp/vim-luna'
 Plug 'flazz/vim-colorschemes'
 Plug 'sjl/badwolf'
-Plug 'chriskempson/base16-vim'
+Plug 'miickel/base16-vim'
+Plug 'whatyouhide/vim-gotham'
 Plug 'daylerees/colour-schemes', { 'rtp': 'vim-themes/' }
+Plug 'thinkpixellab/flatland', { 'rtp': 'Vim/colors' }
 
 " Syntax
 Plug 'scrooloose/syntastic'
 Plug 'gabrielelana/vim-markdown', { 'for': 'markdown' }
-Plug 'pangloss/vim-javascript', { 'for': 'javascript' }
+" Plug 'pangloss/vim-javascript', { 'for': 'javascript' }
+Plug 'othree/yajs.vim', { 'for': 'javascript' }
+Plug 'mxw/vim-jsx', { 'for': 'javascript' }
 Plug 'statianzo/vim-jade', { 'for': 'jade' }
 Plug 'vim-scripts/applescript.vim', { 'for': 'applescript' }
 Plug 'moll/vim-node', { 'for': 'javascript' }
@@ -102,9 +108,8 @@ Plug 'travitch/hasksyn', { 'for': 'haskell' }
 Plug 'kchmck/vim-coffee-script', { 'for': 'coffee' }
 Plug 'wavded/vim-stylus', { 'for': 'stylus' }
 Plug 'tpope/vim-git'
-
-" CTAGS
-Plug 'lukaszkorecki/CoffeeTags', { 'for': 'coffee' }
+Plug 'mephux/vim-jsfmt'
+Plug 'ruanyl/vim-fixmyjs'
 
 " JavaScript
 Plug 'maksimr/vim-jsbeautify', { 'for': ['html', 'css', 'javascript'] }
@@ -138,7 +143,8 @@ let g:molokai_original = 0
 " autocmd BufEnter * sign define dummy
 " autocmd BufEnter * execute 'sign place 9999 line=1 name=dummy buffer=' . bufnr('')
 
-colorscheme base16-ocean
+colorscheme base16-ashes
+" colorscheme flatland
 
 " }}}
 
@@ -408,10 +414,13 @@ com! MyCtrlPTag call MyCtrlPTag()
 
 " NERDTree {{{
 
-nnoremap <Leader>o :let NERDTreeQuitOnOpen = 1<bar>NERDTreeTabsToggle<CR>
-nnoremap <Leader>O :let NERDTreeQuitOnOpen = 0<bar>NERDTreeTabsToggle<CR>
-nnoremap <Leader>r :let NERDTreeQuitOnOpen = 1<bar>NERDTree<CR><C-w>p:NERDTreeFind<CR>
-nnoremap <Leader>R :let NERDTreeQuitOnOpen = 0<bar>NERDTree<CR><C-w>p:NERDTreeFind<CR>
+nnoremap <Leader>o :VimFilerExplorer<CR>
+" nnoremap <Leader>o :let NERDTreeQuitOnOpen = 1<bar>NERDTreeTabsToggle<CR>
+" nnoremap <Leader>O :let NERDTreeQuitOnOpen = 0<bar>NERDTreeTabsToggle<CR>
+nnoremap <Leader>R :let NERDTreeQuitOnOpen = 1<bar>NERDTree<CR><C-w>p:NERDTreeFind<CR>
+nnoremap <Leader>r *``cgn
+nnoremap <D-d> *``cgn
+" nnoremap <Leader>R :let NERDTreeQuitOnOpen = 0<bar>NERDTree<CR><C-w>p:NERDTreeFind<CR>
 
 " }}}
 
@@ -513,23 +522,27 @@ let g:project_use_nerdtree = 1
 
 call project#rc("~/dev")
 
-Project 'scratch'
-
 Project '~/Dropbox/Master Thesis/',          'Master_Thesis'
-
 Project 'tools/dotfiles'
 File    'tools/dotfiles/vim/vimrc.symlink',  'vimrc'
 File    'tools/dotfiles/vim/gvimrc.symlink', 'gvimrc'
-
+Project 'minsta',                            'MINSTA'
+Project 'projects/calm',                     'Calm'
 Project 'projects/diskret',                  'Diskret_Matematik'
 Project 'projects/asthena.jazz'
-Project 'projects/touchtype-ninja'
+Project 'projects/touchtype.ninja'
+Project 'projects/koding-project'
 Project 'remente/remente-api',               'Remente-API'
 Project 'remente/remente-admin',             'Remente-Admin'
-Project 'remente/remente-2.0',               'Remente-app'
+Project 'remente/remente-app',               'Remente-app'
+Project 'remente/remente-email-templates',               'Remente-email-templates'
+Project 'remente/remente-web',               'Remente-web'
+Project 'remente/remente-public',            'Remente-public'
 Project 'projects/ddie'
 Project 'projects/mickel.me'
-
+Project 'candles',                           'Candles'
+Project 'hundvakt',                          'Hundvakt'
+Project 'hundvakt/hundvakt-api',             'Hundvakt-API'
 Project 'projects/gulp-angular-templatecache'
 
 " }}}
@@ -653,6 +666,19 @@ autocmd User GoyoLeave LimeLight!
 nnoremap <leader>ag :Ag
 " }}}
 
+" Choosewin {{{
+let g:choosewin_overlay_enable = 1
+nmap  -  <Plug>(choosewin)
+nmap  <leader>sw <Plug>(choosewin-swap)
+" }}}
+
+" Fixmyjs {{{
+map <Leader>f :execute ":w !fixmyjs " . expand("%")<CR>:edit<CR>
+let g:js_fmt_autosave = 0
+let g:js_fmt_fail_silently = 1
+let g:js_fmt_command = "jsfmt"
+" }}}
+
 " PLUGIN {{{
 
 " }}}
@@ -719,6 +745,10 @@ nmap <silent> <c-j> :wincmd j<CR>
 nmap <silent> <c-h> :wincmd h<CR>
 nmap <silent> <c-l> :wincmd l<CR>
 
+" MacVim: toggle windows
+nmap <d-i> :maca _cycleWindows:<CR>
+nmap <d-u> :maca _cycleWindowsBackwards:<CR>
+
 " Maximize current buffer window
 nnoremap <silent> <leader>M :ZoomWin<CR>
 
@@ -784,7 +814,7 @@ nnoremap <leader>S ^vg_y:execute @@<cr>:echo 'Sourced line.'<cr>
 nnoremap <leader>! q:k0ea!<ESC>
 
 " Write all changed buffers
-nmap <leader>s :wa<CR>
+nmap <leader>ss :wa<CR>
 
 " Add a semi-colon at the end of the line
 inoremap <space>, <C-o>A;<esc>
@@ -859,10 +889,10 @@ let g:delimitMate_expand_cr = 1
 let g:delimitMate_expand_space = 1
 
 let g:multi_cursor_use_default_mapping = 0
-let g:multi_cursor_next_key = '<D-d>'
-let g:multi_cursor_prev_key = '<D-u>'
-let g:multi_cursor_skip_key = '<D-k>' "until we got multiple keys support
-let g:multi_cursor_quit_key = '<Esc>'
+" let g:multi_cursor_next_key = '<D-d>'
+" let g:multi_cursor_prev_key = '<D-u>'
+" let g:multi_cursor_skip_key = '<D-k>' "until we got multiple keys support
+" let g:multi_cursor_quit_key = '<Esc>'
 
 " MyNext() and MyPrev(): Movement between tabs OR buffers
 function! MyNext()
@@ -884,7 +914,7 @@ function! MyPrev()
     endif
 endfunction
 
-nnoremap <leader>¨ :call ReverseBackground()<CR>
+nnoremap <leader>´ :call ReverseBackground()<CR>
 function! ReverseBackground()
   exec ':let &bg = ( &bg == "dark" ? "light" : "dark" )'
   hi vertsplit guifg=bg guibg=bg
@@ -954,7 +984,8 @@ fun! <SID>StripTrailingWhitespaces()
     call cursor(l, c)
 endfun
 
-autocmd FileType coffee,latex,tex,c,cpp,java,javascript,ruby,python,haskell autocmd BufWritePre <buffer> :call <SID>StripTrailingWhitespaces()
+autocmd FileType javascript,coffee,jade,latex,tex,c,cpp,java,ruby,python,haskell autocmd BufWritePre <buffer> :call <SID>StripTrailingWhitespaces()
+au BufNewFile,BufRead *.ejs set filetype=html
 filetype off
 filetype on
 
