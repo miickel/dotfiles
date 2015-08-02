@@ -47,7 +47,7 @@ Plug 'rking/ag.vim'
 Plug 'vim-scripts/Mark--Karkat'
 Plug 'Shougo/vimfiler.vim'
 Plug 'gorkunov/smartpairs.vim'
-Plug 'zefei/vim-colortuner'
+" Plug 'zefei/vim-colortuner'
 Plug 'othree/javascript-libraries-syntax.vim'
 Plug 'SyntaxComplete'
 
@@ -94,6 +94,7 @@ Plug 'miickel/base16-vim'
 Plug 'whatyouhide/vim-gotham'
 Plug 'daylerees/colour-schemes', { 'rtp': 'vim-themes/' }
 Plug 'thinkpixellab/flatland', { 'rtp': 'Vim/colors' }
+Plug 'NLKNguyen/papercolor-theme'
 
 " Syntax
 Plug 'scrooloose/syntastic'
@@ -110,6 +111,7 @@ Plug 'wavded/vim-stylus', { 'for': 'stylus' }
 Plug 'tpope/vim-git'
 Plug 'mephux/vim-jsfmt'
 Plug 'ruanyl/vim-fixmyjs'
+Plug 'tfnico/vim-gradle'
 
 " JavaScript
 Plug 'maksimr/vim-jsbeautify', { 'for': ['html', 'css', 'javascript'] }
@@ -144,6 +146,8 @@ let g:molokai_original = 0
 " autocmd BufEnter * execute 'sign place 9999 line=1 name=dummy buffer=' . bufnr('')
 
 colorscheme base16-ashes
+colorscheme Tomorrow-Night
+colorscheme bubblegum
 " colorscheme flatland
 
 " }}}
@@ -532,6 +536,7 @@ Project 'projects/diskret',                  'Diskret_Matematik'
 Project 'projects/asthena.jazz'
 Project 'projects/touchtype.ninja'
 Project 'projects/koding-project'
+Project 'projects/gauges'
 Project 'remente/remente-api',               'Remente-API'
 Project 'remente/remente-admin',             'Remente-Admin'
 Project 'remente/remente-app',               'Remente-app'
@@ -677,6 +682,10 @@ map <Leader>f :execute ":w !fixmyjs " . expand("%")<CR>:edit<CR>
 let g:js_fmt_autosave = 0
 let g:js_fmt_fail_silently = 1
 let g:js_fmt_command = "jsfmt"
+" }}}
+
+" GTFO {{{
+let g:gtfo#terminals = { 'mac' : 'iterm' }
 " }}}
 
 " PLUGIN {{{

@@ -68,7 +68,6 @@ setw -g window-status-format         "#[bg=colour7]#[fg=colour0] #I #[bg=colour7
 setw -g window-status-current-format "#[bg=colour0]#[fg=colour7] #I #[bg=colour0]#[fg=colour12] #W "
 #setw -g window-status-format "#[bg=colour0]#[fg=colour7] #I #[bg=colour7]#[fg=colour12] #W "
 setw -g window-status-attr reverse
-setw -g window-status-content-attr bold,blink,reverse
 
 # Info on right (requires stlarch-terminusmod font)
 set -g status-right-length 60
@@ -98,21 +97,15 @@ bind-key -t vi-copy Enter copy-pipe "reattach-to-user-namespace pbcopy"
 
 # List of plugins
 # Supports `github_username/repo` or full git URLs
-set -g @tpm_plugins "                \
-  tmux-plugins/tpm                   \
-  tmux-plugins/tmux-sensible         \
-  tmux-plugins/tmux-yank             \
-  tmux-plugins/tmux-open             \
-  tmux-plugins/tmux-copycat          \
-  tmux-plugins/tmux-battery          \
-  tmux-plugins/tmux-resurrect        \
-  tmux-plugins/tmux-pain-control     \
-  tmux-plugins/tmux-online-status    \
-"
-# Other examples:
-# github_username/plugin_name    \
-# git@github.com/user/plugin     \
-# git@bitbucket.com/user/plugin  \
+set -g @plugin 'tmux-plugins/tpm'
+set -g @plugin 'tmux-plugins/tmux-sensible'
+set -g @plugin 'tmux-plugins/tmux-yank'
+set -g @plugin 'tmux-plugins/tmux-open'
+set -g @plugin 'tmux-plugins/tmux-copycat'
+set -g @plugin 'tmux-plugins/tmux-battery'
+set -g @plugin 'tmux-plugins/tmux-resurrect'
+set -g @plugin 'tmux-plugins/tmux-pain-control'
+set -g @plugin 'tmux-plugins/tmux-online-status'
 
 # initializes TMUX plugin manager
 run-shell ~/.tmux/plugins/tpm/tpm
