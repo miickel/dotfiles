@@ -148,6 +148,8 @@ let g:molokai_original = 0
 colorscheme base16-ashes
 colorscheme Tomorrow-Night
 colorscheme bubblegum
+colorscheme base16-ocean
+colorscheme Tomorrow-Night-Blue
 " colorscheme flatland
 
 " }}}
@@ -542,7 +544,7 @@ Project 'remente/remente-admin',             'Remente-Admin'
 Project 'remente/remente-app',               'Remente-app'
 Project 'remente/remente-email-templates',               'Remente-email-templates'
 Project 'remente/remente-web',               'Remente-web'
-Project 'remente/remente-public',            'Remente-public'
+Project 'remente/remente-homepage',          'Remente-homepage'
 Project 'projects/ddie'
 Project 'projects/mickel.me'
 Project 'candles',                           'Candles'
