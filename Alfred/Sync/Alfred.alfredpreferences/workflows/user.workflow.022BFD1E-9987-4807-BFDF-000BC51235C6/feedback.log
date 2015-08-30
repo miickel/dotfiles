@@ -1,1 +1,1 @@
-<items><item autocomplete="|add| " valid="no"><icon>icon.png</icon><subtitle>Store a filename for faster access</subtitle><title>Add Filename</title></item><item autocomplete="|path| " valid="no"><icon>icon.png</icon><subtitle>Store a path for use with 'touch filename at'</subtitle><title>Add Path</title></item></items>
+<items><item arg="touch &quot;jaha.js&quot;" uid="jaha.js" valid="yes"><icon>icon.png</icon><subtitle>Create jaha.js in frontmost finder window.</subtitle><title>jaha.js</title></item></items>

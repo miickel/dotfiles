@@ -227,7 +227,7 @@
 			<dict>
 				<key>paths</key>
 				<array>
-					<string>/Applications/Google Chrome.app</string>
+					<string>/opt/homebrew-cask/Caskroom/google-chrome/latest/Google Chrome.app</string>
 				</array>
 				<key>toggle</key>
 				<false/>
@@ -288,7 +288,7 @@
 			<dict>
 				<key>paths</key>
 				<array>
-					<string>/Applications/iTerm.app</string>
+					<string>/opt/homebrew-cask/Caskroom/iterm2/2.1.1/iTerm.app</string>
 				</array>
 				<key>toggle</key>
 				<true/>
@@ -332,7 +332,7 @@
 			<dict>
 				<key>paths</key>
 				<array>
-					<string>/Applications/Mailbox (Beta).app</string>
+					<string>/opt/homebrew-cask/Caskroom/mailbox/0.7.2/Mailbox (Beta).app</string>
 				</array>
 				<key>toggle</key>
 				<true/>
@@ -403,7 +403,7 @@
 			<dict>
 				<key>paths</key>
 				<array>
-					<string>/Applications/Sketch.app</string>
+					<string>/opt/homebrew-cask/Caskroom/sketch/latest/Sketch.app</string>
 				</array>
 				<key>toggle</key>
 				<false/>
@@ -447,7 +447,7 @@
 			<dict>
 				<key>paths</key>
 				<array>
-					<string>/Applications/VLC.app</string>
+					<string>/opt/homebrew-cask/Caskroom/vlc/2.2.1/VLC.app</string>
 				</array>
 				<key>toggle</key>
 				<false/>
@@ -464,7 +464,7 @@
 			<dict>
 				<key>paths</key>
 				<array>
-					<string>/Applications/Transmission.app</string>
+					<string>/opt/homebrew-cask/Caskroom/transmission/2.84/Transmission.app</string>
 				</array>
 				<key>toggle</key>
 				<false/>
@@ -508,7 +508,7 @@
 			<dict>
 				<key>paths</key>
 				<array>
-					<string>/Applications/Spotify.app</string>
+					<string>/opt/homebrew-cask/Caskroom/spotify/latest/Spotify.app</string>
 				</array>
 				<key>toggle</key>
 				<true/>

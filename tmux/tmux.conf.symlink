@@ -71,7 +71,7 @@ setw -g window-status-attr reverse
 
 # Info on right (requires stlarch-terminusmod font)
 set -g status-right-length 60
-set -g status-right '#[fg=colour8]#{battery_percentage} | %a %H:%M'
+set -g status-right '#[fg=colour2]#{battery_percentage} | %a %H:%M'
 
 # tmux clock
 set -g clock-mode-colour colour2
@@ -106,6 +106,7 @@ set -g @plugin 'tmux-plugins/tmux-battery'
 set -g @plugin 'tmux-plugins/tmux-resurrect'
 set -g @plugin 'tmux-plugins/tmux-pain-control'
 set -g @plugin 'tmux-plugins/tmux-online-status'
+set -g @plugin 'tmux-plugins/tmux-sidebar'
 
 # initializes TMUX plugin manager
 run-shell ~/.tmux/plugins/tpm/tpm
