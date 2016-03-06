@@ -22,7 +22,8 @@ call plug#begin('~/.vim/plugged')
 Plug 'amiorin/vim-project'
 Plug 'tpope/vim-fugitive'
 Plug 'Lokaltog/vim-easymotion'
-Plug 'bling/vim-airline'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 Plug 'scrooloose/nerdtree'
 Plug 'jistr/vim-nerdtree-tabs'
 Plug 'majutsushi/tagbar'
@@ -50,6 +51,7 @@ Plug 'gorkunov/smartpairs.vim'
 " Plug 'zefei/vim-colortuner'
 Plug 'othree/javascript-libraries-syntax.vim'
 Plug 'SyntaxComplete'
+Plug 'vim-utils/vim-interruptless'
 
 " Tools
 Plug 'xolox/vim-misc'
@@ -145,12 +147,11 @@ let g:molokai_original = 0
 " autocmd BufEnter * sign define dummy
 " autocmd BufEnter * execute 'sign place 9999 line=1 name=dummy buffer=' . bufnr('')
 
-colorscheme base16-ashes
-colorscheme Tomorrow-Night
-colorscheme bubblegum
+" colorscheme base16-ashes
+" colorscheme Tomorrow-Night
+" colorscheme bubblegum
 colorscheme base16-ocean
-colorscheme Tomorrow-Night-Blue
-" colorscheme flatland
+" colorscheme Tomorrow-Night-Blue
 
 " }}}
 
@@ -517,7 +518,7 @@ let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#left_sep = ' '
 let g:airline#extensions#tabline#left_alt_sep = ''
 let g:airline#extensions#bufferline#enabled = 1
-let g:airline_theme='base16'
+let g:airline_theme='base16_ocean'
 
 " }}}
 
@@ -665,8 +666,8 @@ nmap <silent> å   <Plug>GoldenViewSwitchToggle
 " }}}
 
 " Limelight {{{
-autocmd User GoyoEnter LimeLight
-autocmd User GoyoLeave LimeLight!
+autocmd User GoyoEnter Limelight
+autocmd User GoyoLeave Limelight!
 " }}}
 
 " Ag {{{
