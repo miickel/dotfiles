@@ -354,7 +354,11 @@
 			<dict>
 				<key>paths</key>
 				<array>
+<<<<<<< HEAD
+					<string>/Applications/Mail.app</string>
+=======
 					<string>/Applications/Polymail.app</string>
+>>>>>>> d4ea8bdc74cb743d041183dbfebf25541dad0f2b
 				</array>
 				<key>toggle</key>
 				<true/>
