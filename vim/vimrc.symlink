@@ -532,8 +532,11 @@ Project '~/Dropbox/Master Thesis/',          'Master_Thesis'
 Project 'tools/dotfiles'
 File    'tools/dotfiles/vim/vimrc.symlink',  'vimrc'
 File    'tools/dotfiles/vim/gvimrc.symlink', 'gvimrc'
+Project 'gocode/src/github.com/miickel',     'Go code'
+Project 'gocode/src/github.com/miickel/cno', 'CNO Silk'
 Project 'minsta',                            'MINSTA'
-Project 'projects/calm',                     'Calm'
+Project 'projects/trading-plan',             'Trading Plan'
+Project 'projects/trading-diary',            'Trading Diary'
 Project 'projects/diskret',                  'Diskret_Matematik'
 Project 'projects/asthena.jazz'
 Project 'projects/touchtype.ninja'
@@ -542,7 +545,7 @@ Project 'projects/gauges'
 Project 'remente/remente-api',               'Remente-API'
 Project 'remente/remente-admin',             'Remente-Admin'
 Project 'remente/remente-app',               'Remente-app'
-Project 'remente/remente-email-templates',               'Remente-email-templates'
+Project 'remente/remente-email-templates',   'Remente-email-templates'
 Project 'remente/remente-web',               'Remente-web'
 Project 'remente/remente-homepage',          'Remente-homepage'
 Project 'projects/ddie'
@@ -688,6 +691,11 @@ let g:js_fmt_command = "jsfmt"
 
 " GTFO {{{
 let g:gtfo#terminals = { 'mac' : 'iterm' }
+" }}}
+
+" Markdown {{{
+let g:markdown_mapping_switch_status = '<Leader>s'
+let g:markdown_enable_spell_checking = 0
 " }}}
 
 " PLUGIN {{{
