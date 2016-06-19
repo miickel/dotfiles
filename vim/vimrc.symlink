@@ -42,7 +42,8 @@ Plug 'fatih/vim-go'
 Plug 'Shutnik/jshint2.vim'
 Plug 'AndrewRadev/switch.vim'
 Plug 'ctrlpvim/ctrlp.vim'
-Plug 'FelikZ/ctrlp-py-matcher'
+Plug 'nixprime/cpsm', { 'do': './install.sh' }
+" Plug 'FelikZ/ctrlp-py-matcher'
 Plug 'junegunn/limelight.vim'
 Plug 'rking/ag.vim'
 Plug 'vim-scripts/Mark--Karkat'
@@ -52,6 +53,7 @@ Plug 'gorkunov/smartpairs.vim'
 Plug 'othree/javascript-libraries-syntax.vim'
 Plug 'SyntaxComplete'
 Plug 'vim-utils/vim-interruptless'
+Plug 'mattn/emmet-vim'
 
 " Tools
 Plug 'xolox/vim-misc'
@@ -103,7 +105,7 @@ Plug 'scrooloose/syntastic'
 Plug 'gabrielelana/vim-markdown', { 'for': 'markdown' }
 " Plug 'pangloss/vim-javascript', { 'for': 'javascript' }
 Plug 'othree/yajs.vim', { 'for': 'javascript' }
-Plug 'mxw/vim-jsx', { 'for': 'javascript' }
+Plug 'mxw/vim-jsx', { 'for': 'jsx' }
 Plug 'statianzo/vim-jade', { 'for': 'jade' }
 Plug 'vim-scripts/applescript.vim', { 'for': 'applescript' }
 Plug 'moll/vim-node', { 'for': 'javascript' }
@@ -114,6 +116,7 @@ Plug 'tpope/vim-git'
 Plug 'mephux/vim-jsfmt'
 Plug 'ruanyl/vim-fixmyjs'
 Plug 'tfnico/vim-gradle'
+Plug 'mustache/vim-mustache-handlebars'
 
 " JavaScript
 Plug 'maksimr/vim-jsbeautify', { 'for': ['html', 'css', 'javascript'] }
@@ -150,8 +153,9 @@ let g:molokai_original = 0
 " colorscheme base16-ashes
 " colorscheme Tomorrow-Night
 " colorscheme bubblegum
-colorscheme base16-ocean
-" colorscheme Tomorrow-Night-Blue
+" colorscheme base16-ocean
+colorscheme Tomorrow-Night-Blue
+" colorscheme PaperColor
 
 " }}}
 
@@ -305,7 +309,7 @@ if has("gui_macvim")
   " set guifont=Courier\ New\ for\ Powerline:h13
   " set guifont=Sauce\ Code\ Powerline\ Light:h12
   " set guifont=Source\ Code\ Pro\ Medium:h12
-  set guifont=Sauce\ Code\ Powerline:h12
+  set guifont=Sauce\ Code\ Powerline\ Light:h10
   set linespace=0
   set fu
   set clipboard+=unnamed
@@ -394,7 +398,8 @@ let g:ctrlp_use_caching = 1           " enable caching
 let g:ctrlp_clear_cache_on_exit=0     " speed up by not removing clearing cache evertime
 let g:ctrlp_mruf_max = 250            " number of recently opened files
 let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git'
-let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }
+" let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }
+let g:ctrlp_match_func = {'match': 'cpsm#CtrlPMatch'}
 let g:ctrlp_user_command = 'ag %s -l --nocolor --nogroup -g ""'
 
 func! MyPrtMappings()
@@ -518,7 +523,7 @@ let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#left_sep = ' '
 let g:airline#extensions#tabline#left_alt_sep = ''
 let g:airline#extensions#bufferline#enabled = 1
-let g:airline_theme='base16_ocean'
+let g:airline_theme='lucius'
 
 " }}}
 
@@ -529,31 +534,37 @@ let g:project_use_nerdtree = 1
 
 call project#rc("~/dev")
 
-Project '~/Dropbox/Master Thesis/',          'Master_Thesis'
+Project '~/Dropbox/Master Thesis/',               'Master_Thesis'
 Project 'tools/dotfiles'
-File    'tools/dotfiles/vim/vimrc.symlink',  'vimrc'
-File    'tools/dotfiles/vim/gvimrc.symlink', 'gvimrc'
-Project 'gocode/src/github.com/miickel',     'Go code'
-Project 'gocode/src/github.com/miickel/cno', 'CNO Silk'
-Project 'minsta',                            'MINSTA'
-Project 'projects/trading-plan',             'Trading Plan'
-Project 'projects/trading-diary',            'Trading Diary'
-Project 'projects/diskret',                  'Diskret_Matematik'
+File    'tools/dotfiles/vim/vimrc.symlink',       'vimrc'
+File    'tools/dotfiles/vim/gvimrc.symlink',      'gvimrc'
+Project 'gocode/src/github.com/miickel',          'Go code'
+Project 'gocode/src/github.com/miickel/cno',      'CNO Silk'
+Project 'gocode/src/github.com/miickel/quantbox', 'Quantbox'
+Project 'projects/quantbox-blog',                 'Quantbox Blog'
+Project 'minsta',                                 'MINSTA'
+Project 'myedge/myedge-launch',                   'uEdge Launch'
+Project 'projects/byttebot',                      'Byttebot'
+Project 'projects/quantbox',                      'QuantboxJS'
+Project 'projects/realtime-chat',                 'Realtime Chat'
+Project 'projects/trading-plan',                  'Trading Plan'
+Project 'projects/trading-diary',                 'Trading Diary'
+Project 'projects/diskret',                       'Diskret_Matematik'
 Project 'projects/asthena.jazz'
 Project 'projects/touchtype.ninja'
 Project 'projects/koding-project'
 Project 'projects/gauges'
-Project 'remente/remente-api',               'Remente-API'
-Project 'remente/remente-admin',             'Remente-Admin'
-Project 'remente/remente-app',               'Remente-app'
-Project 'remente/remente-email-templates',   'Remente-email-templates'
-Project 'remente/remente-web',               'Remente-web'
-Project 'remente/remente-homepage',          'Remente-homepage'
+Project 'remente/remente-api',                    'Remente-API'
+Project 'remente/remente-admin',                  'Remente-Admin'
+Project 'remente/remente-app',                    'Remente-app'
+Project 'remente/remente-email-templates',        'Remente-email-templates'
+Project 'remente/remente-web',                    'Remente-web'
+Project 'remente/remente-homepage',               'Remente-homepage'
 Project 'projects/ddie'
 Project 'projects/mickel.me'
-Project 'candles',                           'Candles'
-Project 'hundvakt',                          'Hundvakt'
-Project 'hundvakt/hundvakt-api',             'Hundvakt-API'
+Project 'candles',                                'Candles'
+Project 'hundvakt',                               'Hundvakt'
+Project 'hundvakt/hundvakt-api',                  'Hundvakt-API'
 Project 'projects/gulp-angular-templatecache'
 
 " }}}

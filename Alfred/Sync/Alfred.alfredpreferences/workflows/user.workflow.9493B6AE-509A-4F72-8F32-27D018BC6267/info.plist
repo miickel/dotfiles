@@ -310,7 +310,7 @@
 			<dict>
 				<key>paths</key>
 				<array>
-					<string>/Applications/iTerm.app</string>
+					<string>/opt/homebrew-cask/Caskroom/iterm2/2.1.1/iTerm.app</string>
 				</array>
 				<key>toggle</key>
 				<true/>
@@ -354,7 +354,7 @@
 			<dict>
 				<key>paths</key>
 				<array>
-					<string>/Applications/Polymail.app</string>
+					<string>/Applications/Nylas N1.app</string>
 				</array>
 				<key>toggle</key>
 				<true/>
@@ -425,7 +425,7 @@
 			<dict>
 				<key>paths</key>
 				<array>
-					<string>/Applications/Sketch.app</string>
+					<string>/opt/homebrew-cask/Caskroom/sketch/latest/Sketch.app</string>
 				</array>
 				<key>toggle</key>
 				<false/>
@@ -574,7 +574,7 @@
 			<dict>
 				<key>paths</key>
 				<array>
-					<string>/opt/homebrew-cask/Caskroom/sublime-text3/Build 3083/Sublime Text.app</string>
+					<string>/opt/homebrew-cask/Caskroom/sublime-text3/3103/Sublime Text.app</string>
 				</array>
 				<key>toggle</key>
 				<false/>
@@ -662,7 +662,7 @@
 			<dict>
 				<key>paths</key>
 				<array>
-					<string>/Applications/Mendeley Desktop.app</string>
+					<string>/Applications/Microsoft Remote Desktop.app</string>
 				</array>
 				<key>toggle</key>
 				<false/>
@@ -926,7 +926,7 @@
 			<dict>
 				<key>paths</key>
 				<array>
-					<string>/Applications/TweetDeck.app</string>
+					<string>/Applications/Tweeten.app</string>
 				</array>
 				<key>toggle</key>
 				<false/>
