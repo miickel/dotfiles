@@ -32,7 +32,7 @@ Plug 'terryma/vim-multiple-cursors'
 Plug 'terryma/vim-expand-region'
 Plug 'myusuf3/numbers.vim'
 Plug 'SirVer/ultisnips'
-Plug 'Valloric/YouCompleteMe', { 'do': './install.sh' }
+Plug 'Valloric/YouCompleteMe', { 'do': './install.py' }
 Plug 'Shougo/vimproc.vim', { 'do': 'make -f make_mac.mak' }
 Plug 't9md/vim-choosewin'
 Plug 'rizzatti/funcoo.vim'
@@ -42,7 +42,8 @@ Plug 'fatih/vim-go'
 Plug 'Shutnik/jshint2.vim'
 Plug 'AndrewRadev/switch.vim'
 Plug 'ctrlpvim/ctrlp.vim'
-Plug 'nixprime/cpsm', { 'do': './install.sh' }
+" Plug 'nixprime/cpsm', { 'do': './install.sh' }
+Plug 'JazzCore/ctrlp-cmatcher', { 'do': './install.sh' }
 " Plug 'FelikZ/ctrlp-py-matcher'
 Plug 'junegunn/limelight.vim'
 Plug 'rking/ag.vim'
@@ -54,6 +55,7 @@ Plug 'othree/javascript-libraries-syntax.vim'
 Plug 'SyntaxComplete'
 Plug 'vim-utils/vim-interruptless'
 Plug 'mattn/emmet-vim'
+Plug 'gcmt/taboo.vim'
 
 " Tools
 Plug 'xolox/vim-misc'
@@ -84,6 +86,7 @@ Plug 'reedes/vim-wordy'
 Plug 'heavenshell/vim-jsdoc', { 'for': 'javascript' }
 Plug 'vim-scripts/argtextobj.vim'
 Plug 'michaeljsmith/vim-indent-object'
+Plug 'suan/vim-instant-markdown'
 
 " Color schemes
 Plug 'altercation/vim-colors-solarized'
@@ -109,14 +112,16 @@ Plug 'mxw/vim-jsx', { 'for': 'jsx' }
 Plug 'statianzo/vim-jade', { 'for': 'jade' }
 Plug 'vim-scripts/applescript.vim', { 'for': 'applescript' }
 Plug 'moll/vim-node', { 'for': 'javascript' }
+Plug 'flowtype/vim-flow', { 'for': 'javascript', 'do': 'npm install -g flow-bin' }
 Plug 'travitch/hasksyn', { 'for': 'haskell' }
 Plug 'kchmck/vim-coffee-script', { 'for': 'coffee' }
-Plug 'wavded/vim-stylus', { 'for': 'stylus' }
+Plug 'wavded/vim-stylus'
 Plug 'tpope/vim-git'
 Plug 'mephux/vim-jsfmt'
 Plug 'ruanyl/vim-fixmyjs'
 Plug 'tfnico/vim-gradle'
 Plug 'mustache/vim-mustache-handlebars'
+Plug 'keith/swift.vim'
 
 " JavaScript
 Plug 'maksimr/vim-jsbeautify', { 'for': ['html', 'css', 'javascript'] }
@@ -135,7 +140,7 @@ call plug#end()
 " Color scheme {{{
 
 syntax enable
-set background=dark
+set background=light
 
 " Theme options
 let g:solarized_visibility = "low"
@@ -154,8 +159,8 @@ let g:molokai_original = 0
 " colorscheme Tomorrow-Night
 " colorscheme bubblegum
 " colorscheme base16-ocean
-colorscheme Tomorrow-Night-Blue
-" colorscheme PaperColor
+" colorscheme Tomorrow-Night-Blue
+colorscheme PaperColor
 
 " }}}
 
@@ -309,7 +314,7 @@ if has("gui_macvim")
   " set guifont=Courier\ New\ for\ Powerline:h13
   " set guifont=Sauce\ Code\ Powerline\ Light:h12
   " set guifont=Source\ Code\ Pro\ Medium:h12
-  set guifont=Sauce\ Code\ Powerline\ Light:h10
+  set guifont=Sauce\ Code\ Powerline\ Light:h12
   set linespace=0
   set fu
   set clipboard+=unnamed
@@ -397,9 +402,10 @@ let g:ctrlp_switch_buffer = 'et'      " jump to a file if it's open already
 let g:ctrlp_use_caching = 1           " enable caching
 let g:ctrlp_clear_cache_on_exit=0     " speed up by not removing clearing cache evertime
 let g:ctrlp_mruf_max = 250            " number of recently opened files
-let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git'
+let g:ctrlp_custom_ignore = '\v[\/](node_modules|target|dist)|(\.(swp|ico|git|svn))$'
 " let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }
-let g:ctrlp_match_func = {'match': 'cpsm#CtrlPMatch'}
+" let g:ctrlp_match_func = {'match': 'cpsm#CtrlPMatch'}
+let g:ctrlp_match_func = {'match': 'matcher#cmatch'}
 let g:ctrlp_user_command = 'ag %s -l --nocolor --nogroup -g ""'
 
 func! MyPrtMappings()
@@ -554,18 +560,18 @@ Project 'projects/asthena.jazz'
 Project 'projects/touchtype.ninja'
 Project 'projects/koding-project'
 Project 'projects/gauges'
+Project 'remente/remente-blog',                   'Remente Blog'
+Project 'remente/remente-ios',                    'Remente iOS'
+Project 'remente/remente-services',               'Remente Services'
+Project 'remente/remente-serverless',             'Remente Serverless'
 Project 'remente/remente-api',                    'Remente-API'
 Project 'remente/remente-admin',                  'Remente-Admin'
 Project 'remente/remente-app',                    'Remente-app'
 Project 'remente/remente-email-templates',        'Remente-email-templates'
 Project 'remente/remente-web',                    'Remente-web'
+Project 'remente/remente-webapp',                 'Remente Web App'
+Project 'remente/remente-webapp-styleguide',      'Remente Web App Styleguide'
 Project 'remente/remente-homepage',               'Remente-homepage'
-Project 'projects/ddie'
-Project 'projects/mickel.me'
-Project 'candles',                                'Candles'
-Project 'hundvakt',                               'Hundvakt'
-Project 'hundvakt/hundvakt-api',                  'Hundvakt-API'
-Project 'projects/gulp-angular-templatecache'
 
 " }}}
 
@@ -708,6 +714,16 @@ let g:gtfo#terminals = { 'mac' : 'iterm' }
 " Markdown {{{
 let g:markdown_mapping_switch_status = '<Leader>s'
 let g:markdown_enable_spell_checking = 0
+" }}}
+
+" Flow {{{
+let g:flow#autoclose = 1
+let g:flow#errjump = 1
+" }}}
+
+" Taboo {{{
+let g:taboo_tab_format = '  %f [%W%m]  '
+map <Leader>, :TabooRename
 " }}}
 
 " PLUGIN {{{
@@ -873,7 +889,7 @@ map <leader>ev :vsp %%
 map <leader>et :tabe %%
 
 " Jump list
-nnoremap <leader>, :jump<CR>
+" nnoremap <leader>, :jump<CR>
 
 " Make D behave
 nnoremap D d$
@@ -947,11 +963,17 @@ endfunction
 
 nnoremap <leader>´ :call ReverseBackground()<CR>
 function! ReverseBackground()
-  exec ':let &bg = ( &bg == "dark" ? "light" : "dark" )'
-  hi vertsplit guifg=bg guibg=bg
-  hi NonText guifg=bg guibg=bg
-  hi SignColumn guifg=bg guibg=bg
-  exec ':redraw!'
+    if (g:colors_name == "PaperColor")
+        colorscheme Tomorrow-Night-Blue
+        set background=dark
+    else
+        colorscheme PaperColor
+        set background=light
+    endif
+    hi vertsplit guifg=bg guibg=bg
+    hi NonText guifg=bg guibg=bg
+    hi SignColumn guifg=bg guibg=bg
+    exec ':redraw!'
 endfunction
 
 " WordProcessingToggle() {{{
