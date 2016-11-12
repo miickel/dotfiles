@@ -73,7 +73,7 @@ snippet r "require('...')"
 var $1 = require('${2:$1}');
 endsnippet
 
-snippet rr "require('...')"
+snippet rfac "require('...')"
 var $1 = React.createFactory(require('${2:$1}'));
 endsnippet
 
@@ -420,4 +420,18 @@ var React = require('react');
 module.exports = React.createClass({
   ${2:displayName: '$1',}
 });
+endsnippet
+
+snippet imp "ES6 import"
+import $1 from '${2:$1}';
+endsnippet
+
+snippet class "ES6 class"
+class ${1:name} {
+    $2
+}
+endsnippet
+
+snippet ed "ES6 export default"
+export default ${1:name}
 endsnippet

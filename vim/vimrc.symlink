@@ -50,7 +50,7 @@ Plug 'vim-scripts/Mark--Karkat'
 Plug 'Shougo/vimfiler.vim'
 Plug 'gorkunov/smartpairs.vim'
 " Plug 'zefei/vim-colortuner'
-Plug 'othree/javascript-libraries-syntax.vim'
+" Plug 'othree/javascript-libraries-syntax.vim'
 Plug 'SyntaxComplete'
 Plug 'vim-utils/vim-interruptless'
 Plug 'mattn/emmet-vim'
@@ -103,20 +103,24 @@ Plug 'NLKNguyen/papercolor-theme'
 " Syntax
 Plug 'scrooloose/syntastic'
 Plug 'gabrielelana/vim-markdown', { 'for': 'markdown' }
-" Plug 'pangloss/vim-javascript', { 'for': 'javascript' }
+Plug 'pangloss/vim-javascript', { 'for': 'javascript' }
 Plug 'othree/yajs.vim', { 'for': 'javascript' }
 Plug 'mxw/vim-jsx', { 'for': 'jsx' }
 Plug 'statianzo/vim-jade', { 'for': 'jade' }
+Plug 'digitaltoad/vim-pug', { 'for': 'pug' }
 Plug 'vim-scripts/applescript.vim', { 'for': 'applescript' }
 Plug 'moll/vim-node', { 'for': 'javascript' }
 Plug 'travitch/hasksyn', { 'for': 'haskell' }
-Plug 'kchmck/vim-coffee-script', { 'for': 'coffee' }
-Plug 'wavded/vim-stylus', { 'for': 'stylus' }
+" Plug 'kchmck/vim-coffee-script', { 'for': 'coffee' }
+Plug 'wavded/vim-stylus'
 Plug 'tpope/vim-git'
 Plug 'mephux/vim-jsfmt'
 Plug 'ruanyl/vim-fixmyjs'
 Plug 'tfnico/vim-gradle'
 Plug 'mustache/vim-mustache-handlebars'
+Plug 'leafgarland/typescript-vim'
+Plug 'Quramy/tsuquyomi'
+Plug 'posva/vim-vue'
 
 " JavaScript
 Plug 'maksimr/vim-jsbeautify', { 'for': ['html', 'css', 'javascript'] }
@@ -550,10 +554,14 @@ Project 'projects/realtime-chat',                 'Realtime Chat'
 Project 'projects/trading-plan',                  'Trading Plan'
 Project 'projects/trading-diary',                 'Trading Diary'
 Project 'projects/diskret',                       'Diskret_Matematik'
+Project 'projects/insynshandel',                  'Insynshandel'
 Project 'projects/asthena.jazz'
 Project 'projects/touchtype.ninja'
 Project 'projects/koding-project'
 Project 'projects/gauges'
+Project 'continuity'
+Project 'continuity/continuity-styleguide'
+Project 'continuity/continuity-vue'
 Project 'remente/remente-api',                    'Remente-API'
 Project 'remente/remente-admin',                  'Remente-Admin'
 Project 'remente/remente-app',                    'Remente-app'
@@ -708,6 +716,11 @@ let g:gtfo#terminals = { 'mac' : 'iterm' }
 " Markdown {{{
 let g:markdown_mapping_switch_status = '<Leader>s'
 let g:markdown_enable_spell_checking = 0
+" }}}
+
+" tsuquyomi {{{
+let g:tsuquyomi_disable_quickfix = 1
+let g:syntastic_typescript_checkers = ['tsuquyomi'] " You shouldn't use 'tsc' checker.
 " }}}
 
 " PLUGIN {{{
