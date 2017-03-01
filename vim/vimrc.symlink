@@ -51,11 +51,12 @@ Plug 'vim-scripts/Mark--Karkat'
 Plug 'Shougo/vimfiler.vim'
 Plug 'gorkunov/smartpairs.vim'
 " Plug 'zefei/vim-colortuner'
-Plug 'othree/javascript-libraries-syntax.vim'
+" Plug 'othree/javascript-libraries-syntax.vim'
 Plug 'SyntaxComplete'
 Plug 'vim-utils/vim-interruptless'
 Plug 'mattn/emmet-vim'
 Plug 'gcmt/taboo.vim'
+" Plug 'vimwiki/vimwiki'
 
 " Tools
 Plug 'xolox/vim-misc'
@@ -87,6 +88,7 @@ Plug 'heavenshell/vim-jsdoc', { 'for': 'javascript' }
 Plug 'vim-scripts/argtextobj.vim'
 Plug 'michaeljsmith/vim-indent-object'
 Plug 'suan/vim-instant-markdown'
+Plug 'jeetsukumaran/vim-indentwise'
 
 " Color schemes
 Plug 'altercation/vim-colors-solarized'
@@ -122,6 +124,8 @@ Plug 'ruanyl/vim-fixmyjs'
 Plug 'tfnico/vim-gradle'
 Plug 'mustache/vim-mustache-handlebars'
 Plug 'keith/swift.vim'
+Plug 'leafgarland/typescript-vim'
+Plug 'ianks/vim-tsx'
 
 " JavaScript
 Plug 'maksimr/vim-jsbeautify', { 'for': ['html', 'css', 'javascript'] }
@@ -405,7 +409,7 @@ let g:ctrlp_mruf_max = 250            " number of recently opened files
 let g:ctrlp_custom_ignore = '\v[\/](node_modules|target|dist)|(\.(swp|ico|git|svn))$'
 " let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }
 " let g:ctrlp_match_func = {'match': 'cpsm#CtrlPMatch'}
-let g:ctrlp_match_func = {'match': 'matcher#cmatch'}
+" let g:ctrlp_match_func = {'match': 'matcher#cmatch'}
 let g:ctrlp_user_command = 'ag %s -l --nocolor --nogroup -g ""'
 
 func! MyPrtMappings()
@@ -560,10 +564,12 @@ Project 'projects/asthena.jazz'
 Project 'projects/touchtype.ninja'
 Project 'projects/koding-project'
 Project 'projects/gauges'
+Project 'remente/remente-desktop',                'Remente Desktop'
 Project 'remente/remente-blog',                   'Remente Blog'
 Project 'remente/remente-ios',                    'Remente iOS'
 Project 'remente/remente-services',               'Remente Services'
 Project 'remente/remente-serverless',             'Remente Serverless'
+Project 'remente/remente-sls',                    'Remente sls'
 Project 'remente/remente-api',                    'Remente-API'
 Project 'remente/remente-admin',                  'Remente-Admin'
 Project 'remente/remente-app',                    'Remente-app'
@@ -572,13 +578,14 @@ Project 'remente/remente-web',                    'Remente-web'
 Project 'remente/remente-webapp',                 'Remente Web App'
 Project 'remente/remente-webapp-styleguide',      'Remente Web App Styleguide'
 Project 'remente/remente-homepage',               'Remente-homepage'
+Project 'remente/remente-db-utils',               'Remente DB Utils'
 
 " }}}
 
 " Cosco comma/semicolon {{{
 
-autocmd FileType javascript,css,YOUR_LANG nmap <silent> ,. :call cosco#commaOrSemiColon()<CR>
-autocmd FileType javascript,css,YOUR_LANG inoremap <silent> ,. <ESC>:call cosco#commaOrSemiColon()"<CR>a
+autocmd FileType javascript,css nmap <silent> ,. :call cosco#commaOrSemiColon()<CR>
+autocmd FileType javascript,css inoremap <silent> ,. <ESC>:call cosco#commaOrSemiColon()"<CR>a
 
 " }}}
 
@@ -605,7 +612,7 @@ function! s:goyo_before()
   set nolist
   set textwidth=0
   set wrapmargin=0
-  let &showbreak=repeat(' ', 6)
+  let &showbreak=repeat(' ',        6)
   set nocursorline
   augroup cline
     au!
@@ -724,6 +731,33 @@ let g:flow#errjump = 1
 " Taboo {{{
 let g:taboo_tab_format = '  %f [%W%m]  '
 map <Leader>, :TabooRename
+" }}}
+
+" IndentWise {{{
+map ª <Plug>(IndentWisePreviousEqualIndent)zz
+map ˛ <Plug>(IndentWisePreviousLesserIndent)zz
+" map ¬ <Plug>(IndentWiseBlockScopeBoundaryEnd)
+" map ˘ <Plug>(IndentWisePreviousAbsoluteIndent)
+" map [+ <Plug>(IndentWisePreviousGreaterIndent)
+
+map √ <Plug>(IndentWiseNextEqualIndent)zz
+map ﬁ <Plug>(IndentWiseNextGreaterIndent)zz
+" map º <Plug>(IndentWiseBlockScopeBoundaryBegin)
+" map ﬂ <Plug>(IndentWiseNextAbsoluteIndent)
+" map ]- <Plug>(IndentWiseNextLesserIndent)
+" }}}
+
+" PLUGIN https://github.com/othree/javascript-libraries-syntax.vim {{{
+" let g:used_javascript_libs = 'underscore,react,flux,jasmine,chai'
+" }}}
+
+" PLUGIN {{{
+" let g:user_emmet_settings = {
+" \  'javascript' : {
+" \      'extends' : 'jsx',
+" \  },
+" \}
+" let g:user_emmet_leader_key='<C-M>'
 " }}}
 
 " PLUGIN {{{
@@ -905,6 +939,7 @@ nnoremap <leader>W :call WordProcessingToggle()<CR>
 autocmd FileType javascript noremap <buffer> <c-f> mq:%!js-beautify -s 2 -j -q -f -<CR>'q<esc>:delmarks q<CR>zz<esc>
 autocmd FileType html noremap <buffer> <c-f> :call HtmlBeautify()<cr>
 autocmd FileType css noremap <buffer> <c-f> :call CSSBeautify()<cr>
+autocmd BufNewFile,BufRead *.tsx set filetype=javascript
 
 " Stop completion with enter, in addition to default ctrl+y
 imap <expr> <CR> pumvisible() ? "\<c-y>" : "<Plug>delimitMateCR"
@@ -1037,7 +1072,7 @@ fun! <SID>StripTrailingWhitespaces()
     call cursor(l, c)
 endfun
 
-autocmd FileType javascript,coffee,jade,latex,tex,c,cpp,java,ruby,python,haskell autocmd BufWritePre <buffer> :call <SID>StripTrailingWhitespaces()
+autocmd FileType javascript,coffee,jade,latex,tex,c,cpp,java,ruby,python,haskell,swift,yml,yaml autocmd BufWritePre <buffer> :call <SID>StripTrailingWhitespaces()
 au BufNewFile,BufRead *.ejs set filetype=html
 filetype off
 filetype on
