@@ -3,7 +3,7 @@ priority -50
 # Gulp snippets
 
 snippet gt "Gulp Task"
-gulp.task('${1:name}'${2:, ['$3']}, function() {
+gulp.task('${1:name}'${2:, ['$3']}, () => {
 	${4:return gulp.src('$5')}$0
 });
 endsnippet
@@ -13,13 +13,13 @@ getElement${1/(T)|.*/(?1:s)/}By${1:T}${1/(T)|(I)|.*/(?1:agName)(?2:d)/}('$2')
 endsnippet
 
 snippet '':f "object method string"
-'${1:${2:#thing}:${3:click}}': function(element) {
+'${1:${2:#thing}:${3:click}}': (element) => {
 	${VISUAL}$0
 }${10:,}
 endsnippet
 
 snippet :f "Object Method"
-${1:method_name}: function(${3:attribute}) {
+${1:method_name}: (${3:attribute}) => {
 	${VISUAL}$0
 }${10:,}
 endsnippet
@@ -33,7 +33,7 @@ ${1:key}: ${2:"${3:value}"}${4:, }
 endsnippet
 
 snippet proto "Prototype (proto)"
-${1:class_name}.prototype.${2:method_name} = function(${3:first_argument}) {
+${1:class_name}.prototype.${2:method_name} = (${3:first_argument}) => {
 	${VISUAL}$0
 };
 
@@ -70,7 +70,7 @@ snippet => "arrow function"
 endsnippet
 
 snippet r "require('...')"
-var $1 = require('${2:$1}');
+const $1 = require('${2:$1}');
 endsnippet
 
 snippet rfac "require('...')"
@@ -78,7 +78,7 @@ var $1 = React.createFactory(require('${2:$1}'));
 endsnippet
 
 snippet iife "Immediately-Invoked Function Expression (iife)"
-(function (${1:argument}) {
+((${1:argument}) => {
 	${VISUAL}$0
 }(${2:$1}));
 endsnippet
@@ -103,7 +103,7 @@ if (${1:condition}) {
 endsnippet
 
 snippet timeout "setTimeout function"
-setTimeout(function() {
+setTimeout(() => {
 	${VISUAL}$0
 }${2:.bind(${3:this})}, ${1:10});
 endsnippet
@@ -205,7 +205,7 @@ require([${1:'dependencies'}], ${2:callback});
 endsnippet
 
 snippet foreach "forEach"
-${1:things}.forEach(function (${2:item}) {
+${1:things}.forEach((${2:item}) => {
   $3
 });
 endsnippet
@@ -236,6 +236,10 @@ try {
 }
 endsnippet
 
+snippet c "const"
+const $1 = ${VISUAL}$0;
+endsnippet
+
 snippet v "var"
 var $1 = ${VISUAL}$0;
 endsnippet
@@ -243,25 +247,25 @@ endsnippet
 # Mocha test
 
 snippet d "test suite"
-describe('$1', function () {
+describe('$1', () => {
   ${VISUAL}$0
 });
 endsnippet
 
 snippet before "before"
-before(function (done) {
+before((done) => {
   ${VISUAL}$0
 });
 endsnippet
 
 snippet after "after"
-after(function (done) {
+after((done) => {
   ${VISUAL}$0
 });
 endsnippet
 
 snippet it "test case"
-it('should $1', function (${2:done}) {
+it('should $1', (${2:done}) => {
   $3
 });
 endsnippet
@@ -361,7 +365,7 @@ snippet ad "angular DS factory"
 })();
 endsnippet
 
-snippet c "ml comment"
+snippet cc "ml comment"
 /**
  * $1
  */
