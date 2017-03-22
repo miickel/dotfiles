@@ -104,6 +104,7 @@ Plug 'whatyouhide/vim-gotham'
 Plug 'daylerees/colour-schemes', { 'rtp': 'vim-themes/' }
 Plug 'thinkpixellab/flatland', { 'rtp': 'Vim/colors' }
 Plug 'NLKNguyen/papercolor-theme'
+Plug 'jdkanani/vim-material-theme'
 
 " Syntax
 Plug 'scrooloose/syntastic'
@@ -322,7 +323,8 @@ if has("gui_macvim")
   " set guifont=Courier\ New\ for\ Powerline:h13
   " set guifont=Sauce\ Code\ Powerline\ Light:h12
   " set guifont=Source\ Code\ Pro\ Medium:h12
-  set guifont=Sauce\ Code\ Powerline\ Light:h12
+  " set guifont=Sauce\ Code\ Powerline\ Light:h12
+  set guifont=Sauce\ Code\ Powerline:h12
   set linespace=0
   set fu
   set clipboard+=unnamed
