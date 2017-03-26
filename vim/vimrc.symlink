@@ -56,7 +56,10 @@ Plug 'SyntaxComplete'
 Plug 'vim-utils/vim-interruptless'
 Plug 'mattn/emmet-vim'
 Plug 'gcmt/taboo.vim'
+Plug 'airblade/vim-rooter'
+Plug 'itchyny/vim-cursorword'
 " Plug 'vimwiki/vimwiki'
+Plug 'metakirby5/codi.vim'
 
 " Tools
 Plug 'xolox/vim-misc'
@@ -136,6 +139,7 @@ Plug 'ianks/vim-tsx'
 Plug 'maksimr/vim-jsbeautify', { 'for': ['html', 'css', 'javascript'] }
 Plug 'einars/js-beautify', { 'for': ['html', 'css', 'javascript'] }
 Plug 'marijnh/tern_for_vim', { 'for': 'javascript' }
+Plug 'ryanoasis/vim-devicons'
 
 " CSS
 Plug 'PickAColor.vim'
@@ -325,6 +329,7 @@ if has("gui_macvim")
   " set guifont=Source\ Code\ Pro\ Medium:h12
   " set guifont=Sauce\ Code\ Powerline\ Light:h12
   set guifont=Sauce\ Code\ Powerline:h12
+  set guifont=Sauce\ Code\ Pro\ Nerd\ Font\ Complete\ Mono:h14
   set linespace=0
   set fu
   set clipboard+=unnamed
