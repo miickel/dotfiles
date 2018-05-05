@@ -70,7 +70,7 @@ snippet => "arrow function"
 endsnippet
 
 snippet r "require('...')"
-const $1 = require('${2:$1}');
+const $1 = require('${2:$1}')
 endsnippet
 
 snippet rfac "require('...')"
@@ -123,11 +123,11 @@ console.assert(${1:assertion}, ${2:'${3:message}'});
 endsnippet
 
 snippet cj "console JSON" b
-console.log(JSON.stringify($1, null, 2));
+console.log(JSON.stringify($1, null, 2))
 endsnippet
 
 snippet cclear "console.clear" b
-console.clear();
+console.clear()
 endsnippet
 
 snippet cdir "console.dir" b
@@ -145,49 +145,49 @@ endsnippet
 snippet cgroup "console.group" b
 console.group('${1:label}');
 ${VISUAL}$0
-console.groupEnd();
+console.groupEnd()
 endsnippet
 
 snippet cgroupc "console.groupCollapsed" b
 console.groupCollapsed('${1:label}');
 ${VISUAL}$0
-console.groupEnd();
+console.groupEnd()
 endsnippet
 
 snippet ci "console.info" b
-console.info(${1:'${2:value}'});
+console.info(${1:'${2:value}'})
 endsnippet
 
 snippet cl "console.log" b
-console.log(${1:'${2:value}'});
+console.log(${1:'${2:value}'})
 endsnippet
 
 snippet cd "console.debug" b
-console.debug(${1:'${2:value}'});
+console.debug(${1:'${2:value}'})
 endsnippet
 
 snippet cprof "console.profile" b
-console.profile('${1:label}');
+console.profile('${1:label}')
 ${VISUAL}$0
-console.profileEnd();
+console.profileEnd()
 endsnippet
 
 snippet ctable "console.table" b
-console.table(${1:'${2:value}'});
+console.table(${1:'${2:value}'})
 endsnippet
 
 snippet ctime "console.time" b
-console.time('${1:label}');
+console.time('${1:label}')
 ${VISUAL}$0
-console.timeEnd('$1');
+console.timeEnd('$1')
 endsnippet
 
 snippet ctimestamp "console.timeStamp" b
-console.timeStamp('${1:label}');
+console.timeStamp('${1:label}')
 endsnippet
 
 snippet ctrace "console.trace" b
-console.trace();
+console.trace()
 endsnippet
 
 snippet cw "console.warn" b
@@ -237,7 +237,7 @@ try {
 endsnippet
 
 snippet c "const"
-const $1 = ${VISUAL}$0;
+const $1 = ${VISUAL}$0
 endsnippet
 
 snippet v "var"
@@ -284,7 +284,7 @@ snippet am "angular module"
 
   ]);
 
-})();
+})()
 endsnippet
 
 snippet ac "angular controller"
@@ -300,7 +300,7 @@ snippet ac "angular controller"
     var vm = this;$0
   }
 
-})();
+})()
 endsnippet
 
 snippet ar "angular route"
@@ -330,7 +330,7 @@ snippet ar "angular route"
       }
     }];
   }
-})();
+})()
 endsnippet
 
 snippet af "angular factory"
@@ -346,7 +346,7 @@ snippet af "angular factory"
     $0
   }
 
-})();
+})()
 endsnippet
 
 snippet ad "angular DS factory"
@@ -362,7 +362,7 @@ snippet ad "angular DS factory"
     return DS.defineResource('${3:$2}');
   }
 
-})();
+})()
 endsnippet
 
 snippet cc "ml comment"
@@ -414,20 +414,72 @@ snippet as "Angular state"
 
   }
 
-})();
+})()
 endsnippet
 
 
-snippet rc "React class"
-var React = require('react');
+snippet rc "React class component"
+import React, { Component } from 'react'
 
-module.exports = React.createClass({
-  ${2:displayName: '$1',}
-});
+class $1 extends Component {
+  render() {
+    return (
+      <div>
+        $1
+      </div>
+    )
+  }
+}
+
+export { $1 }
+endsnippet
+
+snippet rcc "React Redux-connected class"
+import { connect } from 'react-redux'
+import { $1 } from './$1.js'
+
+const mapStateToProps = state => ({
+})
+
+const mapDispatchToProps = dispatch => ({
+})
+
+const $1Container = connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(
+  class $1Container extends $1 {}
+)
+
+export { $1Container }
+endsnippet
+
+snippet rsc "React JSS styled component"
+import React, { Component } from 'react'
+import injectSheet from 'react-jss'
+import styles from './$1.styles.js'
+
+class $1 extends Component {
+
+  render() {
+    const { classes } = this.props
+
+    return (
+      <div>
+        $1
+      </div>
+    )
+  }
+
+}
+
+const Styled$1 = injectSheet(styles)($1)
+
+export { Styled$1 as $1 }
 endsnippet
 
 snippet imp "ES6 import"
-import $1 from '${2:$1}';
+import $1 from '${2:$1}'
 endsnippet
 
 snippet class "ES6 class"
