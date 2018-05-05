@@ -266,7 +266,7 @@
 			<dict>
 				<key>paths</key>
 				<array>
-					<string>/Applications/MacVim.app</string>
+					<string>/Applications/Emacs.app</string>
 				</array>
 				<key>toggle</key>
 				<false/>
@@ -354,7 +354,7 @@
 			<dict>
 				<key>paths</key>
 				<array>
-					<string>/Applications/Nylas N1.app</string>
+					<string>/Applications/Shift.app</string>
 				</array>
 				<key>toggle</key>
 				<true/>
@@ -574,7 +574,7 @@
 			<dict>
 				<key>paths</key>
 				<array>
-					<string>/opt/homebrew-cask/Caskroom/sublime-text3/3103/Sublime Text.app</string>
+					<string>/Applications/Visual Studio Code.app</string>
 				</array>
 				<key>toggle</key>
 				<false/>
@@ -662,7 +662,7 @@
 			<dict>
 				<key>paths</key>
 				<array>
-					<string>/Applications/Microsoft Remote Desktop.app</string>
+					<string>/usr/local/Caskroom/sublime-text3/3103/Sublime Text.app</string>
 				</array>
 				<key>toggle</key>
 				<false/>
