@@ -249,7 +249,7 @@
 			<dict>
 				<key>paths</key>
 				<array>
-					<string>/opt/homebrew-cask/Caskroom/google-chrome/latest/Google Chrome.app</string>
+					<string>/Applications/Google Chrome.app</string>
 				</array>
 				<key>toggle</key>
 				<false/>
@@ -266,7 +266,7 @@
 			<dict>
 				<key>paths</key>
 				<array>
-					<string>/Applications/Emacs.app</string>
+					<string>/usr/local/Cellar/macvim/8.1-151/MacVim.app</string>
 				</array>
 				<key>toggle</key>
 				<false/>
@@ -310,7 +310,7 @@
 			<dict>
 				<key>paths</key>
 				<array>
-					<string>~/Applications/iTerm.app</string>
+					<string>/Applications/iTerm.app</string>
 				</array>
 				<key>toggle</key>
 				<true/>
@@ -425,7 +425,7 @@
 			<dict>
 				<key>paths</key>
 				<array>
-					<string>/opt/homebrew-cask/Caskroom/sketch/latest/Sketch.app</string>
+					<string>/Applications/Sketch.app</string>
 				</array>
 				<key>toggle</key>
 				<false/>
@@ -469,7 +469,7 @@
 			<dict>
 				<key>paths</key>
 				<array>
-					<string>~/Applications/VLC.app</string>
+					<string>/Applications/VLC.app</string>
 				</array>
 				<key>toggle</key>
 				<false/>
@@ -530,7 +530,7 @@
 			<dict>
 				<key>paths</key>
 				<array>
-					<string>/opt/homebrew-cask/Caskroom/spotify/latest/Spotify.app</string>
+					<string>/Applications/Spotify.app</string>
 				</array>
 				<key>toggle</key>
 				<true/>
