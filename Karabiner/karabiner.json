@@ -21,9 +21,7 @@
                                 "from": {
                                     "key_code": "caps_lock",
                                     "modifiers": {
-                                        "optional": [
-                                            "any"
-                                        ]
+                                        "optional": "any"
                                     }
                                 },
                                 "to": [
@@ -64,12 +62,7 @@
                                 ],
                                 "to_if_alone": [
                                     {
-                                        "key_code": "tab",
-                                        "modifiers": {
-                                            "optional": [
-                                                "any"
-                                            ]
-                                        }
+                                        "key_code": "tab"
                                     }
                                 ],
                                 "type": "basic"
