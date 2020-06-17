@@ -30,7 +30,7 @@
 			<key>facebook/create-react-app</key>
 			<dict>
 				<key>date</key>
-				<date>2018-10-10T17:05:02Z</date>
+				<date>2020-06-15T12:16:29Z</date>
 				<key>entry</key>
 				<dict>
 					<key>name</key>
@@ -108,7 +108,7 @@
 			<key>Jest</key>
 			<dict>
 				<key>date</key>
-				<date>2018-08-18T11:02:40Z</date>
+				<date>2019-02-28T19:22:30Z</date>
 				<key>entry</key>
 				<dict>
 					<key>aliases</key>
@@ -142,6 +142,8 @@
 	</dict>
 	<key>DHWebViewIsDark</key>
 	<false/>
+	<key>actuallyDarkWebView</key>
+	<false/>
 	<key>annotationsAreShown</key>
 	<true/>
 	<key>docsets</key>
@@ -163,97 +165,107 @@
 			<key>http://kapeli.com/feeds/CSS.xml</key>
 			<dict>
 				<key>date</key>
-				<date>2018-07-03T18:44:59Z</date>
+				<date>2020-04-20T19:42:23Z</date>
 			</dict>
 			<key>http://kapeli.com/feeds/CouchDB.xml</key>
 			<dict>
 				<key>date</key>
-				<date>2018-07-03T18:49:20Z</date>
+				<date>2020-04-20T19:42:17Z</date>
 			</dict>
 			<key>http://kapeli.com/feeds/Go.xml</key>
 			<dict>
 				<key>date</key>
-				<date>2018-07-03T18:49:55Z</date>
+				<date>2020-04-20T19:42:18Z</date>
 			</dict>
 			<key>http://kapeli.com/feeds/HTML.xml</key>
 			<dict>
 				<key>date</key>
-				<date>2018-07-03T18:45:04Z</date>
+				<date>2020-04-20T19:42:38Z</date>
 			</dict>
 			<key>http://kapeli.com/feeds/JavaScript.xml</key>
 			<dict>
 				<key>date</key>
-				<date>2018-07-03T18:45:31Z</date>
+				<date>2020-04-20T19:43:45Z</date>
 			</dict>
 			<key>http://kapeli.com/feeds/Lo-Dash.xml</key>
 			<dict>
 				<key>date</key>
-				<date>2018-07-04T06:53:58Z</date>
+				<date>2020-04-20T19:42:20Z</date>
 			</dict>
 			<key>http://kapeli.com/feeds/Markdown.xml</key>
 			<dict>
 				<key>date</key>
-				<date>2018-07-03T18:47:53Z</date>
+				<date>2020-04-20T19:42:21Z</date>
+			</dict>
+			<key>http://kapeli.com/feeds/MomentJS.xml</key>
+			<dict>
+				<key>date</key>
+				<date>2020-04-20T19:42:41Z</date>
 			</dict>
 			<key>http://kapeli.com/feeds/MongoDB.xml</key>
 			<dict>
 				<key>date</key>
-				<date>2018-07-03T18:47:58Z</date>
+				<date>2020-04-20T19:42:31Z</date>
 			</dict>
 			<key>http://kapeli.com/feeds/Nginx.xml</key>
 			<dict>
 				<key>date</key>
-				<date>2018-07-03T18:47:59Z</date>
+				<date>2020-04-20T19:42:23Z</date>
 			</dict>
 			<key>http://kapeli.com/feeds/NodeJS.xml</key>
 			<dict>
 				<key>date</key>
-				<date>2018-07-03T18:44:39Z</date>
+				<date>2020-04-20T19:42:41Z</date>
 			</dict>
 			<key>http://kapeli.com/feeds/NumPy.xml</key>
 			<dict>
 				<key>date</key>
-				<date>2018-07-03T18:48:04Z</date>
+				<date>2020-04-20T19:42:31Z</date>
 			</dict>
 			<key>http://kapeli.com/feeds/Pandas.xml</key>
 			<dict>
 				<key>date</key>
-				<date>2018-07-03T18:48:14Z</date>
+				<date>2020-04-20T19:43:11Z</date>
 			</dict>
 			<key>http://kapeli.com/feeds/PostgreSQL.xml</key>
 			<dict>
 				<key>date</key>
-				<date>2018-07-03T18:48:21Z</date>
+				<date>2020-04-20T19:42:33Z</date>
 			</dict>
 			<key>http://kapeli.com/feeds/Python_3.xml</key>
 			<dict>
 				<key>date</key>
-				<date>2018-07-03T18:48:27Z</date>
+				<date>2020-04-20T19:42:47Z</date>
 			</dict>
 			<key>http://kapeli.com/feeds/React.xml</key>
 			<dict>
 				<key>date</key>
-				<date>2018-07-03T18:48:33Z</date>
+				<date>2020-04-20T19:42:35Z</date>
 			</dict>
 			<key>http://kapeli.com/feeds/Redis.xml</key>
 			<dict>
 				<key>date</key>
-				<date>2018-07-03T18:48:32Z</date>
+				<date>2020-04-20T19:42:43Z</date>
+			</dict>
+			<key>http://kapeli.com/feeds/Rust.xml</key>
+			<dict>
+				<key>date</key>
+				<date>2020-04-20T19:43:02Z</date>
 			</dict>
 			<key>http://kapeli.com/feeds/SVG.xml</key>
 			<dict>
 				<key>date</key>
-				<date>2018-07-03T18:49:04Z</date>
+				<date>2020-04-20T19:42:41Z</date>
 			</dict>
 			<key>http://kapeli.com/feeds/Stylus.xml</key>
 			<dict>
 				<key>date</key>
-				<date>2018-07-03T18:48:59Z</date>
+				<date>2020-04-20T19:42:42Z</date>
 			</dict>
 			<key>http://kapeli.com/feeds/Vim.xml</key>
 			<dict>
 				<key>date</key>
-				<date>2018-07-03T18:49:10Z</date>
+				<date>2020-04-20T19:42:37Z</date>
 			</dict>
 		</dict>
 		<key>uninstalled</key>

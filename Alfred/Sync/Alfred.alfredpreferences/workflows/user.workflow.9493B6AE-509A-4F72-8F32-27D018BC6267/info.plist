@@ -18,7 +18,16 @@
 			</dict>
 		</array>
 		<key>22E20A97-BE52-44BD-8C20-6BD4E3347C05</key>
-		<array/>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>136EC0FE-A476-41C6-9C77-FD22960CD1EE</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+			</dict>
+		</array>
 		<key>2D37C75D-9683-4D62-9810-DBEFAEFD05D7</key>
 		<array>
 			<dict>
@@ -266,7 +275,7 @@
 			<dict>
 				<key>paths</key>
 				<array>
-					<string>/usr/local/Cellar/macvim/8.1-151/MacVim.app</string>
+					<string>/usr/local/Cellar/macvim/8.2-163/MacVim.app</string>
 				</array>
 				<key>toggle</key>
 				<false/>
@@ -354,7 +363,7 @@
 			<dict>
 				<key>paths</key>
 				<array>
-					<string>/Applications/Shift.app</string>
+					<string>/Applications/Spark.app</string>
 				</array>
 				<key>toggle</key>
 				<true/>
@@ -425,7 +434,7 @@
 			<dict>
 				<key>paths</key>
 				<array>
-					<string>/Applications/Sketch.app</string>
+					<string>/Applications/Figma.app</string>
 				</array>
 				<key>toggle</key>
 				<false/>
@@ -469,7 +478,7 @@
 			<dict>
 				<key>paths</key>
 				<array>
-					<string>/Applications/VLC.app</string>
+					<string>/Applications/IINA.app</string>
 				</array>
 				<key>toggle</key>
 				<false/>
@@ -486,7 +495,7 @@
 			<dict>
 				<key>paths</key>
 				<array>
-					<string>/opt/homebrew-cask/Caskroom/transmission/2.84/Transmission.app</string>
+					<string>/Applications/TweetDeck.app</string>
 				</array>
 				<key>toggle</key>
 				<false/>
@@ -574,7 +583,7 @@
 			<dict>
 				<key>paths</key>
 				<array>
-					<string>/Applications/Visual Studio Code.app</string>
+					<string>/Applications/VSCodium.app</string>
 				</array>
 				<key>toggle</key>
 				<false/>
@@ -618,7 +627,7 @@
 			<dict>
 				<key>paths</key>
 				<array>
-					<string>/Applications/Preview.app</string>
+					<string>/System/Applications/Preview.app</string>
 				</array>
 				<key>toggle</key>
 				<false/>
@@ -662,7 +671,7 @@
 			<dict>
 				<key>paths</key>
 				<array>
-					<string>/usr/local/Caskroom/sublime-text3/3103/Sublime Text.app</string>
+					<string>/Applications/Microsoft Remote Desktop.app</string>
 				</array>
 				<key>toggle</key>
 				<false/>
@@ -706,7 +715,7 @@
 			<dict>
 				<key>paths</key>
 				<array>
-					<string>/Applications/Ulysses.app</string>
+					<string>/Applications/Obsidian.app</string>
 				</array>
 				<key>toggle</key>
 				<false/>
@@ -837,9 +846,7 @@
 			<key>config</key>
 			<dict>
 				<key>paths</key>
-				<array>
-					<string>/Applications/Slack.app</string>
-				</array>
+				<array/>
 				<key>toggle</key>
 				<true/>
 			</dict>
@@ -926,7 +933,7 @@
 			<dict>
 				<key>paths</key>
 				<array>
-					<string>/Applications/Tweeten.app</string>
+					<string>/Applications/Postman.app</string>
 				</array>
 				<key>toggle</key>
 				<false/>
@@ -997,7 +1004,7 @@
 			<dict>
 				<key>paths</key>
 				<array>
-					<string>/Applications/OmniGraffle.app</string>
+					<string>/Applications/Sublime Merge.app</string>
 				</array>
 				<key>toggle</key>
 				<false/>
@@ -1017,11 +1024,11 @@
 				<key>argument</key>
 				<integer>0</integer>
 				<key>hotkey</key>
-				<integer>33</integer>
+				<integer>4</integer>
 				<key>hotmod</key>
 				<integer>1966080</integer>
 				<key>hotstring</key>
-				<string>Å</string>
+				<string>H</string>
 				<key>leftcursor</key>
 				<false/>
 				<key>modsmode</key>
@@ -1040,9 +1047,7 @@
 			<key>config</key>
 			<dict>
 				<key>paths</key>
-				<array>
-					<string>/opt/homebrew-cask/Caskroom/robomongo/0.8.5/Robomongo.app</string>
-				</array>
+				<array/>
 				<key>toggle</key>
 				<false/>
 			</dict>

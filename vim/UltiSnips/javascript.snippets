@@ -64,9 +64,15 @@ function ${1:function_name}(${2:argument}) {
 endsnippet
 
 snippet => "arrow function"
-(${2:argument}) => {
+${2:argument} => {
 	${VISUAL}$0
 }
+endsnippet
+
+snippet sjsx "styled jsx"
+<style jsx>{\`
+	${VISUAL}$0
+\`}</style>
 endsnippet
 
 snippet r "require('...')"

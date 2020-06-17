@@ -32,7 +32,7 @@ Plug 'terryma/vim-multiple-cursors'
 Plug 'terryma/vim-expand-region'
 " Plug 'myusuf3/numbers.vim'
 Plug 'SirVer/ultisnips'
-Plug 'Valloric/YouCompleteMe', { 'do': './install.py' }
+Plug 'Valloric/YouCompleteMe'
 Plug 'Shougo/vimproc.vim', { 'do': 'make -f make_mac.mak' }
 Plug 't9md/vim-choosewin'
 Plug 'rizzatti/funcoo.vim'
@@ -92,7 +92,7 @@ Plug 'reedes/vim-wordy'
 Plug 'heavenshell/vim-jsdoc', { 'for': 'javascript' }
 Plug 'vim-scripts/argtextobj.vim'
 Plug 'michaeljsmith/vim-indent-object'
-Plug 'suan/vim-instant-markdown'
+" Plug 'suan/vim-instant-markdown'
 Plug 'jeetsukumaran/vim-indentwise'
 Plug 'dhruvasagar/vim-table-mode'
 Plug 'airblade/vim-gitgutter'
@@ -119,8 +119,8 @@ Plug 'junegunn/rainbow_parentheses.vim'
 " Plug 'w0rp/ale'
 Plug 'gabrielelana/vim-markdown', { 'for': 'markdown' }
 Plug 'pangloss/vim-javascript', { 'for': 'javascript' }
-Plug 'othree/yajs.vim', { 'for': 'javascript' }
-Plug 'mxw/vim-jsx', { 'for': 'jsx' }
+" Plug 'othree/yajs.vim', { 'for': 'javascript' }
+Plug 'maxmellon/vim-jsx-pretty', { 'for': 'jsx' }
 Plug 'statianzo/vim-jade', { 'for': [ 'jade', 'pug' ] }
 Plug 'digitaltoad/vim-pug', { 'for': 'pug' }
 Plug 'vim-scripts/applescript.vim', { 'for': 'applescript' }
@@ -131,17 +131,22 @@ Plug 'travitch/hasksyn', { 'for': 'haskell' }
 Plug 'wavded/vim-stylus'
 Plug 'hhsnopek/vim-sugarss'
 Plug 'tpope/vim-git'
-Plug 'mephux/vim-jsfmt'
-Plug 'ruanyl/vim-fixmyjs'
+" Plug 'mephux/vim-jsfmt'
+" Plug 'ruanyl/vim-fixmyjs'
 Plug 'tfnico/vim-gradle'
 Plug 'mustache/vim-mustache-handlebars'
-Plug 'leafgarland/typescript-vim'
+" Plug 'leafgarland/typescript-vim'
 " Plug 'Quramy/tsuquyomi'
-Plug 'posva/vim-vue'
+" Plug 'posva/vim-vue'
 Plug 'keith/swift.vim'
-Plug 'leafgarland/typescript-vim'
-Plug 'ianks/vim-tsx'
+" Plug 'leafgarland/typescript-vim'
+" Plug 'ianks/vim-tsx'
 Plug 'jparise/vim-graphql'
+Plug 'rust-lang/rust'
+Plug 'prabirshrestha/async.vim'
+Plug 'prabirshrestha/vim-lsp'
+Plug 'evanleck/vim-svelte'
+Plug 'elixir-editors/vim-elixir'
 
 " JavaScript
 "Plug 'maksimr/vim-jsbeautify', { 'for': ['html', 'css', 'javascript'] }
@@ -161,7 +166,7 @@ call plug#end()
 " Color scheme {{{
 
 syntax enable
-set background=light
+set background=dark
 
 " Theme options
 let g:solarized_visibility = "low"
@@ -180,8 +185,8 @@ let g:molokai_original = 0
 " colorscheme Tomorrow-Night
 " colorscheme bubblegum
 " colorscheme base16-ocean
-" colorscheme Tomorrow-Night-Blue
-colorscheme PaperColor
+colorscheme Tomorrow-Night-Blue
+" colorscheme PaperColor
 
 " }}}
 
@@ -339,7 +344,6 @@ if has("gui_macvim")
   set guifont=Sauce\ Code\ Powerline:h12
   set guifont=Sauce\ Code\ Pro\ Nerd\ Font\ Complete:h14
   set linespace=0
-  set fu
   set clipboard+=unnamed
   set vb t_vb=
   set guioptions-=m  "no menu
@@ -559,6 +563,7 @@ let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#left_sep = ' '
 let g:airline#extensions#tabline#left_alt_sep = ''
+let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
 let g:airline#extensions#bufferline#enabled = 1
 let g:airline_theme='lucius'
 
@@ -571,6 +576,7 @@ let g:project_use_nerdtree = 1
 
 call project#rc("~/dev")
 
+Project '~/dev/projects',                         'Projects'
 Project '~/Dropbox/Master Thesis/',               'Master_Thesis'
 Project 'tools/dotfiles'
 File    'tools/dotfiles/vim/vimrc.symlink',       'vimrc'
@@ -723,7 +729,7 @@ autocmd User GoyoLeave Limelight!
 " }}}
 
 " Ag {{{
-nnoremap <leader>ag :Find 
+nnoremap <leader>ag :Find
 " }}}
 
 " Choosewin {{{
@@ -789,21 +795,38 @@ map ﬁ <Plug>(IndentWiseNextGreaterIndent)zz
 " let g:user_emmet_leader_key='<C-M>'
 " }}}
 
-" PLUGIN {{{
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_loc_list_height = 5
-let g:syntastic_auto_loc_list = 0
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 1
-let g:syntastic_javascript_checkers = ['eslint']
-let g:syntastic_error_symbol = '❌'
-let g:syntastic_style_error_symbol = '⁉️'
-let g:syntastic_warning_symbol = '⚠️'
-let g:syntastic_style_warning_symbol = '💩'
-highlight link SyntasticErrorSign SignColumn
-highlight link SyntasticWarningSign SignColumn
-highlight link SyntasticStyleErrorSign SignColumn
-highlight link SyntasticStyleWarningSign SignColumn
+" " scrooloose/syntastic {{{
+" let g:syntastic_always_populate_loc_list = 1
+" let g:syntastic_loc_list_height = 5
+" let g:syntastic_auto_loc_list = 0
+" let g:syntastic_check_on_open = 1
+" let g:syntastic_check_on_wq = 1
+" let g:syntastic_javascript_checkers = ['eslint']
+" let g:syntastic_error_symbol = '❌'
+" let g:syntastic_style_error_symbol = '⁉️'
+" let g:syntastic_warning_symbol = '⚠️'
+" let g:syntastic_style_warning_symbol = '💩'
+" highlight link SyntasticErrorSign SignColumn
+" highlight link SyntasticWarningSign SignColumn
+" highlight link SyntasticStyleErrorSign SignColumn
+" highlight link SyntasticStyleWarningSign SignColumn
+" }}}
+
+" airblade/vim-rooter {{{
+let g:rooter_silent_chdir = 1
+" }}}
+
+" rust-lang/rust.vim {{{
+let g:rustfmt_autosave = 0
+
+if executable('rls')
+    au User lsp_setup call lsp#register_server({
+        \ 'name': 'rls',
+        \ 'cmd': {server_info->['rustup', 'run', 'stable', 'rls']},
+        \ 'workspace_config': {'rust': {'clippy_preference': 'on'}},
+        \ 'whitelist': ['rust'],
+        \ })
+endif
 " }}}
 
 " PLUGIN {{{
@@ -1003,6 +1026,8 @@ endif
 autocmd BufNewFile,BufRead *.jade set filetype=jade
 autocmd BufNewFile,BufRead *._js setfiletype javascript
 
+let g:ycm_server_python_interpreter = '/usr/local/bin/python3'
+let g:ycm_python_binary_path = '/usr/local/bin/python3'
 let g:ycm_autoclose_preview_window_after_completion = 1
 
 let g:session_autosave = 'yes'
