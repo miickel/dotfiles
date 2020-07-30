@@ -39,12 +39,13 @@ ssh-copy-id
 tmux
 tree
 wget
-neovim
 fzf
 mas
 bat
 reattach-to-user-namespace
 youtube-dl
+ag
+ripgrep
 )
 
 echo "Installing packages..."
@@ -59,23 +60,15 @@ brew tap caskroom/cask
 CASKS=(
 viscosity
 karabiner-elements
-hammerspoon
-flux
 google-chrome
 firefox
 iterm2
 macvim
 sublime-text
 visual-studio-code
-skype
-slack
-vlc
 spotify
-sequel-pro
-cyberduck
 appcleaner
 docker
-1password
 github
 
 qlcolorcode
@@ -97,7 +90,7 @@ echo "Installing AppStore apps..."
 mas install 937984704
 
 echo "Installing fonts..."
-brew tap caskroom/fonts
+brew tap homebrew/cask-fonts
 
 FONTS=(
 font-sourcecodepro-nerd-font

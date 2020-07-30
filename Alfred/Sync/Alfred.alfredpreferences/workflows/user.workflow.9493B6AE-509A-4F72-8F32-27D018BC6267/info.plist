@@ -275,7 +275,7 @@
 			<dict>
 				<key>paths</key>
 				<array>
-					<string>/usr/local/Cellar/macvim/8.2-163/MacVim.app</string>
+					<string>/Applications/MacVim.app</string>
 				</array>
 				<key>toggle</key>
 				<false/>
@@ -583,7 +583,7 @@
 			<dict>
 				<key>paths</key>
 				<array>
-					<string>/Applications/VSCodium.app</string>
+					<string>/Applications/Visual Studio Code.app</string>
 				</array>
 				<key>toggle</key>
 				<false/>

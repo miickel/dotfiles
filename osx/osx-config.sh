@@ -28,13 +28,13 @@ defaults write -g InitialKeyRepeat -int 20
 defaults write NSGlobalDomain KeyRepeat -int 10
 
 # Disable auto-correct
-# defaults write NSGlobalDomain NSAutomaticSpellingCorrectionEnabled -bool false
+defaults write NSGlobalDomain NSAutomaticSpellingCorrectionEnabled -bool false
 
 # Allow quitting Finder via âŒ˜ + Q; doing so will also hide desktop icons
-defaults write com.apple.finder QuitMenuItem -bool false
+#defaults write com.apple.finder QuitMenuItem -bool false
 
 # Disable window animations and Get Info animations in Finder
-defaults write com.apple.finder DisableAllAnimations -bool true
+#defaults write com.apple.finder DisableAllAnimations -bool true
 
 # Show all filename extensions in Finder
 # defaults write NSGlobalDomain AppleShowAllExtensions -bool true
@@ -55,7 +55,7 @@ defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true
 defaults write com.apple.finder FXEnableExtensionChangeWarning -bool false
 
 # Enable snap-to-grid for desktop icons
-/usr/libexec/PlistBuddy -c "Set :DesktopViewSettings:IconViewSettings:arrangeBy kind" ~/Library/Preferences/com.apple.finder.plist
+#/usr/libexec/PlistBuddy -c "Set :DesktopViewSettings:IconViewSettings:arrangeBy kind" ~/Library/Preferences/com.apple.finder.plist
 
 # Disable the warning before emptying the Trash
 defaults write com.apple.finder WarnOnEmptyTrash -bool false
@@ -67,10 +67,10 @@ defaults write com.apple.finder EmptyTrashSecurely -bool false
 chflags nohidden ~/Library
 
 # Enable spring loading for all Dock items
-defaults write com.apple.dock enable-spring-load-actions-on-all-items -bool true
+#defaults write com.apple.dock enable-spring-load-actions-on-all-items -bool true
 
 # Donâ€™t animate opening applications from the Dock
-defaults write com.apple.dock launchanim -bool false
+#defaults write com.apple.dock launchanim -bool false
 
 # Remove the auto-hiding Dock delay
 # defaults write com.apple.Dock autohide-delay -float 0
@@ -112,7 +112,7 @@ defaults write com.apple.terminal StringEncodings -array 4
 defaults write com.apple.mail AddressesIncludeNameOnPasteboard -bool false
 
 # Disable the sound effects on boot
-sudo nvram SystemAudioVolume=" "
+#sudo nvram SystemAudioVolume=" "
 
 # Check for software updates daily, not just once per week
 defaults write com.apple.SoftwareUpdate ScheduleFrequency -int 1
