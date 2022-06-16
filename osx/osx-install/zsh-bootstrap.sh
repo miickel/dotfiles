@@ -14,10 +14,7 @@ done
 # Make ZSH default shell
 chsh -s /bin/zsh
 
-# Install NVM/Node.js
-curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | bash
+# Install FNM/Node.js
+curl -fsSL https://fnm.vercel.app/install | bash
 
-# Install ZSH plugin manager
-git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
-
-echo "RUN nvm install node"
+echo "RUN fnm install node"
