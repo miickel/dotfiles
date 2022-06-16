@@ -32,11 +32,11 @@ git
 graphviz
 imagemagick
 jq
+elixir
 python
 python3
 pypy
 ssh-copy-id
-tmux
 tree
 wget
 fzf
@@ -46,6 +46,7 @@ reattach-to-user-namespace
 youtube-dl
 ag
 ripgrep
+broot
 )
 
 echo "Installing packages..."
@@ -54,22 +55,22 @@ brew install ${PACKAGES[@]}
 echo "Cleaning up..."
 brew cleanup
 
-echo "Installing cask..."
-brew tap caskroom/cask
-
 CASKS=(
 viscosity
 karabiner-elements
 google-chrome
+chromium
 firefox
-iterm2
-macvim
-sublime-text
 visual-studio-code
 spotify
-appcleaner
 docker
 github
+obsidian
+sublime-merge
+tableplus
+pgadmin4
+raycast
+devdocs
 
 qlcolorcode
 qlstephen
@@ -82,12 +83,24 @@ suspicious-package
 )
 
 echo "Installing cask apps..."
-brew cask install ${CASKS[@]}
+brew install ${CASKS[@]} --cask
 
 echo "Installing AppStore apps..."
 
 # Amphetamine
 mas install 937984704
+
+# Bitwarden
+mas install 1137397744
+
+# Flow
+mas install 1423210932
+
+# Tailscale
+mas install 1470499037
+
+# Dato
+mas install 1470584107
 
 echo "Installing fonts..."
 brew tap homebrew/cask-fonts
@@ -98,8 +111,9 @@ font-source-code-pro-for-powerline
 font-sourcecodepro-nerd-font-mono
 font-roboto
 font-clear-sans
+font-fira-code-nerd-font
 )
 
-brew cask install ${FONTS[@]}
+brew install ${FONTS[@]} --cask
 
 echo "Done, now open zsh and run next script."
