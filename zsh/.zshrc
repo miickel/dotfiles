@@ -17,9 +17,6 @@ export PATH="/Users/mickel/.cargo/bin:$PATH"
 export FZF_DEFAULT_COMMAND="rg --files --no-ignore --hidden --follow --glob \"!.git/*\""
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh 
 
-# BR - broot
-source /Users/mickel/Library/Preferences/org.dystroy.broot/launcher/bash/br
-
 # FNM - Node version manager
 eval "$(fnm env)"
 export PATH="/usr/local/opt/ruby/bin:$PATH"
@@ -29,3 +26,5 @@ if [ -f '/Users/mickel/dev/tools/google-cloud-sdk/path.zsh.inc' ]; then . '/User
 
 # The next line enables shell command completion for gcloud.
 if [ -f '/Users/mickel/dev/tools/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/mickel/dev/tools/google-cloud-sdk/completion.zsh.inc'; fi
+
+alias lvim="~/.local/bin/lvim"
