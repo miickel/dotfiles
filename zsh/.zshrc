@@ -17,9 +17,6 @@ export PATH="/Users/mickel/.cargo/bin:$PATH"
 export FZF_DEFAULT_COMMAND="rg --files --no-ignore --hidden --follow --glob \"!.git/*\""
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh 
 
-# BR - broot
-source /Users/mickel/Library/Preferences/org.dystroy.broot/launcher/bash/br
-
 # FNM - Node version manager
 eval "$(fnm env)"
 export PATH="/usr/local/opt/ruby/bin:$PATH"
