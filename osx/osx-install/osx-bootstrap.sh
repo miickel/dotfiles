@@ -71,6 +71,7 @@ tableplus
 pgadmin4
 raycast
 devdocs
+ableton-live-suite
 
 qlcolorcode
 qlstephen
