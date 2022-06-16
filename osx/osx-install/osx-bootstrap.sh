@@ -47,6 +47,7 @@ youtube-dl
 ag
 ripgrep
 broot
+neovim
 )
 
 echo "Installing packages..."
