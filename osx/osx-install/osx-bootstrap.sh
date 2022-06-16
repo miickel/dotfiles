@@ -48,6 +48,7 @@ ag
 ripgrep
 broot
 neovim
+bitwarden-cli
 )
 
 echo "Installing packages..."
