@@ -76,7 +76,6 @@ devdocs
 ableton-live-suite
 
 qlcolorcode
-qlstephen
 qlmarkdown
 quicklook-json
 qlprettypatch
