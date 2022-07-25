@@ -54,6 +54,14 @@ lvim.builtin.which_key.mappings["t"] = {
   l = { "<cmd>Trouble loclist<cr>", "LocationList" },
   w = { "<cmd>Trouble lsp_workspace_diagnostics<cr>", "Diagnostics" },
 }
+lvim.builtin.which_key.mappings["k"] = {
+  name = "+Test",
+  n = { "<cmd>:TestNearest -strategy=kitty<cr>", "Nearest" },
+  l = { "<cmd>:TestLast<cr>", "Last" },
+  f = { "<cmd>:TestFile<cr>", "File" },
+  s = { "<cmd>:TestSuite<cr>", "Suite" },
+  g = { "<cmd>:TestVisit<cr>", "Visit" },
+}
 
 -- TODO: User Config for predefined plugins
 -- After changing plugin config exit and reopen LunarVim, Run :PackerInstall :PackerCompile
@@ -143,103 +151,111 @@ lvim.builtin.treesitter.highlight.enabled = true
 
 -- Additional Plugins
 lvim.plugins = {
-    {
-      "tpope/vim-surround",
-      keys = {"c", "d", "y"}
-    },
-    { "tpope/vim-repeat" },
-    {"folke/tokyonight.nvim"},
-    {"chriskempson/vim-tomorrow-theme"},
-    {"RRethy/nvim-base16"},
-		{
-			"phaazon/hop.nvim",
-			as = "hop",
-			keys = { "f" },
-			config = function()
-				require("hop").setup()
-        vim.api.nvim_set_keymap("n", "f", ":HopWord<cr>", { silent = true })
-			end,
-		},
-    {
-      "ggandor/lightspeed.nvim",
-      event = "BufRead",
-			config = function()
-				require("lightspeed").setup {
-          ignore_case = true,
-        }
-			end,
-    },
-    {
-      "jeetsukumaran/vim-indentwise",
-      event = "BufRead",
-      config = function()
-        -- alt+h
-        vim.api.nvim_set_keymap("", "˛", "<Plug>(IndentWisePreviousLesserIndent)", {})
-        -- alt+g
-        vim.api.nvim_set_keymap("", "¸", "<Plug>(IndentWisePreviousLesserIndent)", {})
-        -- alt+l
-        vim.api.nvim_set_keymap("", "ﬁ", "<Plug>(IndentWiseNextGreaterIndent)", {})
-        -- alt+k
-        vim.api.nvim_set_keymap("", "ª", "<Plug>(IndentWisePreviousEqualIndent)", {})
-        -- alt+j
-        vim.api.nvim_set_keymap("", "√", "<Plug>(IndentWiseNextEqualIndent)", {})
-      end,
-    },
-    {
-      "nacro90/numb.nvim",
-      event = "BufRead",
-      config = function()
-        require("numb").setup {
-          show_numbers = true, -- Enable 'number' for the window while peeking
-          show_cursorline = true, -- Enable 'cursorline' for the window while peeking
-        }
-      end,
-    },
-		{
-			"mattn/emmet-vim",
-			ft = { "html", "css", "eruby", "javascript" },
-		},
-    {
-      "windwp/nvim-spectre",
-      event = "BufRead",
-      config = function()
-        require("spectre").setup()
-        vim.api.nvim_set_keymap("n", "X", "<cmd>lua require('spectre').open()<cr>", { silent = true })
-      end,
-    },
-    {
-      "andymass/vim-matchup",
-      event = "CursorMoved",
-      config = function()
-        vim.g.matchup_matchparen_offscreen = { method = "popup" }
-      end,
-    },
-    {
-      "windwp/nvim-ts-autotag",
-      event = "InsertEnter",
-      config = function()
-        require("nvim-ts-autotag").setup()
-      end,
-    },
-    {
-      "folke/trouble.nvim",
-      cmd = "TroubleToggle",
-    },
-    {
-      "ahmedkhalf/lsp-rooter.nvim",
-      event = "BufRead",
-      config = function()
-        require("lsp-rooter").setup()
-      end,
-    },
-    {
-      "github/copilot.vim",
-      event = "BufRead",
-    },
+  {
+    "tpope/vim-surround",
+    keys = { "c", "d", "y" }
+  },
+  { "tpope/vim-repeat" },
+  { "folke/tokyonight.nvim" },
+  { "chriskempson/vim-tomorrow-theme" },
+  { "RRethy/nvim-base16" },
+  {
+    "phaazon/hop.nvim",
+    as = "hop",
+    keys = { "f" },
+    config = function()
+      require("hop").setup()
+      vim.api.nvim_set_keymap("n", "f", ":HopWord<cr>", { silent = true })
+    end,
+  },
+  {
+    "ggandor/lightspeed.nvim",
+    event = "BufRead",
+    config = function()
+      require("lightspeed").setup {
+        ignore_case = true,
+      }
+    end,
+  },
+  {
+    "jeetsukumaran/vim-indentwise",
+    event = "BufRead",
+    config = function()
+      -- alt+h
+      vim.api.nvim_set_keymap("", "˛", "<Plug>(IndentWisePreviousLesserIndent)", {})
+      -- alt+g
+      vim.api.nvim_set_keymap("", "¸", "<Plug>(IndentWisePreviousLesserIndent)", {})
+      -- alt+l
+      vim.api.nvim_set_keymap("", "ﬁ", "<Plug>(IndentWiseNextGreaterIndent)", {})
+      -- alt+k
+      vim.api.nvim_set_keymap("", "ª", "<Plug>(IndentWisePreviousEqualIndent)", {})
+      -- alt+j
+      vim.api.nvim_set_keymap("", "√", "<Plug>(IndentWiseNextEqualIndent)", {})
+    end,
+  },
+  {
+    "nacro90/numb.nvim",
+    event = "BufRead",
+    config = function()
+      require("numb").setup {
+        show_numbers = true, -- Enable 'number' for the window while peeking
+        show_cursorline = true, -- Enable 'cursorline' for the window while peeking
+      }
+    end,
+  },
+  {
+    "mattn/emmet-vim",
+    ft = { "html", "css", "eruby", "javascript" },
+  },
+  {
+    "windwp/nvim-spectre",
+    event = "BufRead",
+    config = function()
+      require("spectre").setup()
+      vim.api.nvim_set_keymap("n", "X", "<cmd>lua require('spectre').open()<cr>", { silent = true })
+    end,
+  },
+  {
+    "andymass/vim-matchup",
+    event = "CursorMoved",
+    config = function()
+      vim.g.matchup_matchparen_offscreen = { method = "popup" }
+    end,
+  },
+  {
+    "windwp/nvim-ts-autotag",
+    event = "InsertEnter",
+    config = function()
+      require("nvim-ts-autotag").setup()
+    end,
+  },
+  {
+    "folke/trouble.nvim",
+    cmd = "TroubleToggle",
+  },
+  {
+    "ahmedkhalf/lsp-rooter.nvim",
+    event = "BufRead",
+    config = function()
+      require("lsp-rooter").setup()
+    end,
+  },
+  {
+    "github/copilot.vim",
+    event = "BufRead",
+  },
+  {
+    "vim-test/vim-test",
+    opt = true,
+    event = { "BufEnter *_test.*,*_spec.*" },
+    config = function()
+      vim.cmd("let test#strategy = \"kitty\"")
+    end,
+  },
 }
 
 -- Autocommands (https://neovim.io/doc/user/autocmd.html)
 vim.api.nvim_create_autocmd("BufWinEnter", {
-	  pattern = { "*.astro" },
-	  command = "set filetype=html",
+  pattern = { "*.astro" },
+  command = "set filetype=html",
 })
