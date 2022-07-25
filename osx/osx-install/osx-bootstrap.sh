@@ -75,7 +75,6 @@ raycast
 devdocs
 ableton-live-suite
 
-qlcolorcode
 qlmarkdown
 quicklook-json
 qlprettypatch
