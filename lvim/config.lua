@@ -14,7 +14,9 @@ lvim.format_on_save = false
 
 vim.g.tokyonight_style = "storm" -- storm, night or day
 lvim.colorscheme = "tokyonight"
+-- lvim.colorscheme = "base16-atelier-cave-light"
 -- lvim.colorscheme = "Tomorrow-Night-Blue"
+-- lvim.colorscheme = "zenbones"
 vim.wo.number = false
 
 -- keymappings [view all the defaults by pressing <leader>Lk]
@@ -24,6 +26,11 @@ lvim.keys.normal_mode["<C-s>"] = ":w<cr>"
 -- unmap a default keymapping
 -- edit a default keymapping
 -- lvim.keys.normal_mode["<C-q>"] = ":q<cr>"
+
+vim.cmd([[
+  nmap H :bprevious<cr>
+  nmap L :bnext<cr>
+]])
 
 -- Change Telescope navigation to use j and k for navigation and n and p for history in both input and normal mode.
 -- we use protected-mode (pcall) just in case the plugin wasn't loaded yet.
@@ -35,11 +42,15 @@ lvim.builtin.telescope.defaults.mappings = {
     ["<C-k>"] = actions.move_selection_previous,
     ["<C-n>"] = actions.cycle_history_next,
     ["<C-p>"] = actions.cycle_history_prev,
+    ["<C-q>"] = actions.send_selected_to_qflist + actions.open_qflist,
+    ["<C-a>"] = actions.send_to_qflist + actions.open_qflist,
   },
   -- for normal mode
   n = {
     ["<C-j>"] = actions.move_selection_next,
     ["<C-k>"] = actions.move_selection_previous,
+    ["<C-q>"] = actions.send_selected_to_qflist + actions.open_qflist,
+    ["<C-a>"] = actions.send_to_qflist + actions.open_qflist,
   },
 }
 
@@ -159,6 +170,7 @@ lvim.plugins = {
   { "folke/tokyonight.nvim" },
   { "chriskempson/vim-tomorrow-theme" },
   { "RRethy/nvim-base16" },
+  { "mcchrish/zenbones.nvim", requires = "rktjmp/lush.nvim" },
   {
     "phaazon/hop.nvim",
     as = "hop",
@@ -240,17 +252,47 @@ lvim.plugins = {
       require("lsp-rooter").setup()
     end,
   },
-  {
-    "github/copilot.vim",
-    event = "BufRead",
-  },
+  -- {
+  --   "github/copilot.vim",
+  --   event = "BufRead",
+  -- },
   {
     "vim-test/vim-test",
     opt = true,
-    event = { "BufEnter *_test.*,*_spec.*" },
+    event = { "BufEnter *_test.*,*.test.*,*_spec.*,*.spec.*,test-*.*" },
     config = function()
       vim.cmd("let test#strategy = \"kitty\"")
     end,
+  },
+  {
+    "kevinhwang91/nvim-bqf",
+    event = { "BufRead", "BufNew" },
+    config = function()
+      require("bqf").setup({
+        auto_enable = true,
+        preview = {
+          win_height = 12,
+          win_vheight = 12,
+          delay_syntax = 80,
+          border_chars = { "┃", "┃", "━", "━", "┏", "┓", "┗", "┛", "█" },
+        },
+        func_map = {
+          vsplit = "",
+          ptogglemode = "z,",
+          stoggleup = "",
+        },
+        filter = {
+          fzf = {
+            action_for = { ["ctrl-s"] = "split" },
+            extra_opts = { "--bind", "ctrl-o:toggle-all", "--prompt", "> " },
+          },
+        },
+      })
+    end,
+  },
+  {
+    "junegunn/fzf",
+    event = "BufRead",
   },
 }
 
