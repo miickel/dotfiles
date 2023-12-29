@@ -13,7 +13,7 @@ lvim.log.level = "warn"
 lvim.format_on_save = false
 
 vim.g.tokyonight_style = "storm" -- storm, night or day
-lvim.colorscheme = "tokyonight"
+-- lvim.colorscheme = "tokyonight"
 -- lvim.colorscheme = "base16-atelier-cave-light"
 -- lvim.colorscheme = "Tomorrow-Night-Blue"
 -- lvim.colorscheme = "zenbones"
@@ -67,7 +67,7 @@ lvim.builtin.which_key.mappings["t"] = {
 }
 lvim.builtin.which_key.mappings["k"] = {
   name = "+Test",
-  n = { "<cmd>:TestNearest -strategy=kitty<cr>", "Nearest" },
+  n = { "<cmd>:TestNearest<cr>", "Nearest" },
   l = { "<cmd>:TestLast<cr>", "Last" },
   f = { "<cmd>:TestFile<cr>", "File" },
   s = { "<cmd>:TestSuite<cr>", "Suite" },
@@ -235,6 +235,13 @@ lvim.plugins = {
     end,
   },
   {
+    "mhinz/vim-mix-format",
+    event = "BufRead",
+    config = function()
+      vim.g.mix_format_on_save = 1
+    end,
+  },
+  {
     "windwp/nvim-ts-autotag",
     event = "InsertEnter",
     config = function()
@@ -252,10 +259,8 @@ lvim.plugins = {
       require("lsp-rooter").setup()
     end,
   },
-  -- {
-  --   "github/copilot.vim",
-  --   event = "BufRead",
-  -- },
+  { "github/copilot.vim" },
+  { "hrsh7th/cmp-copilot" },
   {
     "vim-test/vim-test",
     opt = true,
